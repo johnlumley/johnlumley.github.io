@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tests purpose="Check comment positions and nesting">
+
+    <test>
+        <grammar>{A{B}} P: "a"+,"b"*;"c"?,"d"++"|". </grammar>
+    </test>
+    <test>
+        <grammar>{A {B {CDE FGH} } IJKL} P: "a", [Zs], -~["de"; "1"-"9"; Lu; #45]. </grammar>
+    </test>
+    <test>
+        <grammar>P: A.
+            A: "b".
+        { A: "a". {some deeper comment}
+        }</grammar>
+    </test>
+    <test>
+        <grammar syntax="xml">
+            <ixml>
+                <comment>A<comment>B</comment>
+                </comment>
+                <rule name="P">
+                    <alt>
+                        <literal string="a"/>
+                    </alt>
+                </rule>
+            </ixml>
+        </grammar>
+    </test>
+    <test><grammar>{ a comment }
+        S: { another comment } 'a' { and another } .
+        { a final comment }</grammar></test>
+    <test>
+        <grammar>{Comment start} P: {comment between} a. {Comment mid} a: "a". {comment
+            end}</grammar>
+    </test>
+    <test><grammar>
+        S: { another comment } 'a' { and another }; {third} 'b' {fourth}.
+        T : [ {charset} L {code}; {charset1} "lit" {literal}; {charset2} #d {hex}; {charset2a} {charset2b} "a"-"z" {rangeA} {rangeB}] .
+    </grammar></test>
+    <test>
+        <grammar>
+            S: {option} a {option1} ? {option2}.
+            a: "a".
+        </grammar>
+    </test>
+    <test>
+        <grammar>
+            S: {star} a {star1} * {star2}.
+            a: "a".
+        </grammar>
+    </test>
+    <test>
+        <grammar>
+            S: {plus} a {plus1} + {plus2}.
+            a: "a".
+        </grammar>
+    </test>
+  <test>
+        <grammar>
+            S: {starSep} a {starSep1} ** {starSep2} "|" {starSep3}.
+            a: "a".
+        </grammar>
+    </test>
+    <test>
+        <grammar>
+            S: {plusSep} a {plusSep1} ** {plusSep2} "|" {plusSep3}.
+            a: "a".
+        </grammar>
+    </test>
+    <test>
+        <grammar>
+            S: ({bracket} a {bracket1}, {bracket2} a {bracket3}; {bracket4} a {bracket5}) {bracket6}.
+            a: "a".
+        </grammar>
+    </test>
+   
+    <test>
+        <grammar file="../ixml.ixml"/>
+        <input ZshowStates="">{comment start} P:"{". {comment end}</input>
+    </test>
+
+</tests>

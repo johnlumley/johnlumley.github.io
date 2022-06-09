@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tests purpose="Test repetition constructs">
+   <test>
+      <grammar>P:A+,(B,B)+.
+         A: "a".
+         B: "b";"c".
+      </grammar>
+      <input>abcbb</input>
+      <input>bcbb</input>
+   </test>
+   <test>
+      <grammar>P:A,B+.
+         A: "a".
+         B: "b";"c".
+      </grammar>
+      <input>a</input>
+   </test>
+   <Xtest>
+      <grammar>P:A,B+. A: "a". B: "b";"c". </grammar>
+      <input>abc</input>
+   </Xtest>
+   <Xtest>
+      <grammar>P:A,B*. A: "a". B: "b";"c". </grammar>
+      <input>abc</input>
+   </Xtest>
+   <Xtest>
+      <grammar>P:"s", A++"|". A: "a". </grammar>
+      <input>sa|a</input>
+      <input>sa</input>
+      <input>saa</input>
+      <input>s</input>
+      
+   </Xtest>
+   <Xtest>
+      <grammar>P:"s", A**"|". A: "a". </grammar>
+      <input>sa|a</input>
+      <input>sa</input>
+      <input>saa</input>
+      <input>s</input>
+      
+   </Xtest>
+</tests>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tests purpose="Checking error handling">   
+   <test>
+      <grammar>P:["b"-"a"]. </grammar>      
+   </test>
+</tests>

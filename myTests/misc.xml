@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tests>
+   <Atest>
+      <grammar>P:"abcdef". </grammar>
+      <input>abcdef</input>
+      <input>abcde</input>
+      <input>abcdefg</input>
+   </Atest>
+   <Xtest>
+      <grammar>P:"s", (A;B)+. A: "abcdef". B: "b". s: " "?. </grammar>
+      <Zinput>sab</Zinput>
+      <Zinput>sab|ab</Zinput>
+      <Zinput>sa</Zinput>
+      <Zinput>saa</Zinput>
+      <Zinput>s</Zinput>
+   </Xtest>
+   <Xtest>
+      <grammar>P:"s", (A,B)++"|". A: "a". B: "b". s: " "?. </grammar>
+      <input>sab</input>
+      <Zinput>sab|ab</Zinput>
+      <Zinput>sa</Zinput>
+      <Zinput>saa</Zinput>
+      <Zinput>s</Zinput>
+   </Xtest>
+   <Xtest>
+      <grammar>P:"s", A++("|",s). A: "a". s: " "?. </grammar>
+      <input>sa| a</input>
+      <input>sa|a</input>
+      <input>sa</input>
+      <input>saa</input>
+      <input>s</input>
+   </Xtest>
+   <Xtest>
+      <grammar>P:"s", A**("|";s). A: "a". s: " "?. </grammar>
+      <input>sa| a</input>
+      <input>sa a</input>
+      <input>sa|a</input>
+      <input>sa</input>
+      <input>saa</input>
+      <input>s</input>
+   </Xtest>
+   <Xtest>
+      <grammar>P:"s", (A;(s;"b"))+. A: "a". s: " ". </grammar>
+      <Zinput>sa</Zinput>
+      <Zinput>sa </Zinput>
+      <Zinput>sa</Zinput>
+      <Zinput>saa</Zinput>
+      <Zinput>s</Zinput>
+      
+   </Xtest>
+   <Xtest>
+      <grammar>P:"s", A**("|"," "). A: "a". s: " "?. </grammar>
+      <input>sa| a</input>
+      <input>sa</input>
+      <input>saa</input>
+      <input>s</input>
+      
+   </Xtest>
+</tests>

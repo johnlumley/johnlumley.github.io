@@ -1,0 +1,21 @@
+.toggler {
+ /*   outline: black dashed 1px;
+    width: 200px;*/
+}
+.toggler input[type="checkbox"] + label + label.text {
+    font: normal 8px arial;
+    display: inline-block;
+    line-height: 10px;
+    vertical-align: top;
+    margin: 2px 0px;
+}
+.toggler input[type="radio"] {
+   transform: scale(0.6);
+}
+.toggler input[type="radio"] + label + label.text {
+    font: normal 8px arial;
+    display: inline-block;
+    line-height: 10px;
+    vertical-align: top;
+    margin: 2px 0px;
+}

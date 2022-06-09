@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tests purpose="Checking grammar importation from XML syntax">   
+   <test>
+      <grammar file="../ixml.xml" syntax="xml"/>
+      <input>a: class-range. class-range: [L]. </input>
+      <input file="../ixml.ixml"/>
+   </test>
+   <test>
+      <grammar file="../ixml.ixml"/>
+      <input file="../ixml.ixml"/>
+   </test>
+   <test>
+      <grammar file="testGrammar.ixml"/>
+   </test>
+   <test>
+      <grammar file="testGrammar.xml" syntax="xml"/>
+   </test>
+</tests>

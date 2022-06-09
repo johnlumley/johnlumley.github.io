@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ixml>
+   <comment>Leading comment</comment>
+   <rule name="P">
+      <alt>
+         <literal string="abcdef"/>
+         <literal tmark="-" hex="9"/>
+         <inclusion tmark="-">
+            <member code="Zs"/>
+         </inclusion>
+         <nonterminal name="whitespace"/>
+      </alt>
+   </rule>
+   <rule mark="-" name="whitespace">
+      <alt>
+         <inclusion tmark="-">
+            <member code="Zs"/>
+            <member string="abc"/>
+            <member hex="b"/>
+            <member from="b" to="d"/>
+         </inclusion>
+      </alt>
+   </rule>
+</ixml>

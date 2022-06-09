@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>jωiXML processor</title>
+        <link rel="stylesheet" href="jwiXML.css" type="text/css" />
+
+        <!--<script type="text/javascript" src="/sxjs/SaxonJS2.debug.js" language="javascript"></script>-->
+        <script type="text/javascript" src="saxonJS/SaxonJS2.rt.js" language="javascript"></script>
+        <script type="text/javascript" src="build/jwiXML.adv.cls.js" language="javascript"></script>
+    </head>
+    <body onload="SaxonJS.transform({
+        'stylesheetLocation' : 'jwiXML.sef.json',
+        'sourceLocation' : 'jwiXML.xml',
+        'initialTemplate' : 'Q{}go'
+        })">
+
+
+        <div id="body">
+            <h2><a href="https://invisiblexml.org/"><img src="logos/logo_gradient.png" alt="InvisibleXML Logo"
+                        width="60pt" /></a>
+                <span style="font-style:italic">j</span>ω<img src="logos/logotype.png" alt="InvisibleXML Logo"
+                    width="60pt" /> processor</h2>
+            <p id="status" class="note">A SaxonJS/JavaScript processor of <a href="https://invisiblexml.org/">Invisible XML</a></p>
+            <p id="messages"></p>
+            <div id="sandpit"></div>
+        </div>
+
+    </body>
+</html>

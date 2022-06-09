@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tests purpose="Test execution of a parsed ixml spec. grammar">
+   <test>
+      <grammar file="ixml.ixml"/>
+      <input>P:"a". </input>
+      <input>P:"{a". </input>
+      <input>P:"a{". </input>
+      <input>P:#a. </input>
+      <input>PBa234:Cabvdth. </input>
+
+      <input>P:"a" , "b". </input>
+      <input>P:"a" ; "b". </input>
+      <input>P:S+. </input>
+      <input>P:"s", S+. S: ["a";"b"]. </input>
+      <input>P:"s", (A;B). </input>
+      <input>P:"s", (A,B)+. </input>
+      <input>P:"s", (A,B)++("|";";"). </input>
+      <input file="ixml.ixml"/>
+   </test>
+</tests>

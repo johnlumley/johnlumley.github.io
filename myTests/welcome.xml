@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tests purpose="Initial welcome to the jωiXML processor - some simple test cases">
+   <test>
+      <grammar>Greetings: +#a, greeting++sep, +#a.
+         -greeting: welcome; notWelcome.
+         -welcome: +"Welcome ", name. 
+         -notWelcome: +"Go away ", lower. 
+      -name: [Lu], [L]*.
+      -lower: [Ll],[L]*.
+      -sep: ',',' '*, +#a.
+      </grammar>
+      <input>Bethan, Norm</input>
+      <input>Michael, interloper, Steven, Tomos</input>
+      <input>lowerOrder</input>
+      <input showStates="">N5</input>
+   </test>
+</tests>

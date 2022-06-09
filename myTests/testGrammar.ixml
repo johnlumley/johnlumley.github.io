@@ -1,0 +1,3 @@
+{Leading comment}
+P: "abcdef",-#9, -[Zs], whitespace. 
+-whitespace: -[Zs;"abc";#b;"b"-"d"]. 

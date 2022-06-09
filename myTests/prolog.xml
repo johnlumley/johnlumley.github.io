@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tests purpose="Checking prolog support">
+   <test>
+      <grammar>ixml version "1.3" .
+         P:["B"-"D"]. </grammar>
+   </test>
+   <test>
+      <grammar>ixml version "1.3.alpha
+         more here " .
+         P:["B"-"D"]. </grammar>
+   </test>
+   <test>
+      <grammar>ixml version '1.3' .
+         P:["B"-"D"]. </grammar>
+   </test>
+   <test>
+      <grammar>ixml version 1.3 .
+         P:["B"-"D"]. </grammar>
+   </test>
+   <test>
+      <grammar>{prolog1}
+         ixml {prolog2} version {prolog3} "1.3" {prolog4} .
+         P:["B"-"D"]. </grammar>
+   </test>
+   <test>
+      <grammar> version
+         P:["B"-"D"]. </grammar>
+   </test>
+</tests>

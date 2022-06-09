@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tests purpose="Checking attribute handling">
+   <test>
+      <grammar>S: @a, @a. 
+      a: [L].
+      </grammar>
+      <input>BG</input>
+   </test>
+</tests>
