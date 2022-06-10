@@ -100,7 +100,12 @@ div.horizontal > * {
    font-size: x-small;
 }
 .instruction {
-   font-size:smaller;
+   font-size:x-small;
+}
+
+input[type=file] {
+   font-size: x-small;
+   font-style:italic;
 }
 
 #go {

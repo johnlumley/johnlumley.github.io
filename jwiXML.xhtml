@@ -9,6 +9,8 @@
         <!--<script type="text/javascript" src="/sxjs/SaxonJS2.debug.js" language="javascript"></script>-->
         <script type="text/javascript" src="saxonJS/SaxonJS2.rt.js" language="javascript"></script>
         <script type="text/javascript" src="build/jwiXML.adv.cls.js" language="javascript"></script>
+        <script type="text/javascript" src="fileReader.js" language="javascript"></script>
+        
     </head>
     <body onload="SaxonJS.transform({
         'stylesheetLocation' : 'jwiXML.sef.json',
@@ -22,8 +24,12 @@
                         width="60pt" /></a>
                 <span style="font-style:italic">j</span>ω<img src="logos/logotype.png" alt="InvisibleXML Logo"
                     width="60pt" /> processor</h2>
-            <p id="status" class="note">A SaxonJS/JavaScript processor of <a href="https://invisiblexml.org/">Invisible XML</a></p>
+            <p id="status" class="note">A SaxonJS/JavaScript processor of <a href="https://invisiblexml.org/">Invisible
+                    XML</a></p>
             <p id="messages"></p>
+           <!-- <input type="file" id="file" />
+            <div class="output" id="output"></div>-->
+
             <div id="sandpit"></div>
         </div>
 
