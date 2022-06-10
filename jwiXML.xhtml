@@ -10,7 +10,7 @@
         <script type="text/javascript" src="saxonJS/SaxonJS2.rt.js" language="javascript"></script>
         <script type="text/javascript" src="build/jwiXML.adv.cls.js" language="javascript"></script>
         <script type="text/javascript" src="fileReader.js" language="javascript"></script>
-        
+
     </head>
     <body onload="SaxonJS.transform({
         'stylesheetLocation' : 'jwiXML.sef.json',
@@ -20,14 +20,29 @@
 
 
         <div id="body">
-            <h2><a href="https://invisiblexml.org/"><img src="logos/logo_gradient.png" alt="InvisibleXML Logo"
-                        width="60pt" /></a>
-                <span style="font-style:italic">j</span>ω<img src="logos/logotype.png" alt="InvisibleXML Logo"
-                    width="60pt" /> processor</h2>
-            <p id="status" class="note">A SaxonJS/JavaScript processor of <a href="https://invisiblexml.org/">Invisible
-                    XML</a></p>
+            <div class="horizontal">
+                <div>
+                    <h2><a href="https://invisiblexml.org/"><img src="logos/logo_gradient.png" alt="InvisibleXML Logo"
+                                width="60pt" /></a>
+                        <span style="font-style:italic">j</span>ω<img src="logos/logotype.png" alt="InvisibleXML Logo"
+                            width="60pt" /> processor</h2>
+                    <p id="status" class="note">A SaxonJS/JavaScript processor of <a href="https://invisiblexml.org/"
+                            >Invisible XML</a></p>
+                </div>
+                <div class="description">
+                    <p>This processor runs <i>entirely</i> within the browser client, using <a
+                            href="https://www.saxonica.com/saxon-js/documentation2/index.html">SaxonJS </a>as the
+                        top-level program and the <i>jwiXML</i> JavaScript library. There is <i>no</i> server-side
+                        processing, apart from initial delivery of necessary files.</p>
+                    <p>There are two sections - some predefined test examples and an interactive iXML processor. Click
+                        on the labels to expand that section</p>
+                    <p>In a couple of days I'll add a Help section ;-), but if you've been following other tutorial
+                        material, such as <a href="https://homepages.cwi.nl/~steven/ixml/tutorial/">Steven
+                            Pemberton's</a>, the controls should be self-explanatory.</p>
+                </div>
+            </div>
             <p id="messages"></p>
-           <!-- <input type="file" id="file" />
+            <!-- <input type="file" id="file" />
             <div class="output" id="output"></div>-->
 
             <div id="sandpit"></div>

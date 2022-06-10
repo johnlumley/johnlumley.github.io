@@ -102,6 +102,13 @@ div.horizontal > * {
 .instruction {
    font-size:x-small;
 }
+.description {
+   width: 70ex;
+   font-size: x-small;
+   padding-left: 20pt;
+   margin-top: 10pt;
+   vertical-align:top;
+}
 
 input[type=file] {
    font-size: x-small;
