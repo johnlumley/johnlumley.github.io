@@ -618,22 +618,22 @@ State$$module$src$ixmlGrammar.prototype.bottomUp = function $State$$module$src$i
       $$jscomp$key$c_i$$ = $$jscomp$key$c_i$$.value.codePointAt(0), (32 > $$jscomp$key$c_i$$ && ![9, 10, 13].includes($$jscomp$key$c_i$$) || 55295 < $$jscomp$key$c_i$$ && 57344 > $$jscomp$key$c_i$$ || 65533 < $$jscomp$key$c_i$$ && 65536 > $$jscomp$key$c_i$$ || 1114111 < $$jscomp$key$c_i$$) && grumble$$module$src$ixmlParse("Character codepoint " + $$jscomp$key$c_i$$ + " in '" + $s$$ + "' is not a valid XML character", "D04");
     }
   }
-  var $$jscomp$key$p_characterPos_name$jscomp$71_p$26_p$jscomp$3_value$$ = this.charPos, $$jscomp$iter$1_originalMark_refMark$$ = this.thisPart() ? this.thisPart().mark : null, $left$$ = $thread$$(this.left, $$jscomp$iter$1_originalMark_refMark$$), $right$$ = $thread$$(this.right, $$jscomp$iter$1_originalMark_refMark$$);
+  var $$jscomp$key$p_characterPos_lastLeft_name$jscomp$71_p$26_p$jscomp$3_value$$ = this.charPos, $$jscomp$iter$1_originalMark_refMark$$ = this.thisPart() ? this.thisPart().mark : null, $left$$ = $thread$$(this.left, $$jscomp$iter$1_originalMark_refMark$$), $right$$ = $thread$$(this.right, $$jscomp$iter$1_originalMark_refMark$$);
   if (this.finished()) {
-    $$jscomp$key$p_characterPos_name$jscomp$71_p$26_p$jscomp$3_value$$ = this.name;
-    $$jscomp$iter$2_innerMark_mark_newLeft_value$25$$ || ($$jscomp$iter$2_innerMark_mark_newLeft_value$25$$ = $productions$$.get($$jscomp$key$p_characterPos_name$jscomp$71_p$26_p$jscomp$3_value$$).mark);
+    $$jscomp$key$p_characterPos_lastLeft_name$jscomp$71_p$26_p$jscomp$3_value$$ = this.name;
+    $$jscomp$iter$2_innerMark_mark_newLeft_value$25$$ || ($$jscomp$iter$2_innerMark_mark_newLeft_value$25$$ = $productions$$.get($$jscomp$key$p_characterPos_lastLeft_name$jscomp$71_p$26_p$jscomp$3_value$$).mark);
     $$jscomp$iter$1_originalMark_refMark$$ = null;
-    $suppressMarks$$ && !$productions$$.get($$jscomp$key$p_characterPos_name$jscomp$71_p$26_p$jscomp$3_value$$).artifact && ($$jscomp$iter$1_originalMark_refMark$$ = $$jscomp$iter$2_innerMark_mark_newLeft_value$25$$, $$jscomp$iter$2_innerMark_mark_newLeft_value$25$$ = "^");
+    $suppressMarks$$ && !$productions$$.get($$jscomp$key$p_characterPos_lastLeft_name$jscomp$71_p$26_p$jscomp$3_value$$).artifact && ($$jscomp$iter$1_originalMark_refMark$$ = $$jscomp$iter$2_innerMark_mark_newLeft_value$25$$, $$jscomp$iter$2_innerMark_mark_newLeft_value$25$$ = "^");
     $$jscomp$iter$2_innerMark_mark_newLeft_value$25$$ || ($$jscomp$iter$2_innerMark_mark_newLeft_value$25$$ = "^");
     switch($$jscomp$iter$2_innerMark_mark_newLeft_value$25$$) {
       case "^":
-        (new RegExp(/\w(\w|-)*/, "u")).test($$jscomp$key$p_characterPos_name$jscomp$71_p$26_p$jscomp$3_value$$) || grumble$$module$src$ixmlParse("'" + $$jscomp$key$p_characterPos_name$jscomp$71_p$26_p$jscomp$3_value$$ + "' is not a valid name for an XML element", "D03");
-        var $newNode$$ = $doc$$.createElement($$jscomp$key$p_characterPos_name$jscomp$71_p$26_p$jscomp$3_value$$);
+        (new RegExp(/\w(\w|-)*/, "u")).test($$jscomp$key$p_characterPos_lastLeft_name$jscomp$71_p$26_p$jscomp$3_value$$) || grumble$$module$src$ixmlParse("'" + $$jscomp$key$p_characterPos_lastLeft_name$jscomp$71_p$26_p$jscomp$3_value$$ + "' is not a valid name for an XML element", "D03");
+        var $newNode$$ = $doc$$.createElement($$jscomp$key$p_characterPos_lastLeft_name$jscomp$71_p$26_p$jscomp$3_value$$);
         $$jscomp$iter$1_originalMark_refMark$$ && $newNode$$.setAttributeNS(ixmlNS$$module$src$ixmlGrammar, "ixml:mark", $$jscomp$iter$1_originalMark_refMark$$);
         break;
       case "@":
-        "xmlns" == $$jscomp$key$p_characterPos_name$jscomp$71_p$26_p$jscomp$3_value$$ && grumble$$module$src$ixmlParse("'xmlns' is not a valid name for an attribute", "D07");
-        $newNode$$ = $doc$$.createAttribute($$jscomp$key$p_characterPos_name$jscomp$71_p$26_p$jscomp$3_value$$);
+        "xmlns" == $$jscomp$key$p_characterPos_lastLeft_name$jscomp$71_p$26_p$jscomp$3_value$$ && grumble$$module$src$ixmlParse("'xmlns' is not a valid name for an attribute", "D07");
+        $newNode$$ = $doc$$.createAttribute($$jscomp$key$p_characterPos_lastLeft_name$jscomp$71_p$26_p$jscomp$3_value$$);
         var $s$jscomp$0$$ = "";
         $left$$.forEach(function($t$$) {
           return $s$jscomp$0$$ += $t$$.textContent;
@@ -644,20 +644,20 @@ State$$module$src$ixmlGrammar.prototype.bottomUp = function $State$$module$src$i
         $newNode$$.value = $s$jscomp$0$$;
         break;
       case "+":
-        $$jscomp$key$p_characterPos_name$jscomp$71_p$26_p$jscomp$3_value$$ = this.thisPart().value, $validXMLText$$($$jscomp$key$p_characterPos_name$jscomp$71_p$26_p$jscomp$3_value$$), $newNode$$ = new Text($$jscomp$key$p_characterPos_name$jscomp$71_p$26_p$jscomp$3_value$$);
+        $$jscomp$key$p_characterPos_lastLeft_name$jscomp$71_p$26_p$jscomp$3_value$$ = this.thisPart().value, $validXMLText$$($$jscomp$key$p_characterPos_lastLeft_name$jscomp$71_p$26_p$jscomp$3_value$$), $newNode$$ = new Text($$jscomp$key$p_characterPos_lastLeft_name$jscomp$71_p$26_p$jscomp$3_value$$);
     }
     if ($left$$ instanceof Ambiguity$$module$src$ixmlGrammar) {
       var $ambig$$ = new Ambiguity$$module$src$ixmlGrammar;
       if ("-" == $$jscomp$iter$2_innerMark_mark_newLeft_value$25$$) {
         $$jscomp$iter$2_innerMark_mark_newLeft_value$25$$ = $jscomp.makeIterator($left$$.parts);
-        for ($$jscomp$key$p_characterPos_name$jscomp$71_p$26_p$jscomp$3_value$$ = $$jscomp$iter$2_innerMark_mark_newLeft_value$25$$.next(); !$$jscomp$key$p_characterPos_name$jscomp$71_p$26_p$jscomp$3_value$$.done; $$jscomp$key$p_characterPos_name$jscomp$71_p$26_p$jscomp$3_value$$ = $$jscomp$iter$2_innerMark_mark_newLeft_value$25$$.next()) {
-          if ($$jscomp$key$p_characterPos_name$jscomp$71_p$26_p$jscomp$3_value$$ = $$jscomp$key$p_characterPos_name$jscomp$71_p$26_p$jscomp$3_value$$.value, $right$$ instanceof Ambiguity$$module$src$ixmlGrammar) {
+        for ($$jscomp$key$p_characterPos_lastLeft_name$jscomp$71_p$26_p$jscomp$3_value$$ = $$jscomp$iter$2_innerMark_mark_newLeft_value$25$$.next(); !$$jscomp$key$p_characterPos_lastLeft_name$jscomp$71_p$26_p$jscomp$3_value$$.done; $$jscomp$key$p_characterPos_lastLeft_name$jscomp$71_p$26_p$jscomp$3_value$$ = $$jscomp$iter$2_innerMark_mark_newLeft_value$25$$.next()) {
+          if ($$jscomp$key$p_characterPos_lastLeft_name$jscomp$71_p$26_p$jscomp$3_value$$ = $$jscomp$key$p_characterPos_lastLeft_name$jscomp$71_p$26_p$jscomp$3_value$$.value, $right$$ instanceof Ambiguity$$module$src$ixmlGrammar) {
             $$jscomp$iter$1_originalMark_refMark$$ = $jscomp.makeIterator($right$$.parts);
             for (var $$jscomp$key$r$$ = $$jscomp$iter$1_originalMark_refMark$$.next(); !$$jscomp$key$r$$.done; $$jscomp$key$r$$ = $$jscomp$iter$1_originalMark_refMark$$.next()) {
-              $ambig$$.add($$jscomp$key$p_characterPos_name$jscomp$71_p$26_p$jscomp$3_value$$.concat($$jscomp$key$r$$.value));
+              $ambig$$.add($$jscomp$key$p_characterPos_lastLeft_name$jscomp$71_p$26_p$jscomp$3_value$$.concat($$jscomp$key$r$$.value));
             }
           } else {
-            $ambig$$.add($$jscomp$key$p_characterPos_name$jscomp$71_p$26_p$jscomp$3_value$$.concat(partsOf$$module$src$ixmlGrammar($right$$)));
+            $ambig$$.add($$jscomp$key$p_characterPos_lastLeft_name$jscomp$71_p$26_p$jscomp$3_value$$.concat(partsOf$$module$src$ixmlGrammar($right$$)));
           }
         }
         return $ambig$$;
@@ -725,8 +725,8 @@ State$$module$src$ixmlGrammar.prototype.bottomUp = function $State$$module$src$i
     }
   } else {
     var $term$$ = [];
-    this.needsTerminal() && ($$jscomp$iter$2_innerMark_mark_newLeft_value$25$$ = this.nextPart() ? this.nextPart().mark ? this.nextPart().mark : "^" : "-", this.nextPart() instanceof Insertion$$module$src$ixmlClasses ? ($$jscomp$iter$2_innerMark_mark_newLeft_value$25$$ = this.nextPart().value, $validXMLText$$($$jscomp$iter$2_innerMark_mark_newLeft_value$25$$), $suppressMarks$$ ? ($$jscomp$key$p_characterPos_name$jscomp$71_p$26_p$jscomp$3_value$$ = $doc$$.createElementNS(ixmlNS$$module$src$ixmlGrammar, 
-    "ixml:insertion"), $$jscomp$key$p_characterPos_name$jscomp$71_p$26_p$jscomp$3_value$$.setAttribute("string", $$jscomp$iter$2_innerMark_mark_newLeft_value$25$$), $term$$.push($$jscomp$key$p_characterPos_name$jscomp$71_p$26_p$jscomp$3_value$$)) : $term$$.push(new Text($$jscomp$iter$2_innerMark_mark_newLeft_value$25$$))) : "^" == $$jscomp$iter$2_innerMark_mark_newLeft_value$25$$ && $term$$.push(new Text($input$$[$$jscomp$key$p_characterPos_name$jscomp$71_p$26_p$jscomp$3_value$$])));
+    this.needsTerminal() && ($$jscomp$iter$2_innerMark_mark_newLeft_value$25$$ = this.nextPart() ? this.nextPart().mark ? this.nextPart().mark : "^" : "-", this.nextPart() instanceof Insertion$$module$src$ixmlClasses ? ($$jscomp$iter$2_innerMark_mark_newLeft_value$25$$ = this.nextPart().value, $validXMLText$$($$jscomp$iter$2_innerMark_mark_newLeft_value$25$$), $suppressMarks$$ ? ($$jscomp$key$p_characterPos_lastLeft_name$jscomp$71_p$26_p$jscomp$3_value$$ = $doc$$.createElementNS(ixmlNS$$module$src$ixmlGrammar, 
+    "ixml:insertion"), $$jscomp$key$p_characterPos_lastLeft_name$jscomp$71_p$26_p$jscomp$3_value$$.setAttribute("string", $$jscomp$iter$2_innerMark_mark_newLeft_value$25$$), $term$$.push($$jscomp$key$p_characterPos_lastLeft_name$jscomp$71_p$26_p$jscomp$3_value$$)) : $term$$.push(new Text($$jscomp$iter$2_innerMark_mark_newLeft_value$25$$))) : "^" == $$jscomp$iter$2_innerMark_mark_newLeft_value$25$$ && $term$$.push(new Text($input$$[$$jscomp$key$p_characterPos_lastLeft_name$jscomp$71_p$26_p$jscomp$3_value$$])));
     if ($right$$ instanceof Ambiguity$$module$src$ixmlGrammar) {
       return $ambig$$ = new Ambiguity$$module$src$ixmlGrammar, $right$$.parts.forEach(function($p$$) {
         return $ambig$$.add(partsOf$$module$src$ixmlGrammar($left$$).concat($term$$, $p$$));
@@ -738,8 +738,9 @@ State$$module$src$ixmlGrammar.prototype.bottomUp = function $State$$module$src$i
       }), $ambig$$;
     }
     $$jscomp$iter$2_innerMark_mark_newLeft_value$25$$ = $left$$.concat($right$$);
-    if ($term$$[0] instanceof Text && $$jscomp$iter$2_innerMark_mark_newLeft_value$25$$.at(-1) instanceof Text) {
-      $$jscomp$iter$2_innerMark_mark_newLeft_value$25$$.at(-1).textContent += $term$$[0].textContent;
+    $$jscomp$key$p_characterPos_lastLeft_name$jscomp$71_p$26_p$jscomp$3_value$$ = 0 < $$jscomp$iter$2_innerMark_mark_newLeft_value$25$$.length ? $$jscomp$iter$2_innerMark_mark_newLeft_value$25$$[$$jscomp$iter$2_innerMark_mark_newLeft_value$25$$.length - 1] : null;
+    if ($term$$[0] instanceof Text && $$jscomp$key$p_characterPos_lastLeft_name$jscomp$71_p$26_p$jscomp$3_value$$ instanceof Text) {
+      $$jscomp$key$p_characterPos_lastLeft_name$jscomp$71_p$26_p$jscomp$3_value$$.textContent += $term$$[0].textContent;
     } else {
       return $$jscomp$iter$2_innerMark_mark_newLeft_value$25$$.concat($term$$);
     }
