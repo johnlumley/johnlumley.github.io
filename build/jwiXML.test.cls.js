@@ -1267,7 +1267,7 @@ Grammar$$module$src$ixmlGrammar.prototype.parse = function $Grammar$$module$src$
         }
       }
     } catch ($e$29$$) {
-      $failure$$ = $e$29$$.code ? {code:"string" == typeof $e$29$$.code ? $e$29$$.code.substring($e$29$$.code.indexOf("}") + 1) : $e$29$$.code, message:$e$29$$.message} : "Uncoded error:" + $e$29$$.constructor.name + ":" + $e$29$$.message, $parsed_s$$ = [];
+      $failure$$ = $e$29$$.code ? {code:"string" == typeof $e$29$$.code ? $e$29$$.code.substring($e$29$$.code.indexOf("}") + 1) : $e$29$$.code, message:$e$29$$.message} : "Encounterd uncoded error:" + $e$29$$.constructor.name + ":" + $e$29$$.message, $parsed_s$$ = [];
     }
     $bottomUpTree_parseTree_top$$ = $$jscomp$loop$35_ambigTrees$$[0];
   } else {
