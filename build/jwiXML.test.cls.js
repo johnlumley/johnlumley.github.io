@@ -1240,7 +1240,6 @@ Grammar$$module$src$ixmlGrammar.prototype.parse = function $Grammar$$module$src$
     var $bottomUpTree_parseTree_top$$ = document.implementation.createDocument("", "", null);
     $bottomUpTree_parseTree_top$$ = document.implementation.createDocument("", "", null);
     try {
-      console.log($i$jscomp$11_justOne$$.cloneNode());
       for (var $$jscomp$iter$11$$ = $jscomp.makeIterator($parsed_s$$), $$jscomp$key$oneSolution$$ = $$jscomp$iter$11$$.next(); !$$jscomp$key$oneSolution$$.done; $$jscomp$key$oneSolution$$ = $$jscomp$iter$11$$.next()) {
         var $b$$ = $$jscomp$key$oneSolution$$.value.bottomUp($bottomUpTree_parseTree_top$$, this.productions, $characters$$, null, $i$jscomp$11_justOne$$, $origin$jscomp$5_position$jscomp$6_suppressMarks$$);
         if ($b$$ instanceof Ambiguity$$module$src$ixmlGrammar) {
