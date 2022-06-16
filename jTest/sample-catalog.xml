@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sample-catalog xmlns="https://github.com/invisibleXML/ixml/test-catalog" release-date="2022-06-01"
+   name="iXML CG Sample Grammars">
+   <description>
+      <p>Top-level catalog for sample grammars in the iXML Community Group Sample set.</p>
+   </description>
+
+   <sample name="ABNF">
+      <ixml-grammar-ref href="ABNF/ABNF.ixml"/>
+   </sample>
+
+   <sample name="bcp47">
+      <ixml-grammar-ref href="bcp47/bcp47.ixml"/>
+   </sample>
+
+   <sample name="ISBN">
+      <ixml-grammar-ref href="ISBN/ISBN.ixml"/>
+      <test-case name="DocBook 5: The Definitive Guide">
+         <test-string>978-0-596-80502-9</test-string>
+      </test-case>
+      <test-case name="XSLT 2.0 and XPath 2.0">
+         <test-string>978-0-470-19274-0</test-string>
+      </test-case>
+   </sample>
+
+   <sample name="ISO - lists">
+      <ixml-grammar-ref href="ISO-8601-2004/iso8601-list.ixml"/>
+      <test-case name="ISO strings">
+         <test-string-ref href="ISO-8601-2004/test-data.txt"/>
+      </test-case>
+   </sample>
+
+   <sample name="ISO - single">
+      <ixml-grammar-ref href="ISO-8601-2004/iso8601.ixml"/>
+      <test-case name="+ve timezone">
+         <test-string>2022-04-17T13:55:24+01:00</test-string>
+      </test-case>
+      <test-case name="-ve timezone">
+         <test-string>2022-04-17T13:55:24-03:00</test-string>
+      </test-case>
+      <test-case name="ambiguous">
+         <test-string>20</test-string>
+      </test-case>
+   </sample>
+
+   <sample name="URI">
+      <ixml-grammar-ref href="URI/rfc-3986.ixml"/>
+      <test-case name="Invisible XML">
+         <test-string>https://invisiblexml.org/</test-string>
+      </test-case>      
+      <test-case name="foo:">
+         <test-string>foo://example.com:8042/over/there?name=ferret#nose</test-string>
+      </test-case>
+      <test-case name="tel:">
+         <test-string>tel:+1-816-555-1212</test-string>
+      </test-case>
+       <test-case name="urn:">
+         <test-string>urn:oasis:names:specification:docbook:dtd:xml:4.1.2</test-string>
+      </test-case>
+   </sample>
+   
+   <sample name="IRI">
+      <ixml-grammar-ref href="URI/rfc-3987.ixml"/>
+   </sample>
+
+</sample-catalog>

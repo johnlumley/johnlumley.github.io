@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>jωiXML processor</title>
+        <link rel="stylesheet" href="jwiXML.css" type="text/css" />
+
+        <script type="text/javascript" src="saxonJS/SaxonJS2.rt.js" language="javascript"></script>
+        <script type="text/javascript" src="build/jwiXML.adv.cls.js" language="javascript"></script>
+        <!--<script type="text/javascript" src="build/jwiXML.cls.js" language="javascript"></script>-->
+        <script type="text/javascript" src="fileReader.js" language="javascript"></script>
+
+    </head>
+    <body onload="SaxonJS.transform({
+        'stylesheetLocation' : 'jwiXML.sef.json',
+        'sourceLocation' : 'jwiXML.xml',
+        'initialTemplate' : 'Q{}go'
+        })">
+
+
+        <div id="body">
+            <div class="horizontal">
+                <div>
+                    <h2><a href="https://invisiblexml.org/"><img src="logos/logo_gradient.png" alt="InvisibleXML Logo"
+                                width="60pt" /></a>
+                        <span style="font-style:italic">j</span>ω<img src="logos/logotype.png" alt="InvisibleXML Logo"
+                            width="60pt" /> processor</h2>
+                    <p id="status" class="note">A SaxonJS/JavaScript processor of <a href="https://invisiblexml.org/"
+                            >Invisible XML</a></p>
+                </div>
+                <div class="description">
+                    <p>This processor runs <i>entirely</i> within the browser client, using <a
+                            href="https://www.saxonica.com/saxon-js/documentation2/index.html">SaxonJS </a>as the
+                        top-level program and the <i>jwiXML</i> JavaScript library. There is <i>no</i> server-side
+                        processing, apart from initial delivery of necessary files.</p>
+                    <p>You can input and edit an iXML grammar either <i>ab initio</i> or by loading from a file on your
+                        computer or one of the test-case or sample grammars from the <a href="https://github.com/invisibleXML/ixml">iXML GitHub repository</a>.</p>
+                    <p>The input string can also be edited or loaded from file or in the case of a test-case or sample grammar, by selecting from one of a number of provided input strings.</p>
+                    <p>In a couple of days I'll add a Help section ;-), but if you've been following other tutorial
+                        material, such as <a href="https://homepages.cwi.nl/~steven/ixml/tutorial/">Steven
+                            Pemberton's</a>, the controls should be self-explanatory.</p>
+                </div>
+            </div>
+            <p id="messages"><span style="color:red;font-weight:bold;font-style:italic">Please wait - loading data</span></p>
+
+            <div id="sandpit"></div>
+        </div>
+
+    </body>
+</html>

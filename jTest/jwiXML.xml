@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tests>
+    <!-- Example tests and samples for the jωiXML processor
+     These take two forms - simple sample grammars for the interactive processor
+     and test grammar/input sets for automatic execution (used during development)    
+    -->
+
+    <!-- Sample grammars for use in the interactive processor 
+    They will appear on the left hand side and can be loaded by clicking their box.
+    
+    Note that sample[@href] will load a sample from a file if available - 
+    see the (commented-out) samples at the end which load from the ixml test suite, 
+    assuming /ixmlTests has aliased in your web server to your local repository ixml/tests-->
+
+    <sample>S:S;'a'. </sample>
+    <sample>S: [L]++(+':';+'=';+'-').</sample>
+    <sample>a: "a"*; ()?. </sample>
+    <sample>input: line++lf.
+line: ~[#a | #d]*.
+lf: -#a | -#d, -#a.
+    </sample>
+    <sample>diary: entry+.
+entry: date, para.
+date: day, s, month, s,  year, nl.
+day: digit, digit?.
+-digit:["0"-"9"].
+month: "January"; "February"; "March"; "April"; "May"; "June";
+       "July"; "August"; "September"; "October"; "November"; "December".
+year: digit, digit, digit, digit.
+
+para: word++s, s?, blank.
+-blank: nl, nl.
+-word: (letter; punctuation)+.
+-letter: [L].
+-punctuation: [".;:,'?!"].
+-s: " "+.
+-nl: -#a | -#d, -#a .
+    </sample>
+    <sample>url: scheme, ":", authority, path.
+@scheme: name.
+-name: letter+.
+-authority: "//", host.
+host: sub++".".
+-sub: name.
+path: ("/", seg)+.
+-seg: sname.
+-sname: fletter*.
+-letter: ["a"-"z"]; ["A"-"Z"]; ["0"-"9"].
+-fletter: letter; ".".
+    </sample>
+    
+    <sample>address: person, lf, street, lf, postcode, city, lf, country, lf; 
+         person, lf, street, lf, city, postcode, lf, country, lf.
+person: (title, S?)?, (initials; given, S), surname, S?.
+title: "Mr."; "Mrs."; "Dr."; "Ms.".
+initials: initial+.
+initial: LETTER, ".", S?.
+surname: name.
+given: name.
+-name: LETTER, letters.
+street: no, S?, streetname; streetname, S?, no, S?.
+streetname: name, S; name, S, name.
+city: name, S; name, S, name, S.
+country: name, S?; name, S, name, S?.
+postcode: digits, S, LETTER, LETTER, S?; 
+          LETTER, LETTER, digits, S, digit, LETTER, LETTER, S?.
+no: digits.
+-LETTER: ["A"-"Z"].
+-letters: ["a"-"z"]*.
+-digit: ["0"-"9"].
+-digits: ["0"-"9"]+.
+-S: " "+.
+-lf: -#a | -#d, -#a .
+</sample>
+
+    <!-- Samples that fetch the grammar from a file, 
+        typically a grammar from the test-suite, which can be found at
+        https://github.com/invisibleXML/ixml/tree/master/tests
+        
+        If you wish to reference test-suite grammars, please ensure the URIs point appropriately
+        For example:
+        
+            <sample href="/ixmlTests/correct/address.ixml"/>
+        
+        will get one of the test  suit grammars, assuming your localhost website is configured
+        that /ixmlTests/ is aliased to the location of ixml/tests
+    -->
+
+    <!--<sample href="/ixmlTests/correct/expr3.ixml"/>
+    <sample href="/ixmlTests/correct/address.ixml"/>
+-->
+    <sample source="tests" href="correct/email.ixml"/>
+    <sample source="samples" href="ABNF/ABNF.ixml"/>
+    <sample source="samples" href="ISO-8601-2004/iso8601.ixml"/>
+    
+
+
+    <!-- Non-interactive test groups of grammars and inputs 
+        
+        <include href/> will include tests declared in another file
+    -->
+
+   
+    
+    <test>
+        <grammar>S: [L]++(+':';+'=').</grammar>
+        <input>abcd</input>
+    </test> 
+    <include href="myTests/welcome.xml"/>
+    <test>
+        <grammar>S: [L]+ .</grammar>
+        <input showStates="">a5</input>
+    </test>
+
+
+</tests>
