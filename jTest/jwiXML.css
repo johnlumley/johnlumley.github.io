@@ -112,6 +112,21 @@ div.horizontal > * {
    margin-top: 10pt;
    vertical-align: top;
 }
+.showDot {
+   font-size:x-small;
+}
+.derivation {
+   background-color:yellow;
+}
+.format {
+   background-color: green;
+   color:white;
+   font-size: small;
+   margin-right: 1em;
+}
+span[format=xml]{
+   background-color:red;
+}
 
 input[type = file] {
    font-size: x-small;
@@ -140,7 +155,8 @@ label.grammarTest,
 textarea {
    display: block;
    text-align: left;
-   vertical-align: top
+   vertical-align: top;
+   width:100%;
 }
 label.grammarTest {
    display: block;
