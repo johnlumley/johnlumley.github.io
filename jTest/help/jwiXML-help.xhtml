@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <title>jωiXML processor - Help</title>
+      <link rel="stylesheet" href="../jwiXML.css" type="text/css" />
+   </head>
+   <body>
+      <div>
+         <h2><a href="https://invisiblexml.org/"><img src="../logos/logo_gradient.png" alt="InvisibleXML Logo"
+                  width="60pt" /></a>
+            <span style="font-style:italic">j</span>ω<img src="../logos/logotype.png" alt="InvisibleXML Logo"
+               width="60pt" /> processor - HELP</h2>
+         <p id="status" class="note">A SaxonJS/JavaScript processor of <a href="https://invisiblexml.org/">Invisible
+               XML</a> - Version 0.9.5</p>
+      </div>
+      <h1>WORK IN PROGRESS!!</h1>
+      <p>TODO:</p>
+      <ul>
+         <li>Cover error handing and display</li>
+         <li>Describe input of grammars in XML format.</li>
+         <li>Tidy up the presentation....</li>
+      </ul>
+      <div class="Zdescription">
+         <p>This processor runs <i>entirely</i> within the browser client, using <a
+               href="https://www.saxonica.com/saxon-js/documentation2/index.html">SaxonJS </a>as the top-level program
+            and the <i>jwiXML</i> JavaScript library. There is <i>no</i> server-side processing, apart from initial
+            delivery of necessary files.</p>
+         <p>You can input and edit an iXML grammar either <i>ab initio</i> or by loading from a file on your computer or
+            one of the test-case or sample grammars from the <a href="https://github.com/invisibleXML/ixml">iXML GitHub
+               repository</a>. The input string can also be edited or loaded from file or in the case of a test-case or
+            sample grammar, by selecting from one of a number of provided input strings.</p>
+      </div>
+      <section>
+         <h3>Editing grammars and inputs</h3>
+         <div>
+            <div class="horizontal">
+               <p>iXML grammars are edited in the upper text-area,<br />where usual keystokes are supported,<br /> but
+                  there is no 'syntax awareness':</p>
+               <img width="400" src="img1.png" />
+            </div>
+            <div class="horizontal">
+               <p>Input strings to be parsed by that grammar are edited in the lower text-area:</p>
+               <img width="300" src="img2.png" />
+            </div>
+         </div>
+      </section>
+      <section>
+         <h3>Parsing an input against a grammar</h3>
+         <p>With the grammar and potential input string editied, clicking on the GO! button causes the following
+            actions:</p>
+         <h4>Parsing and compiling the grammar</h4>
+         <p>The grammar defined by the text in the Grammar window is parsed and compiled as an iXML grammar to produce
+            an internal object representing the compiled grammar. Assuming the grammar has valid iXML syntax, this is
+            then displayed in the 'Parse Grammar' section:</p>
+         <img width="300" src="img3.png" />
+         <p>where various projections of the grammar can be displayed either in XML format or an iXML textual
+            serialisation. Either the original parsed grammar or the compilation thereof can be shown.</p>
+         <img width="300" src="img4.png" />
+         <img width="300" src="img5.png" />
+         <p>If you want to copy the parsed XML-format grammar the 'select grammar' button will select the whole of the
+            grammar XML, so a simple 'Copy' keystroke action can get it into the clipboard as text.</p>
+         <img width="300" src="img6.png" />
+         <h4>Parsing the input string against the grammar</h4>
+         <p>Assuming the grammar has compiled and the input text string is not empty (or the 'Allow an empty string as
+            input' option is checked), the text string is then parsed against the grammar, giving results in the Results
+            section.</p>
+         <img width="300" src="img7.png" />
+      </section>
+      <section>
+         <h3>Loading grammars and inputs from external sources</h3>
+         <p>Both grammar and input texts can be read from load filestore by using the appropriate 'Choose file' (or
+            'Browse') buttons, which permits a file to be read and its text loaded into the textarea.</p>
+         <img width="300" src="img8.png" />
+         <p>Grammars can also be loaded from web-repositories, in particular at this time from the InvisibleXML
+            test-suites or sample grammars using the Grammar 'Test/sample' dropdown:</p>
+         <img width="300" src="img9.png" />
+         <p>When there are sample inputs available for one of these test or sample grammars, the 'Test/Sample' dropdown
+            above the Input textarea will be populated.</p>
+         <img width="300" src="img10.png" />
+      </section>
+   </body>
+</html>

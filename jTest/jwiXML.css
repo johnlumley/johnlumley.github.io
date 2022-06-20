@@ -216,3 +216,8 @@ table.interactive {
    margin: 0;
    box-shadow: 3px 3px 4px black;
 }
+
+.help {
+   color:blue;
+   font-weight:bold;
+}
