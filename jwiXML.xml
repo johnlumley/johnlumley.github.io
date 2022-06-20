@@ -89,7 +89,10 @@ no: digits.
     <!--<sample href="/ixmlTests/correct/expr3.ixml"/>
     <sample href="/ixmlTests/correct/address.ixml"/>
 -->
-
+    <sample source="tests" href="correct/email.ixml"/>
+    <sample source="samples" href="ABNF/ABNF.ixml"/>
+    <sample source="samples" href="ISO-8601-2004/iso8601.ixml"/>
+    
 
 
     <!-- Non-interactive test groups of grammars and inputs 

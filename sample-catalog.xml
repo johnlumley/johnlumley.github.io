@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sample-catalog xmlns="https://github.com/invisibleXML/ixml/test-catalog" release-date="2022-06-01"
+   name="iXML CG Sample Grammars">
+   <description>
+      <p>Top-level catalog for sample grammars in the iXML Community Group Sample set.</p>
+   </description>
+
+   <sample name="ABNF">
+      <ixml-grammar-ref href="ABNF/ABNF.ixml"/>
+   </sample>
+
+   <sample name="bcp47">
+      <ixml-grammar-ref href="bcp47/bcp47.ixml"/>
+      <test-case name="English">
+         <test-string>en</test-string>
+      </test-case>
+      <test-case name="Latin Sebian">
+         <test-string>sr-Latn-RS</test-string>
+      </test-case>
+   </sample>
+
+   <sample name="ISBN">
+      <ixml-grammar-ref href="ISBN/ISBN.ixml"/>
+      <test-case name="DocBook 5: The Definitive Guide">
+         <test-string>978-0-596-80502-9</test-string>
+      </test-case>
+      <test-case name="Kernighan &amp; Ritchie 1st Edition">
+         <test-string>0-13-110163-3</test-string>
+      </test-case>
+      <test-case name="Kernighan &amp; Ritchie 2nd Edition">
+         <test-string>978-0131103627</test-string>
+      </test-case>
+      <test-case name="XSLT 2.0 and XPath 2.0">
+         <test-string>978-0-470-19274-0</test-string>
+      </test-case>
+   </sample>
+
+   <sample name="ISO date/times - lists">
+      <ixml-grammar-ref href="ISO-8601-2004/iso8601-list.ixml"/>
+      <test-case name="ISO strings">
+         <test-string-ref href="ISO-8601-2004/test-data.txt"/>
+      </test-case>
+   </sample>
+
+   <sample name="ISO date-times - single">
+      <ixml-grammar-ref href="ISO-8601-2004/iso8601.ixml"/>
+      <test-case name="+ve timezone">
+         <test-string>2022-04-17T13:55:24+01:00</test-string>
+      </test-case>
+      <test-case name="-ve timezone">
+         <test-string>2022-04-17T13:55:24-03:00</test-string>
+      </test-case>
+      <test-case name="ambiguous">
+         <test-string>20</test-string>
+      </test-case>
+   </sample>
+
+   <sample name="URI">
+      <ixml-grammar-ref href="URI/rfc-3986.ixml"/>
+      <test-case name="Invisible XML">
+         <test-string>https://invisiblexml.org/</test-string>
+      </test-case>      
+      <test-case name="foo:">
+         <test-string>foo://example.com:8042/over/there?name=ferret#nose</test-string>
+      </test-case>
+        <test-case name="ftp:">
+         <test-string>ftp://cnn.example.com&amp;story=breaking_news@10.0.0.1/top_story.htm</test-string>
+      </test-case>
+      <test-case name="tel:">
+         <test-string>tel:+1-816-555-1212</test-string>
+      </test-case>
+       <test-case name="urn:">
+         <test-string>urn:oasis:names:specification:docbook:dtd:xml:4.1.2</test-string>
+      </test-case>
+       <test-case name="http:#WARNING">
+         <test-string>http://www.ics.uci.edu/pub/ietf/uri/historical.html#WARNING</test-string>
+      </test-case>
+   </sample>
+   
+   <sample name="IRI">
+      <ixml-grammar-ref href="URI/rfc-3987.ixml"/>
+   </sample>
+   
+   <sample name="XPath - minimised tree">
+      <ixml-grammar-ref href="https://johnlumley.github.io/jTest/xpath/XPath.reducedTree.ixml"/>
+      <test-case name="simple arith">
+         <test-string>1 + 2</test-string>
+      </test-case>
+      <test-case name="simple expression">
+         <test-string>a/b/c!(1 + 3 * @value)</test-string>
+      </test-case>
+      <test-case name="mixed sequence">
+         <test-string>map{'a':1, b:(2,9)}, 123 + de:ab(890,de:fg) treat as BOO? * $fred[true()] - a/b/c</test-string>
+      </test-case>
+       <test-case name="function">
+         <test-string>let $f := function($a) as xs:integer {$a+$a}  
+   return $f(23)</test-string>
+      </test-case>
+      <test-case name="lets and if">
+         <test-string>let $y := 23, 
+   $z:='the quick brown fox',
+   $f := function($a) as xs:integer {$a+$a},
+   $m := map{'a':1,'b':2 + 6}  
+   return
+      if(some $foo in a/../b[bar]/if/then/following satisfies true()) 
+         then 
+            (45, $m?b)
+         else 
+            (for $x in 1 to 20 return
+             $f($x))</test-string>
+      </test-case>
+   </sample>
+   <sample name="XPath - full tree">
+      <ixml-grammar-ref href="https://johnlumley.github.io/jTest/xpath/XPath.ixml"/>
+        <test-case name="simple arith">
+         <test-string>1 + 2</test-string>
+      </test-case>
+      <test-case name="simple expression">
+         <test-string>a/b/c!(1 + 3 * @value)</test-string>
+      </test-case>
+      <test-case name="mixed sequence">
+         <test-string>map{'a':1, b:(2,9)}, 123 + de:ab(890,de:fg) treat as BOO? * $fred[true()] - a/b/c</test-string>
+      </test-case>
+       <test-case name="function">
+         <test-string>let $f := function($a) as xs:integer {$a+$a}  
+   return $f(23)</test-string>
+      </test-case>
+      <test-case name="lets and if">
+         <test-string>let $y := 23, 
+   $z:='the quick brown fox',
+   $f := function($a) as xs:integer {$a+$a},
+   $m := map{'a':1,'b':2 + 6}  
+   return
+      if(some $foo in a/../b[bar]/if/then/following satisfies true()) 
+         then 
+            (45, $m?b)
+         else 
+            (for $x in 1 to 20 return
+             $f($x))</test-string>
+      </test-case>
+   </sample>
+
+</sample-catalog>

@@ -1,11 +1,13 @@
 @import "styles/checkbox.css";
 
 * {
-   font-family:arial, helvetica, sans-serif
+   font-family: arial, helvetica, sans-serif
 }
-pre, textarea {
+pre,
+textarea {
    font-size: smaller;
    font-family: monospace;
+   margin-bottom: 1em;
 }
 pre.grammar {
    font-size: xx-small;
@@ -20,7 +22,8 @@ pre.input {
    margin: 0;
 }
 
-table * {
+table td,
+table th {
    text-align: left;
    vertical-align: top;
    padding-right: 10pt;
@@ -100,31 +103,60 @@ div.horizontal > * {
    font-size: x-small;
 }
 .instruction {
-   font-size:x-small;
+   font-size: x-small;
 }
 .description {
    width: 70ex;
    font-size: x-small;
    padding-left: 20pt;
    margin-top: 10pt;
-   vertical-align:top;
+   vertical-align: top;
+}
+.showDot {
+   font-size:x-small;
+}
+.derivation {
+   background-color:yellow;
+}
+.format {
+   background-color: green;
+   color:white;
+   font-size: small;
+   margin-right: 1em;
+}
+span[format=xml]{
+   background-color:red;
 }
 
-input[type=file] {
+input[type = file] {
    font-size: x-small;
-   font-style:italic;
+   font-style: italic;
 }
-
+select,
+.testSample,
+legend {
+   font-size: 70%;
+}
+option.separator {
+   color: red;
+   font-weight: bold;
+}
+.testSample {
+   font-weight: normal;
+   font-style: italic;
+   vertical-align: middle;
+}
 #go {
    background-color: green;
    color: white;
-   cursor:pointer;
+   cursor: pointer;
 }
 label.grammarTest,
 textarea {
    display: block;
    text-align: left;
-   vertical-align: top
+   vertical-align: top;
+   width:100%;
 }
 label.grammarTest {
    display: block;
@@ -132,25 +164,60 @@ label.grammarTest {
    font-weight: bold;
    font-family: sans-serif;
 }
+
 .sample {
    background-color: lightgreen;
    width: 80ex;
    cursor: pointer;
+   font-size: xx-small;
+}
+label.sample {
+   padding: 0;
+   margin: 0;
+
+}
+label.sample > span {
+   font-size: smaller;
+   font-weight: bold;
+}
+.sample.tests {
+   background-color: pink;
+}
+.sample.samples {
+   background-color: lightblue;
+}
+.sample > pre {
+   margin-top: 0;
+   padding-top: 0;
+}
+button.selectAll {
+   font-size: 8px;
+   font-weight: bold;
+   background-color: lightblue;
+   padding: 2pt;
+   border-radius: 5pt;
+   cursor: pointer;
 }
 
 details > summary {
-  padding: 2px 6px;
-  width: 15em;
-  background-color: #eee;
-  border: none;
-  box-shadow: 3px 3px 4px black;
-  cursor: pointer;
+   padding: 2px 6px;
+   width: 15em;
+   background-color: #eee;
+   border: none;
+   box-shadow: 3px 3px 4px black;
+   cursor: pointer;
 }
 
-details > table {
-  border-radius: 0 0 10px 10px;
-  background-color: #eee;
-  padding: 2px 6px;
-  margin: 0;
-  box-shadow: 3px 3px 4px black;
+details > table,
+table.interactive {
+   border-radius: 0 0 10px 10px;
+   background-color: #eee;
+   padding: 2px 6px;
+   margin: 0;
+   box-shadow: 3px 3px 4px black;
+}
+
+.help {
+   color:blue;
+   font-weight:bold;
 }
