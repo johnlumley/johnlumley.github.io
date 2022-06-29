@@ -35,7 +35,7 @@
       </test-case>
    </sample>
 
-   <sample name="ISO date/times - lists">
+   <sample name="ISO date-times - lists">
       <ixml-grammar-ref href="ISO-8601-2004/iso8601-list.ixml"/>
       <test-case name="ISO strings">
          <test-string-ref href="ISO-8601-2004/test-data.txt"/>
