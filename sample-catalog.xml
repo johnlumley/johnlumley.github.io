@@ -54,6 +54,61 @@
          <test-string>20</test-string>
       </test-case>
    </sample>
+   
+   <sample name="Oberon">
+      <ixml-grammar-ref href="Oberon/Grammars/Oberon.ixml"/>
+       <test-case name="ORB">
+         <test-string-ref href="Oberon/Project-Oberon-2013-materials/ORB.Mod.txt"/>
+      </test-case>
+      <test-case name="ORG">
+         <test-string-ref href="Oberon/Project-Oberon-2013-materials/ORG.Mod.txt"/>
+      </test-case>
+      <test-case name="ORP">
+         <test-string-ref href="Oberon/Project-Oberon-2013-materials/ORP.Mod.txt"/>
+      </test-case>
+      <test-case name="ORS">
+         <test-string-ref href="Oberon/Project-Oberon-2013-materials/ORS.Mod.txt"/>
+      </test-case>
+      <test-case name="ORTool">
+         <test-string-ref href="Oberon/Project-Oberon-2013-materials/ORTool.Mod.txt"/>
+      </test-case>
+   </sample>
+   <sample name="Oberon.1">
+      <ixml-grammar-ref href="Oberon/Grammars/Oberon.1.ixml"/>
+       <test-case name="ORB">
+         <test-string-ref href="Oberon/Project-Oberon-2013-materials/ORB.Mod.txt"/>
+      </test-case>
+      <test-case name="ORG">
+         <test-string-ref href="Oberon/Project-Oberon-2013-materials/ORG.Mod.txt"/>
+      </test-case>
+      <test-case name="ORP">
+         <test-string-ref href="Oberon/Project-Oberon-2013-materials/ORP.Mod.txt"/>
+      </test-case>
+      <test-case name="ORS">
+         <test-string-ref href="Oberon/Project-Oberon-2013-materials/ORS.Mod.txt"/>
+      </test-case>
+      <test-case name="ORTool">
+         <test-string-ref href="Oberon/Project-Oberon-2013-materials/ORTool.Mod.txt"/>
+      </test-case>
+   </sample>
+   <sample name="Oberon-Test">
+      <ixml-grammar-ref href="Oberon/Grammars/Oberon.test.ixml"/>
+       <test-case name="ORB">
+         <test-string-ref href="Oberon/Project-Oberon-2013-materials/ORB.Mod.txt"/>
+      </test-case>
+      <test-case name="ORG">
+         <test-string-ref href="Oberon/Project-Oberon-2013-materials/ORG.Mod.txt"/>
+      </test-case>
+      <test-case name="ORP">
+         <test-string-ref href="Oberon/Project-Oberon-2013-materials/ORP.Mod.txt"/>
+      </test-case>
+      <test-case name="ORS">
+         <test-string-ref href="Oberon/Project-Oberon-2013-materials/ORS.Mod.txt"/>
+      </test-case>
+      <test-case name="ORTool">
+         <test-string-ref href="Oberon/Project-Oberon-2013-materials/ORTool.Mod.txt"/>
+      </test-case>
+   </sample>
 
    <sample name="URI">
       <ixml-grammar-ref href="URI/rfc-3986.ixml"/>
@@ -76,13 +131,13 @@
          <test-string>http://www.ics.uci.edu/pub/ietf/uri/historical.html#WARNING</test-string>
       </test-case>
    </sample>
-   
+
    <sample name="IRI">
       <ixml-grammar-ref href="URI/rfc-3987.ixml"/>
    </sample>
-   
+
    <sample name="XPath - minimised tree">
-      <ixml-grammar-ref href="https://johnlumley.github.io/jTest/xpath/XPath.reducedTree.ixml"/>
+      <ixml-grammar-ref local="xpath/XPath.reducedTree.ixml"/>
       <test-case name="simple arith">
          <test-string>1 + 2</test-string>
       </test-case>
@@ -108,10 +163,13 @@
          else 
             (for $x in 1 to 20 return
              $f($x))</test-string>
-      </test-case>
+      </test-case>     
+       <!--<QT3 href="http://localhost/QT3/prod/InlineFunctionExpr.xml"/>      
+      <QT3 href="http://localhost/QT3/prod/CurlyArrayConstructor.xml"/>-->
+      <ZQT3 href="http://localhost/QT3/catalog.xml"/>
    </sample>
    <sample name="XPath - full tree">
-      <ixml-grammar-ref href="https://johnlumley.github.io/jTest/xpath/XPath.ixml"/>
+      <ixml-grammar-ref local="xpath/XPath.ixml"/>
         <test-case name="simple arith">
          <test-string>1 + 2</test-string>
       </test-case>
@@ -138,6 +196,7 @@
             (for $x in 1 to 20 return
              $f($x))</test-string>
       </test-case>
+      <ZQT3 href="http://localhost/QT3/catalog.xml"/>
    </sample>
 
 </sample-catalog>
