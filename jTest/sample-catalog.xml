@@ -137,7 +137,7 @@
    </sample>
 
    <sample name="XPath - minimised tree">
-      <ixml-grammar-ref href="http://localhost/mine/xpath/XPath.reducedTree.ixml"/>
+      <ixml-grammar-ref local="xpath/XPath.reducedTree.ixml"/>
       <test-case name="simple arith">
          <test-string>1 + 2</test-string>
       </test-case>
@@ -169,7 +169,7 @@
       <QT3 href="http://localhost/QT3/catalog.xml"/>
    </sample>
    <sample name="XPath - full tree">
-      <ixml-grammar-ref href="http://localhost/mine/xpath/XPath.ixml"/>
+      <ixml-grammar-ref local="xpath/XPath.ixml"/>
         <test-case name="simple arith">
          <test-string>1 + 2</test-string>
       </test-case>
