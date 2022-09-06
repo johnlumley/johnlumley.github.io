@@ -11,7 +11,7 @@
             <span style="font-style:italic">j</span>ω<img src="../logos/logotype.png" alt="InvisibleXML Logo"
                width="60pt" /> processor - HELP</h2>
          <p id="status" class="note">A SaxonJS/JavaScript processor of <a href="https://invisiblexml.org/">Invisible
-               XML</a> - Version 0.9.6b</p>
+               XML</a> - Version 0.9.8</p>
       </div>
       <h1>WORK IN PROGRESS!!</h1>
       <p>TODO:</p>
@@ -21,7 +21,10 @@
          <li>Tidy up the presentation....</li>
          <li>Table of contents</li>
       </ul>
-      <div><p>For the runtime files and a sample jωiXML application see <a href="https://github.com/johnlumley/jwiXML">here</a>.</p></div>
+      <div>
+         <p>For the runtime files and a sample jωiXML application see <a href="https://github.com/johnlumley/jwiXML"
+               >here</a>.</p>
+      </div>
       <div class="Zdescription">
          <p>This processor runs <i>entirely</i> within the browser client, using <a
                href="https://www.saxonica.com/saxon-js/documentation2/index.html">SaxonJS </a>as the top-level program
@@ -54,7 +57,7 @@
       </section>
       <section>
          <h3>Parsing an input against a grammar</h3>
-         <p>With the grammar and potential input string editied, clicking on the GO! button causes the following
+         <p>With the grammar and potential input string edited, clicking on the GO! button causes the following
             actions:</p>
          <h4>Parsing and compiling the grammar</h4>
          <p>The grammar defined by the text in the Grammar window is parsed and compiled as an iXML grammar to produce
@@ -85,6 +88,51 @@
             input' option is checked), the text string is then parsed against the grammar, giving results in the Results
             section.</p>
          <img width="300" src="img7.png" />
+         <p>The following options are supported via checkboxes</p>
+         <table>
+            <thead>
+               <tr>
+                  <th>Option</th>
+                  <th>Effect</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td>Show Parser States</td>
+                  <td>Displays the internal state transitions of the Earley parser operating on the input. This is
+                        <em>NOT</em> recommended for large grammars and inputs as memory overflows can be encountered.</td>
+               </tr>
+               <tr>
+                  <td>Show only one ambiguous solution</td>
+                  <td>When the parse is ambiguous, with multiple possible solutions, this forces only one to be
+                     returned, which will still be marked as ambiguous</td>
+               </tr>
+               <tr>
+                  <td>Treat as records</td>
+                  <td>When checked, the input is assumed to be a sequence of records separated by character sequences
+                     which match a given regular expression (for which '\n' is the default). The separator can be edited
+                     in the displayed text input. </td>
+               </tr>
+               <tr>
+                  <td>Show all processed marks</td>
+                  <td>If checked, marks for ignore (-), attribute (@) or insertion (+) serialisation are not honoured
+                     but rather placed on the full parse tree output either as an @ixml:mark attribute or an ixml:insert
+                     element. This ony applies to marks on the original grammar and not to artefactual marks, such as
+                     used for generated non-terminals for optionality or repetition.</td>
+               </tr>
+               <tr>
+                  <td>Allow an empty string as input</td>
+                  <td>Normally if the input is an empty string, no attempt is made to parse - just the grammar is
+                     processed and displayed. Checking this allows processing of an empty string as input</td>
+               </tr>
+               <tr>
+                  <td>Tover-Walsh rewrites</td>
+                  <td>When checked, <code>f+</code> constructs are rewritten as <code>f+ => f-plus. f-plus: f, f-plus|
+                        ().</code> rather than the <code>f-plus: f, f*.</code> rewrite given in the spec. This is likely
+                     to become the default as it seems to perform significantly quicker</td>
+               </tr>
+            </tbody>
+         </table>
       </section>
       <section>
          <h3>Loading grammars and inputs from external sources</h3>
@@ -102,7 +150,8 @@
                            href="https://github.com/invisiblexml/ixml/">InvisibleXML test-suites or sample grammars</a>
                         using the Grammar 'Test/sample' dropdown:</p>
                      <img width="300" src="img9.png" />
-                     <p>A <a href="https://invisiblexml.org/test-catalog/">browsable catalog</a> of the test suite is also available.</p>
+                     <p>A <a href="https://invisiblexml.org/test-catalog/">browsable catalog</a> of the test suite is
+                        also available.</p>
                   </td>
                </tr>
             </tbody>

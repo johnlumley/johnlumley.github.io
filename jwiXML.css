@@ -227,3 +227,7 @@ table.interactive {
    color:blue;
    font-weight:bold;
 }
+
+#sep {
+   font-size:x-small;
+}
