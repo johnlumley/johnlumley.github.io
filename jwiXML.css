@@ -236,3 +236,7 @@ span#grammarFileName, span#inputFileName {
    font-weight: normal;
    padding-right: 2em;
 }
+
+code {
+   font-family: courier, fixed, monospace;
+}
