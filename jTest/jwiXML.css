@@ -231,3 +231,12 @@ table.interactive {
 #sep {
    font-size:x-small;
 }
+span#grammarFileName, span#inputFileName {
+   font-size: small;
+   font-weight: normal;
+   padding-right: 2em;
+}
+
+code {
+   font-family: courier, fixed, monospace;
+}

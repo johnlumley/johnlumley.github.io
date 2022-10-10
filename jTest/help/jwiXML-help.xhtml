@@ -100,7 +100,8 @@
                <tr>
                   <td>Show Parser States</td>
                   <td>Displays the internal state transitions of the Earley parser operating on the input. This is
-                        <em>NOT</em> recommended for large grammars and inputs as memory overflows can be encountered.</td>
+                        <em>NOT</em> recommended for large grammars and inputs as memory overflows can be
+                     encountered.</td>
                </tr>
                <tr>
                   <td>Show only one ambiguous solution</td>
@@ -116,7 +117,7 @@
                <tr>
                   <td>Show all processed marks</td>
                   <td>If checked, marks for ignore (-), attribute (@) or insertion (+) serialisation are not honoured
-                     but rather placed on the full parse tree output either as an @ixml:mark attribute or an ixml:insert
+                     but rather placed on the full parse tree output either as an <code>@ixml:mark</code> attribute or an <code>ixml:insert</code>
                      element. This ony applies to marks on the original grammar and not to artefactual marks, such as
                      used for generated non-terminals for optionality or repetition.</td>
                </tr>
@@ -142,7 +143,9 @@
                   <td>
                      <p>Both grammar and input texts can be read from local filestore by using the appropriate 'Choose
                         file' (or 'Browse') button, which permits a file to be read and its text loaded into the
-                        textarea.</p>
+                        textarea. The name of the file loaded is displayed next to the file chooser. Files can also be
+                        'drag-and-dropped' onto the textarea, though in Firefox security settings will probably have to
+                        be altered (it seems to work fine in Chrome).</p>
                      <img width="300" src="img8.png" />
                   </td>
                   <td>
