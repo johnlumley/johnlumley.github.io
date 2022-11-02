@@ -84,8 +84,15 @@ pre.sppf {
    width: 100pt;
 }
 div.side > *,
-div.horizontal > *, div.horizontal > img, div.horizontal > p  {
+div.horizontal > *,
+div.horizontal > img,
+div.horizontal > p {
    display: table-cell;
+   vertical-align: top;
+}
+div.horizontal.header > * {
+   vertical-align: middle;
+   padding-right: 8pt;
 }
 .testName {
    display: block;
@@ -113,19 +120,19 @@ div.horizontal > *, div.horizontal > img, div.horizontal > p  {
    vertical-align: top;
 }
 .showDot {
-   font-size:x-small;
+   font-size: x-small;
 }
 .derivation {
-   background-color:yellow;
+   background-color: yellow;
 }
 .format {
    background-color: green;
-   color:white;
+   color: white;
    font-size: small;
    margin-right: 1em;
 }
-span[format=xml]{
-   background-color:red;
+span[format = xml] {
+   background-color: red;
 }
 
 input[type = file] {
@@ -162,7 +169,7 @@ textarea {
    display: block;
    text-align: left;
    vertical-align: top;
-   width:100%;
+   width: 100%;
 }
 label.grammarTest {
    display: block;
@@ -205,6 +212,18 @@ button.selectAll {
    cursor: pointer;
 }
 
+button#reformat {
+   font-size: 8px;
+   font-weight: bold;
+   background-color: pink;
+   border-color: pink;
+   padding: 1pt;
+   border-radius: 3pt;
+   cursor: pointer;
+   margin-left: 10px;
+}
+
+
 details > summary {
    padding: 2px 6px;
    /*width: 15em;*/
@@ -224,14 +243,15 @@ table.interactive {
 }
 
 .help {
-   color:blue;
-   font-weight:bold;
+   color: blue;
+   font-weight: bold;
 }
 
 #sep {
-   font-size:x-small;
+   font-size: x-small;
 }
-span#grammarFileName, span#inputFileName {
+span#grammarFileName,
+span#inputFileName {
    font-size: small;
    font-weight: normal;
    padding-right: 2em;
@@ -239,4 +259,24 @@ span#grammarFileName, span#inputFileName {
 
 code {
    font-family: courier, fixed, monospace;
+}
+
+.grammarFailure > pre, pre.grammarFailure, pre.parseFailure {
+   font-size: medium;
+   font-weight: bold;
+   color: red;
+   border: solid;
+   padding:2pt;
+   width:max-content;
+}
+
+#helpPage * {
+   max-width:600pt;
+}
+
+table.options tr:nth-child(even) {
+   background-color: aliceblue;
+}
+legend:not(:first-of-type) {
+   font-weight: bold;
 }
