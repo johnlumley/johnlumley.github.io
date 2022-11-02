@@ -18,63 +18,64 @@
       <h2>Table of Contents</h2>
       <ul>
          <li>
-            <a href="#d2e42">Introduction</a>
+            <a href="#d2e44">Introduction</a>
          </li>
          <li>
-            <a href="#d2e84">Editing grammars and inputs</a>
+            <a href="#d2e86">Editing grammars and inputs</a>
          </li>
          <li>
-            <a href="#d2e105">Parsing an input against a grammar</a>
+            <a href="#d2e107">Parsing an input against a grammar</a>
             <ul>
                <li>
-                  <a href="#d2e111">Parsing and compiling the grammar</a>
+                  <a href="#d2e113">Parsing and compiling the grammar</a>
                </li>
                <li>
-                  <a href="#d2e149">Parsing the input string against the grammar</a>
+                  <a href="#d2e151">Parsing the input string against the grammar</a>
                </li>
             </ul>
          </li>
          <li>
-            <a href="#d2e161">Errors</a>
+            <a href="#d2e163">Errors</a>
             <ul>
                <li>
-                  <a href="#d2e167">Grammar errors</a>
+                  <a href="#d2e169">Grammar errors</a>
                </li>
                <li>
-                  <a href="#d2e239">Input parsing errors</a>
+                  <a href="#d2e241">Input parsing errors</a>
                </li>
                <li>
-                  <a href="#d2e269">Serialisation errors</a>
+                  <a href="#d2e271">Serialisation errors</a>
                </li>
             </ul>
          </li>
          <li>
-            <a href="#d2e288">Options</a>
+            <a href="#d2e290">Options</a>
          </li>
          <li>
-            <a href="#d2e383">Loading grammars and inputs from external sources</a>
+            <a href="#d2e385">Loading grammars and inputs from external sources</a>
             <ul>
                <li>
-                  <a href="#d2e410">Grammars in XML</a>
+                  <a href="#d2e412">Grammars in XML</a>
                </li>
             </ul>
          </li>
          <li>
-            <a href="#d2e428">Change history</a>
+            <a href="#d2e430">Change history</a>
             <ul>
                <li>
-                  <a href="#d2e432">Version 1.1 - 2022nov01</a>
+                  <a href="#d2e434">Version 1.1 - 2022nov01</a>
                </li>
             </ul>
          </li>
       </ul>
       <p>TODO:</p>
       <ul>
+         <li>Change the pictures to reflect version 1.1</li>
          <li>Look into adding an undo facility</li>
       </ul>
       <section>
          <h3>
-            <a id="d2e42">Introduction</a>
+            <a id="d2e44">Introduction</a>
          </h3>
          <div>
             <p>For the runtime files for the iXML processor and a sample <em>j</em>ωiXML application see <a href="https://github.com/johnlumley/jwiXML">here</a>.</p>
@@ -94,7 +95,7 @@
       </section>
       <section>
          <h3>
-            <a id="d2e84">Editing grammars and inputs</a>
+            <a id="d2e86">Editing grammars and inputs</a>
          </h3>
          <div>
             <p>iXML grammars are edited in the upper textarea, where usual keystokes are supported, but there is no
@@ -112,13 +113,13 @@
       </section>
       <section>
          <h3>
-            <a id="d2e105">Parsing an input against a grammar</a>
+            <a id="d2e107">Parsing an input against a grammar</a>
          </h3>
          <p>With the grammar and potential input string edited, clicking on the GO! button causes the following
             actions:</p>
          <section>
             <h4>
-               <a id="d2e111">Parsing and compiling the grammar</a>
+               <a id="d2e113">Parsing and compiling the grammar</a>
             </h4>
             <p>The grammar defined by the text in the Grammar window is parsed and compiled as an iXML grammar to
                produce an internal object representing the compiled grammar. Assuming the grammar has valid iXML syntax,
@@ -148,7 +149,7 @@
          </section>
          <section>
             <h4>
-               <a id="d2e149">Parsing the input string against the grammar</a>
+               <a id="d2e151">Parsing the input string against the grammar</a>
             </h4>
             <p>Assuming the grammar has compiled and the input text string is not empty (or the 'Allow an empty string
                as input' option is checked), the text string is then parsed against the grammar, giving results in the
@@ -161,12 +162,12 @@
       </section>
       <section>
          <h3>
-            <a id="d2e161">Errors</a>
+            <a id="d2e163">Errors</a>
          </h3>
          <p>There are three main categories of errors detected:</p>
          <section>
             <h4>
-               <a id="d2e167">Grammar errors</a>
+               <a id="d2e169">Grammar errors</a>
             </h4>
             <p>Errors in the iXML grammar presented will be displayed under the 'Grammar Details' section. Such errors
                can be one of: </p>
@@ -226,7 +227,7 @@ Unreachable production rules for non-terminals: b</pre>
          </section>
          <section>
             <h4>
-               <a id="d2e239">Input parsing errors</a>
+               <a id="d2e241">Input parsing errors</a>
             </h4>
             <p>The parsing of an input string against a valid iXML grammar can fail for a number of reasons. Such errors
                are displayed in the 'Result' portion of the workbench, currently as, in line with the specification, an
@@ -261,7 +262,7 @@ Probable looping processing character '{' @ line 1, column 1&lt;/ixml&gt;</pre>
          </section>
          <section>
             <h4>
-               <a id="d2e269">Serialisation errors</a>
+               <a id="d2e271">Serialisation errors</a>
             </h4>
             <p>The input string may have parsed correctly, but it is still possible that the conversion (serialisation)
                to XML fails as the resulting tree would not be a valid XML document. In such cases the error is
@@ -271,13 +272,13 @@ An attribute node may not be the final parse result @input&lt;/ixml&gt;</pre>
             <p>or</p>
             <pre class="parseFailure">&lt;ixml xmlns:ixml="http://invisiblexml.org/NS" ixml:state="failed"&gt;
 Multiple nodes may not be the final parse result:&lt;expression/&gt;,@compare,&lt;expression/&gt;&lt;/ixml&gt;</pre>
-            <p>Note that when 'Treat as records' is enabled, multiple document trees can be generated asnd will be
+            <p>Note that when 'Treat as records' is enabled, multiple document trees can be generated and will be
                serialised in sequence in the result display.</p>
          </section>
       </section>
       <section>
          <h3>
-            <a id="d2e288">Options</a>
+            <a id="d2e290">Options</a>
          </h3>
          <p>The following options controlling grammar parsing, input string treatment and result display are supported
             via checkboxes:</p>
@@ -335,7 +336,7 @@ Multiple nodes may not be the final parse result:&lt;expression/&gt;,@compare,&l
       </section>
       <section>
          <h3>
-            <a id="d2e383">Loading grammars and inputs from external sources</a>
+            <a id="d2e385">Loading grammars and inputs from external sources</a>
          </h3>
          <p>Both grammar and input texts can be read from local filestore by using the appropriate 'Choose file' (or
             'Browse') button, which permits a file to be read and its text loaded into the textarea. The name of the
@@ -352,7 +353,7 @@ Multiple nodes may not be the final parse result:&lt;expression/&gt;,@compare,&l
          <img width="300" src="img10.png"/>
          <section>
             <h4>
-               <a id="d2e410">Grammars in XML</a>
+               <a id="d2e412">Grammars in XML</a>
             </h4>
             <p>Note that some of these test cases provide the iXML grammar in its XML serialisation form. The workbench
                recognises such a situation and will show and use that form, but editing in the textarea under these
@@ -364,11 +365,11 @@ Multiple nodes may not be the final parse result:&lt;expression/&gt;,@compare,&l
       </section>
       <section>
          <h3>
-            <a id="d2e428">Change history</a>
+            <a id="d2e430">Change history</a>
          </h3>
          <section>
             <h4>
-               <a id="d2e432">Version 1.1 - 2022nov01</a>
+               <a id="d2e434">Version 1.1 - 2022nov01</a>
             </h4>
             <ul>
                <li>Improvements to error reporting.</li>
