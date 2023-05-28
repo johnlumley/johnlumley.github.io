@@ -52,25 +52,28 @@
             <a href="#d2e311">Options</a>
          </li>
          <li>
-            <a href="#d2e406">Loading grammars and inputs from external sources</a>
+            <a href="#d2e422">Loading grammars and inputs from external sources</a>
             <ul>
                <li>
-                  <a href="#d2e433">Grammars in XML</a>
+                  <a href="#d2e449">Grammars in XML</a>
                </li>
             </ul>
          </li>
          <li>
-            <a href="#d2e451">Change history</a>
+            <a href="#d2e467">Change history</a>
             <ul>
                <li>
-                  <a href="#d2e455">Version 1.1 - 2022nov01</a>
+                  <a href="#d2e471">Version 1.1 - 2022nov01</a>
+               </li>
+               <li>
+                  <a href="#d2e489">Version 1.3 - 2023may27</a>
                </li>
             </ul>
          </li>
       </ul>
       <p>TODO:</p>
       <ul>
-         <li>Change the pictures to reflect version 1.1</li>
+         <li>Change the pictures to reflect version 1.3</li>
          <li>Look into adding an undo facility</li>
       </ul>
       <section>
@@ -103,12 +106,13 @@
                usual keystokes are supported, but there is no 'syntax awareness' during input:</p>
             <img width="400" src="img1.png"/>
             <p>The 'format' button above the textarea will, for a valid grammar, 'pretty-print' by replacing the text
-               with a canonical <em>ixml</em> rendering of the parsed grammar. This form will line up all the rules so all their
-               names are right aligned and their definitions left-aligned. Strings should be enclosed in the quotation characters used in the
-               original (doubling such characters within the string as necessary). For alternatives, the separator character used is the first separator character
-               (i.e. <code>';'</code> or <code>'|'</code>) encountered whilst parsing that set of alternatives. If the
-               serialisation of the definition of a rule will be longer than 50 characters, top-level alternatives will
-               have a newline and appropriate indentation attached to their separators. </p>
+               with a canonical <em>ixml</em> rendering of the parsed grammar. This form will line up all the rules so
+               all their names are right aligned and their definitions left-aligned. Strings should be enclosed in the
+               quotation characters used in the original (doubling such characters within the string as necessary). For
+               alternatives, the separator character used is the first separator character (i.e. <code>';'</code> or
+                  <code>'|'</code>) encountered whilst parsing that set of alternatives. If the serialisation of the
+               definition of a rule will be longer than 50 characters, top-level alternatives will have a newline and
+               appropriate indentation attached to their separators. </p>
             <p>This means that, for instance, an original line of the form: </p>
             <pre>a: [L] | "s" ; '"', #a; bcdef ; bcdef ,"a", bcdef; bcdef, "b", bcdef.
 bcdef: [N]|("1"; "2" | "3").</pre>
@@ -313,15 +317,21 @@ Multiple nodes may not be the final parse result:&lt;expression/&gt;,@compare,&l
                      start (first) rule.</td>
                </tr>
                <tr>
+                  <td class="option">Permit missing non-terminals (grammar parsing only)</td>
+                  <td>When checked, missing non-terminals in the grammar may be referenced in the grammar (for
+                     experimentation in grammar combination)</td>
+               </tr>
+               <tr>
                   <td class="option">Tovey-Walsh rewrites</td>
                   <td>When checked, <code>f+</code> constructs are rewritten as <code>f+ =&gt; f-plus. f-plus: f, f-plus|
-                        ().</code> rather than the <code>f-plus: f, f*.</code> rewrite given in the spec. This is likely
-                     to become the default eventually, as it seems to perform significantly quicker.</td>
+                        ().</code> rather than the <code>f-plus: f, f*.</code> rewrite given in the spec. This is
+                     currently the default, as it seems to perform significantly quicker.</td>
                </tr>
                <tr>
                   <td class="option">Allow an empty string as input</td>
                   <td>Normally if the input is an empty string, no attempt is made to parse - just the grammar is
-                     processed and displayed. Checking this allows processing of an empty string as input.</td>
+                     processed and displayed. Checking this allows processing of an empty string as input, which is
+                     probably only needed for cetain test cases.</td>
                </tr>
                <tr>
                   <td class="option">Treat as records</td>
@@ -348,12 +358,18 @@ Multiple nodes may not be the final parse result:&lt;expression/&gt;,@compare,&l
                      and not to artefactual marks, such as those used for generated non-terminals implementing
                      optionality or repetition.</td>
                </tr>
+               <tr>
+                  <td class="option">Indent result</td>
+                  <td>When checked, the results will be displayed as a serialization of the XML tree with indentation
+                     applied. This means that whitespace-only text nodes may be altered or in some cases deleted. If
+                     your application requires strict whitespace preservation, uncheck this option.</td>
+               </tr>
             </tbody>
          </table>
       </section>
       <section>
          <h3>
-            <a id="d2e406">Loading grammars and inputs from external sources</a>
+            <a id="d2e422">Loading grammars and inputs from external sources</a>
          </h3>
          <p>Both grammar and input texts can be read from local filestore by using the appropriate 'Choose file' (or
             'Browse') button, which permits a file to be read and its text loaded into the textarea. The name of the
@@ -370,7 +386,7 @@ Multiple nodes may not be the final parse result:&lt;expression/&gt;,@compare,&l
          <img width="300" src="img10.png"/>
          <section>
             <h4>
-               <a id="d2e433">Grammars in XML</a>
+               <a id="d2e449">Grammars in XML</a>
             </h4>
             <p>Note that some of these test cases provide the iXML grammar in its XML serialisation form. The workbench
                recognises such a situation and will show and use that form, but editing in the textarea under these
@@ -382,11 +398,11 @@ Multiple nodes may not be the final parse result:&lt;expression/&gt;,@compare,&l
       </section>
       <section>
          <h3>
-            <a id="d2e451">Change history</a>
+            <a id="d2e467">Change history</a>
          </h3>
          <section>
             <h4>
-               <a id="d2e455">Version 1.1 - 2022nov01</a>
+               <a id="d2e471">Version 1.1 - 2022nov01</a>
             </h4>
             <ul>
                <li>Improvements to error reporting.</li>
@@ -394,6 +410,19 @@ Multiple nodes may not be the final parse result:&lt;expression/&gt;,@compare,&l
                <li>Addition of 'unreachable non-terminals check' option.</li>
                <li>'Pretty-print' reformatting of grammar text.</li>
                <li>Corrected ixml serialisation of multi-part (alts) option and repetition constructs.</li>
+            </ul>
+         </section>
+         <section>
+            <h4>
+               <a id="d2e489">Version 1.3 - 2023may27</a>
+            </h4>
+            <ul>
+               <li>Tooltip help boxes added.</li>
+               <li>Improvements to error reporting,- tracing now identifies original source line in case of expanded
+                  repeats and optionals.</li>
+               <li>Support for 'Tovry-Walsh' repetition and optional rewrites.</li>
+               <li>Addition of 'permit missing non-terminals' option, for grammar combination testing.</li>
+               <li>Addition of 'identation suppression' in result XML (for cases with significant whitespace)</li>
             </ul>
          </section>
       </section>
