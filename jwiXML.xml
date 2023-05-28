@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tests>
+
+    <!--<samples href="pragmas/marks/sample-catalog.mark.xml" title="Marks" role="marks"/>-->
+    <samples href="sample-catalog.xml" title="Samples" role="samples"/>
+    <!--<samples href="pragmas/sample-catalog.xml" title="Pragma Samples" pragma="yes"/>-->
+    <samples href="https://raw.githubusercontent.com/invisibleXML/ixml/master/tests/test-catalog.xml"
+        title="Test Suite" role="tests"/>
     <!-- Example tests and samples for the jωiXML processor
      These take two forms - simple sample grammars for the interactive processor
      and test grammar/input sets for automatic execution (used during development)    
@@ -48,7 +54,7 @@ path: ("/", seg)+.
 -letter: ["a"-"z"]; ["A"-"Z"]; ["0"-"9"].
 -fletter: letter; ".".
     </sample>
-    
+
     <sample>address: person, lf, street, lf, postcode, city, lf, country, lf; 
          person, lf, street, lf, city, postcode, lf, country, lf.
 person: (title, S?)?, (initials; given, S), surname, S?.
@@ -92,7 +98,7 @@ no: digits.
     <sample source="tests" href="correct/email.ixml"/>
     <sample source="samples" href="ABNF/ABNF.ixml"/>
     <sample source="samples" href="ISO-8601-2004/iso8601.ixml"/>
-    
+
 
 
     <!-- Non-interactive test groups of grammars and inputs 
@@ -100,12 +106,12 @@ no: digits.
         <include href/> will include tests declared in another file
     -->
 
-   
-    
+
+
     <test>
         <grammar>S: [L]++(+':';+'=').</grammar>
         <input>abcd</input>
-    </test> 
+    </test>
     <include href="myTests/welcome.xml"/>
     <test>
         <grammar>S: [L]+ .</grammar>

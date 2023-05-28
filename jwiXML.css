@@ -1,4 +1,5 @@
 @import "styles/checkbox.css";
+@import "styles/tooltip.css";
 
 * {
    font-family: arial, helvetica, sans-serif
@@ -21,7 +22,14 @@ pre.input {
    padding-right: 2pt;
    margin: 0;
 }
+pre.failed {
+   background-color:pink;
+}
 
+table{
+margin 0;
+   width: 100%;
+}
 table td,
 table th {
    text-align: left;
@@ -100,6 +108,10 @@ div.horizontal.header > * {
    font-family: sans-serif;
    font-size: smaller;
 }
+a.testName {
+   font-weight:normal;
+   font-size:smaller;
+}
 .notification {
    font-weight: bold;
    font-size: smaller;
@@ -131,6 +143,12 @@ div.horizontal.header > * {
    font-size: small;
    margin-right: 1em;
 }
+.uri {
+   /*color: grey;*/
+   font-weight:lighter;
+   font-size: 6pt;
+   margin-right: 1em;
+}
 span[format = xml] {
    background-color: red;
 }
@@ -148,6 +166,10 @@ option.separator {
    color: red;
    font-weight: bold;
 }
+option.noInput {
+ font-style:italic;
+}
+
 .testSample {
    font-weight: normal;
    font-style: italic;
@@ -247,7 +269,7 @@ table.interactive {
    font-weight: bold;
 }
 
-#sep {
+#sep , #par, #recr{
    font-size: x-small;
 }
 span#grammarFileName,
