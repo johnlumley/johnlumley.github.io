@@ -1,0 +1,36 @@
+
+[role="tooltip"],
+.hidetooltip.hidetooltip.hidetooltip + [role="tooltip"] {
+  visibility: hidden;
+  position: absolute;
+  width: 120px;
+  background-color: pink;
+  color: black;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  
+  font-size:10px;
+  font-weight:normal;
+  font-style:normal;
+  
+  z-index: 1;
+}
+[role="tooltip"].wide {
+   text-align:left;
+   width:240px;
+   padding: 5px;
+}
+[aria-describedby]:hover,
+[aria-describedby]:focus {
+  position: relative;
+}
+[aria-describedby]:hover + [role="tooltip"],
+[aria-describedby]:focus + [role="tooltip"] {
+  visibility: visible;
+}
+
+[role="tooltip"] > ul {
+  margin-left: 0;
+  padding-left: 10px;
+}
