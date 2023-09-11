@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sample-catalog xmlns="https://github.com/invisibleXML/ixml/test-catalog" release-date="2022-06-01"
-   name="iXML CG Sample Grammars">
+   name="iXML CG Sample Grammars" baseURI="https://raw.githubusercontent.com/invisibleXML/ixml/master/samples/">
    <description>
       <p>Top-level catalog for sample grammars in the iXML Community Group Sample set.</p>
    </description>
