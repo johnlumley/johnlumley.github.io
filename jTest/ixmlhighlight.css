@@ -1,0 +1,26 @@
+.mark, .tmark {
+   color:red;
+}
+.alias {
+   color:brown;
+}
+.occurrence {
+   color: red;
+}
+.version {
+   font-weight:bold;
+   color: green;
+}
+.name {
+   font-weight:bold;
+}
+.nonterminal {
+   color: blue;
+}
+.string, .from, .to, .hex, .code {
+   color: darkgreen;
+}
+
+.comment {
+   font-size:smaller;
+}
