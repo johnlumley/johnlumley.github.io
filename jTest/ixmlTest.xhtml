@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>jωL iXML processor - test suite</title>
+        <link rel="stylesheet" href="jwiXML.css" type="text/css" />
+
+        <!--<script type="text/javascript" src="/sxjs/SaxonJS2.debug.js" language="javascript"></script>-->
+        <script type="text/javascript" src="saxonJS/SaxonJS2.rt.js" language="javascript"></script>
+        <script type="text/javascript" src="build/jwiXML.cls.js" language="javascript"></script>
+        <!--<script type="text/javascript" src="build/jwiXML.adv.cls.js" language="javascript"></script>-->
+    </head>
+    <body onload="SaxonJS.transform({
+        'stylesheetLocation' : 'ixmlTest.3.sef.json',
+        'sourceLocation' : 'ixmlTest2.xml',
+        'initialTemplate' : 'Q{}go'
+        })">
+
+
+        <div id="body">
+            <img src="logos/logotype.png" alt="InvisibleXML Logo" width="120pt"/>
+            <h3>jωL iXML processor - test suite</h3>
+            <p id="messages"></p>
+            <div id="sandpit"></div>
+        </div>
+
+    </body>
+</html>

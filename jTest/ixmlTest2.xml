@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tests interactive="true" twRewrites="true" longStrings="false" regEx="false" performance="false">
+
+    <test-catalog href="https://raw.githubusercontent.com/invisibleXML/ixml/master/tests/test-catalog.xml" />
+
+</tests>
