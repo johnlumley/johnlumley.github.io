@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <title>jωiXML processor - Help</title>
+      <link rel="stylesheet" href="../jwiXML.css" type="text/css" />
+   </head>
+   <body>
+      <div>
+         <h2><a href="https://invisiblexml.org/"><img src="../logos/logo_gradient.png" alt="InvisibleXML Logo"
+                  width="60pt" /></a>
+            <span style="font-style:italic">j</span>ω<img src="../logos/logotype.png" alt="InvisibleXML Logo"
+               width="60pt" /> processor - HELP</h2>
+         <p id="status" class="note">An interactive SaxonJS/JavaScript workbench processor of <a
+               href="https://invisiblexml.org/">Invisible XML</a> - Workbench Version 1.1</p>
+      </div>
+      <h1>WORK IN PROGRESS!!</h1>
+      <p>TODO:</p>
+      <ul>
+         <li>Describe input of grammars in XML format.</li>
+         <li>Tidy up the presentation....</li>
+         <li>Table of contents</li>
+      </ul>
+      <div>
+         <p>For the runtime files and a sample <em>j</em>ωiXML application see <a
+               href="https://github.com/johnlumley/jwiXML">here</a>.</p>
+      </div>
+      <div class="Zdescription">
+         <p>This workbench runs <i>entirely</i> within the browser client, using <a
+               href="https://www.saxonica.com/saxon-js/documentation2/index.html">SaxonJS </a>as the top-level program
+            and the <i>jwiXML</i> JavaScript library. There is <i>no</i> server-side processing, apart from initial
+            delivery of necessary files.</p>
+         <p>You can input and edit an iXML grammar either <i>ab initio</i> or by loading from a file on your computer or
+            one of the test-case or sample grammars from the <a href="https://github.com/invisibleXML/ixml">iXML GitHub
+               repository</a>. The input string can also be edited or loaded from file or, in the case of a test-case or
+            sample grammar, by selecting from one of a number of provided input strings, relevant to the grammar in
+            question.</p>
+         <p>Local file selection is either by a conventional selector dialog or by drag-and-drop of a file onto the
+            relevant text area. (Note that on Firefox security hurdles may preclude drag-and-drop.)</p>
+      </div>
+      <section>
+         <h3>Editing grammars and inputs</h3>
+         <div>
+            <p>iXML grammars are edited in the upper textarea, where usual keystokes are supported, but there is no
+               'syntax awareness':</p>
+            <img width="400" src="img1.png" />
+            <p>The 'format' button above the textarea will, for a valid grammar, 'pretty-print' by replacing the text
+               with a canonical ixml rendering of the parsed grammar. This form will line up all the rules so their
+               definitions are all left-aligned. Alternatives use the vertical bar ('|') as a separator, even if the
+               original used a semi-colon. </p>
+            <p>Input strings to be parsed by that grammar are edited in the lower text-area:</p>
+            <img width="300" src="img2.png" />
+            <p>The size of both of the textares can be adjusted (at least on Chrome) by the resizer 'chevron' at the
+               lower right hand corner.</p>
+         </div>
+      </section>
+      <section>
+         <h3>Parsing an input against a grammar</h3>
+         <p>With the grammar and potential input string edited, clicking on the GO! button causes the following
+            actions:</p>
+         <h4>Parsing and compiling the grammar</h4>
+         <p>The grammar defined by the text in the Grammar window is parsed and compiled as an iXML grammar to produce
+            an internal object representing the compiled grammar. Assuming the grammar has valid iXML syntax, this is
+            then displayed in the 'Parse Grammar' section (which is normally hidden - just click on the show/hide to
+            reveal).</p>
+         <p> Here various projections of the grammar can be displayed either in XML format or an iXML textual
+            serialisation. Either the original parsed grammar or the compilation (i.e. where the grammar has been
+            reduced to a canonical form) thereof can be shown.:</p>
+         <table>
+            <tbody>
+               <tr>
+                  <td>
+                     <img width="300" src="img3.png" />
+                  </td>
+                  <td>
+                     <img width="300" src="img4.png" />
+                  </td>
+                  <td>
+                     <img width="300" src="img5.png" />
+                  </td>
+               </tr>
+            </tbody>
+         </table>
+         <p>If you want to copy the parsed XML-format grammar the 'select grammar' button will select the whole of the
+            grammar XML, so a simple 'Copy' keystroke action can get it into the clipboard as text.</p>
+         <img width="300" src="img6.png" />
+         <h4>Parsing the input string against the grammar</h4>
+         <p>Assuming the grammar has compiled and the input text string is not empty (or the 'Allow an empty string as
+            input' option is checked), the text string is then parsed against the grammar, giving results in the Results
+            section.</p>
+         <img width="300" src="img7.png" />
+         <p>As with the parsed grammar, if you want to copy the resulting XML, the 'select result' button will select
+            the whole of the result XML (and multiples if ambiguous or record-oriented processing was performed), so a
+            simple 'Copy' keystroke action can get it into the clipboard as text.</p>
+      </section>
+      <section>
+         <h3>Errors</h3>
+         <p>Errors in the iXML grammar presented will be displayed under the 'Grammar Details' section. Such errors can
+            be one of: </p>
+         <ul>
+            <li>The input grammar supplied does not match the grammar for an iXML grammar. In this case the reported
+               error will attempt to identify why and where the parsing of that grammar failed, such as:</li>
+            <li>
+               <p>The grammar supplied, whilst grammatically correct (i.e. its text parses correctly) is invalid. Such
+                  cases include</p>
+               <table class="options">
+                  <thead>
+                     <tr>
+                        <th>Condition</th>
+                        <th>Example</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td>There are references to non-terminals for which a rule definition has not been
+                           provided.</td>
+                        <td class="grammarFailure">
+                           <pre>Grammar failure S02: 
+No production rules for non-terminals: number</pre>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>There are multiple rule definitions for a non-terrminal.</td>
+                        <td class="grammarFailure">
+                           <pre>Grammar failure S03: 
+Adding productions for an already-defined non-terminal: id</pre>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>There are non-terminal rule definitions which are unreachable through reference from the
+                           starting rule. This will only be detected if the <em>Prohibit unreachable non-terminals</em>
+                           option has been checked.</td>
+                        <td class="grammarFailure">
+                           <pre>Grammar failure S002: 
+Unreachable production rules for non-terminals: b</pre>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </li>
+         </ul>
+      </section>
+      <section>
+         <h3>Options</h3>
+         <p>The following options controlling grammar parsing, input string treatment and result display are supported
+            via checkboxes:</p>
+         <table class="options">
+            <thead>
+               <tr>
+                  <th>Option</th>
+                  <th>Effect</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td class="option">Prohibit unreachable non-terminals</td>
+                  <td>When checked, all non-terminals in the grammar must be reachable through a referencce path from
+                     the start rule.</td>
+               </tr>
+               <tr>
+                  <td class="option">Tovey-Walsh rewrites</td>
+                  <td>When checked, <code>f+</code> constructs are rewritten as <code>f+ => f-plus. f-plus: f, f-plus|
+                        ().</code> rather than the <code>f-plus: f, f*.</code> rewrite given in the spec. This is likely
+                     to become the default as it seems to perform significantly quicker</td>
+               </tr>
+               <tr>
+                  <td class="option">Allow an empty string as input</td>
+                  <td>Normally if the input is an empty string, no attempt is made to parse - just the grammar is
+                     processed and displayed. Checking this allows processing of an empty string as input</td>
+               </tr>
+
+               <tr>
+                  <td class="option">Treat as records</td>
+                  <td>When checked, the input is assumed to be a sequence of records separated by character sequences
+                     which match a given regular expression (for which '\n' is the default). The separator can be edited
+                     in the displayed text input, when this option is selected. </td>
+               </tr>
+
+               <tr>
+                  <td class="option">Show Parser States</td>
+                  <td>Displays the internal state transitions of the Earley parser operating on the input. This is
+                        <strong>NOT</strong> recommended for use with large grammars and inputs as memory overflows can
+                     be encountered.</td>
+               </tr>
+               <tr>
+                  <td class="option">Show only one ambiguous solution</td>
+                  <td>When the parse is ambiguous, with multiple possible solutions, this forces only one to be
+                     returned, which will still be marked as ambiguous</td>
+               </tr>
+               <tr>
+                  <td class="option">Show all processed marks</td>
+                  <td>If checked, marks for ignore ('-'), attribute ('@') or insertion ('+') serialisation are not honoured
+                     but rather placed on the full parse tree output either as an <code>@ixml:mark</code> attribute or
+                     an <code>ixml:insert</code> element. This ony applies to marks on the original grammar and not to
+                     artefactual marks, such as those used for generated non-terminals implementing optionality or repetition.</td>
+               </tr>
+            </tbody>
+         </table>
+      </section>
+      <section>
+         <h3>Loading grammars and inputs from external sources</h3>
+
+         <p>Both grammar and input texts can be read from local filestore by using the appropriate 'Choose file' (or
+            'Browse') button, which permits a file to be read and its text loaded into the textarea. The name of the
+            file loaded is displayed next to the file chooser. Files can also be 'drag-and-dropped' onto the textarea,
+            though in Firefox security settings will probably have to be altered (it seems to work fine in Chrome).</p>
+         <img width="300" src="img8.png" />
+
+         <p>Grammars can also be loaded from web-repositories, in particular from the <a
+               href="https://github.com/invisiblexml/ixml/">InvisibleXML test-suites or sample grammars</a> using the
+            Grammar 'Test/sample' dropdown:</p>
+         <img width="300" src="img9.png" />
+         <p>A <a href="https://invisiblexml.org/test-catalog/">browsable catalog</a> of the test suite is also
+            available.</p>
+
+         <p>When there are sample inputs available for one of these test or sample grammars, the 'Test/Sample' dropdown
+            above the Input textarea will be populated.</p>
+         <img width="300" src="img10.png" />
+      </section>
+   </body>
+</html>

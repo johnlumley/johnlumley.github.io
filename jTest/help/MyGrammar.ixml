@@ -1,0 +1,4 @@
+MyGrammar: s, Letters, Numbers, s.
+Letters: [L]+.
+Numbers: ["0"-"9"]+.
+s: " "*.

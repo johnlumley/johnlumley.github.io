@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <title>jωiXML processor - Help</title>
+      <link rel="stylesheet" href="../jwiXML.css" type="text/css" />
+      <link rel="stylesheet" href="./jwiXML-help.css" type="text/css" />
+   </head>
+   <body id="helpPage">
+      <div>
+         <h2><a href="https://invisiblexml.org/"><img src="../logos/logo_gradient.png" alt="InvisibleXML Logo"
+                  width="60pt" /></a>
+            <span style="font-style:italic">j</span>ω<img src="../logos/logotype.png" alt="InvisibleXML Logo"
+               width="60pt" /> processor - HELP</h2>
+         <p id="status" class="note">An interactive SaxonJS/JavaScript workbench processor of <a
+               href="https://invisiblexml.org/">Invisible XML</a> - Workbench Version 1.4</p>
+      </div>
+      <div class="TOC"></div>
+      <p>TODO:</p>
+      <ul>
+         <li>Look into adding an undo facility</li>
+      </ul>
+      <section>
+         <h3>Introduction</h3>
+         <div>
+            <p>For the runtime files for the iXML processor and a sample <em>j</em>ωiXML application see <a
+                  href="https://github.com/johnlumley/jwiXML">here</a>.</p>
+         </div>
+         <div>
+            <p>This workbench runs <i>entirely</i> within the browser client, using <a
+                  href="https://www.saxonica.com/saxon-js/documentation2/index.html">SaxonJS </a>as the top-level
+               program and the <i>jwiXML</i> JavaScript library. There is <i>no</i> server-side processing, apart from
+               initial delivery of necessary files.</p>
+            <p>You can input and edit an iXML grammar either <i>ab initio</i> or by loading from a file on your computer
+               or one of the test-case or sample grammars from the <a href="https://github.com/invisibleXML/ixml">iXML
+                  GitHub repository</a>. The input string can also be edited or loaded from file or, in the case of a
+               test-case or sample grammar, by selecting from one of a number of provided input strings, relevant to the
+               grammar in question.</p>
+            <p>Local file selection is either by a conventional selector dialog or by drag-and-drop of a file onto the
+               relevant text area. (Note that on Firefox security hurdles may preclude drag-and-drop.)</p>
+         </div>
+      </section>
+      <section>
+         <h3>Editing grammars and inputs</h3>
+         <div>
+            <p><span style="text-decoration:underline">iXML grammars</span> are edited in the upper textarea, where
+               usual keystokes are supported, but there is no 'syntax awareness' during input:</p>
+            <img width="400" src="img1.png" />
+            <p>The 'format' button above the textarea will, for a valid grammar, 'pretty-print' by replacing the text
+               with a canonical <em>ixml</em> rendering of the parsed grammar. This form will line up all the rules so
+               all their names are right aligned and their definitions left-aligned. Strings should be enclosed in the
+               quotation characters used in the original (doubling such characters within the string as necessary). For
+               alternatives, the separator character used is the first separator character (i.e. <code>';'</code> or
+                  <code>'|'</code>) encountered whilst parsing that set of alternatives. If the serialisation of the
+               definition of a rule will be longer than 50 characters, top-level alternatives will have a newline and
+               appropriate indentation attached to their separators. </p>
+            <p>This means that, for instance, an original line of the form: </p>
+            <pre>a: [L] | "s" ; '"', #a; bcdef ; bcdef ,"a", bcdef; bcdef, "b", bcdef.
+bcdef: [N]|("1"; "2" | "3").</pre>
+            <p>will be formatted to </p>
+            <pre>     a: [L]| 
+        "s"| 
+        '"',#a| 
+        bcdef| 
+        bcdef,"a",bcdef| 
+        bcdef,"b",bcdef. 
+ bcdef: [N]| ("1";"2";"3"). </pre>
+            <p><span style="text-decoration:underline">Input strings</span> to be parsed by that grammar are edited in
+               the lower text-area:</p>
+            <img width="300" src="img2.png" />
+            <p>The size of both of the textareas can be adjusted (at least on Chrome and Firefox) by the resizer
+               'chevron' at the lower right hand corner.</p>
+         </div>
+      </section>
+      <section>
+         <h3>Parsing an input against a grammar</h3>
+         <p>With the grammar and potential input string edited, clicking on the GO! button causes the following
+            actions:</p>
+         <section>
+            <h4>Parsing and compiling the grammar</h4>
+            <p>The grammar defined by the text in the Grammar window is parsed and compiled as an iXML grammar to
+               produce an internal object representing the compiled grammar. Assuming the grammar has valid iXML syntax,
+               this is then displayed in the 'Grammar Details' section (which is normally hidden - just click on the bar
+               to reveal or hide).</p>
+            <p> Here various projections of the grammar can be displayed either in XML format or an iXML textual
+               serialisation, or a colour-highlighted iXML form. Either the original parsed grammar or the compilation
+               (i.e. where the grammar has been reduced to a canonical form) thereof can be shown.:</p>
+            <table>
+               <tbody>
+                  <tr>
+                     <td>
+                        <img width="250" src="img3.png" />
+                     </td>
+                     <td>
+                        <img width="250" src="img4.png" />
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <img width="250" src="img5.png" />
+                     </td>
+                     <td>
+                        <img width="250" src="img5a.png" />
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p>If you want to copy the parsed XML-format grammar the 'select grammar' button will select the whole of
+               the grammar XML, so a simple 'Copy' keystroke action can get it into the clipboard as text.</p>
+            <img width="300" src="img6.png" />
+         </section>
+         <section>
+            <h4>Parsing the input string against the grammar</h4>
+            <p>Assuming the grammar has compiled and the input text string is not empty (or the 'Allow an empty string
+               as input' option is checked), the text string is then parsed against the grammar, giving results in the
+               Results section.</p>
+            <img width="300" src="img7.png" />
+            <p>As with the parsed grammar, if you want to copy the resulting XML, the 'select result' button will select
+               the whole of the result XML (and multiples if ambiguous or record-oriented processing was performed), so
+               a simple 'Copy' keystroke action can get it into the clipboard as text.</p>
+         </section>
+      </section>
+      <section>
+         <h3>Errors</h3>
+         <p>There are three main categories of errors detected:</p>
+         <section>
+            <h4>Grammar errors</h4>
+            <p>Errors in the iXML grammar presented will be displayed under the 'Grammar Details' section. Such errors
+               can be one of: </p>
+            <ul>
+               <li>The input grammar text supplied does not match the grammar for an iXML grammar. In this case the
+                  reported error will attempt to identify why and where the parsing of that grammar failed, such
+                  as:<pre class="grammarFailure">Grammar failure G000: 
+Invalid rule syntax. Missing rule terminator character.
+Expecting character:'.' - given: 'p' (codepoint 112).
+Near line 9, column 2.
+product: term, "×", operand.
+ ^</pre> and <pre class="grammarFailure">Grammar failure S10: 
+A Unicode character category code must match [A-Z][a-z]?. Provided: 'LZ'.
+Near line 11, column 8.
+id: [LZ].
+       ^</pre></li>
+               <li>
+                  <p>The grammar supplied, whilst grammatically correct (i.e. its text parses correctly) is invalid.
+                     Such cases include</p>
+                  <table class="options">
+                     <thead>
+                        <tr>
+                           <th>Condition</th>
+                           <th>Example</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td>There are references to non-terminals for which a rule definition has not been
+                              provided.</td>
+                           <td class="grammarFailure">
+                              <pre>Grammar failure S02: 
+No production rules for non-terminals: number</pre>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>There are multiple rule definitions for a non-terrminal.</td>
+                           <td class="grammarFailure">
+                              <pre>Grammar failure S03: 
+Adding productions for an already-defined non-terminal: id</pre>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>There are non-terminal rule definitions which are unreachable through reference from the
+                              starting rule. This will only be detected if the <em>Prohibit unreachable
+                                 non-terminals</em> option has been checked.</td>
+                           <td class="grammarFailure">
+                              <pre>Grammar failure S002: 
+Unreachable production rules for non-terminals: b</pre>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </li>
+            </ul>
+         </section>
+         <section>
+            <h4>Input parsing errors</h4>
+            <p>The parsing of an input string against a valid iXML grammar can fail for a number of reasons. Such errors
+               are displayed in the 'Result' portion of the workbench, currently as, in line with the specification, an
+               XML document with <code>@ixml:state="failed"</code> on the topmost element, such as:</p>
+            <pre class="parseFailure">&lt;ixml xmlns:ixml="http://invisiblexml.org/NS" ixml:state="failed">
+Failure at line 1 column 2
+Given '/' (codepoint 47). Expecting one of:
+   "+" {#8: sum: term, "+", term++"+".},
+   "×" {#10: product: term, "×", operand.},
+   [&lt;=&gt;≠≤≥] {#4: compare: ["&lt;=&gt;≠≤≥"].}
+Input:
+   a/b
+    ^
+&lt;/ixml></pre>
+            <p>where an unexpected (operator) character was encountered. In this case the processor attempts to identify
+               what characters would have been admissable at this point in the parse, and in which rules (identified by
+               line number and with original source) the parse failed. (This is currently not available for
+               internally-generated rules, such as those for repetition constructs.) </p>
+            <p>In cases of high potential ambiguity, such as the grammar:</p>
+            <pre>specification: "{", rule*, "}".
+rule: definition*.
+definition: id, "=", value.
+id:[L].
+value:[N].</pre>
+            <p>when run with an input that can trigger such ambiguity, such as <code>{}</code> (possible solutions could
+               include no rule or a potentially infinite sequence of rules each containing no definitions) the
+                  <em>j</em>ωiXML processor can get into an infinite loop. Internally there is a limit of triggering
+               1000 productions on processing a character from the input string. If this limit is reached a failure will
+               assumed: </p>
+            <pre class="parseFailure">&lt;ixml xmlns:ixml="http://invisiblexml.org/NS" ixml:state="failed">
+Probable looping processing character '{' @ line 1, column 1&lt;/ixml></pre>
+         </section>
+         <section>
+            <h4>Serialisation errors</h4>
+            <p>The input string may have parsed correctly, but it is still possible that the conversion (serialisation)
+               to XML fails as the resulting tree would not be a valid XML document. In such cases the error is
+               reported, again in the 'Result' section:</p>
+            <pre class="parseFailure">&lt;ixml xmlns:ixml="http://invisiblexml.org/NS" ixml:state="failed">
+An attribute node may not be the final parse result @input&lt;/ixml></pre>
+            <p>or</p>
+            <pre class="parseFailure">&lt;ixml xmlns:ixml="http://invisiblexml.org/NS" ixml:state="failed">
+Multiple nodes may not be the final parse result:&lt;expression/&gt;,@compare,&lt;expression/&gt;&lt;/ixml></pre>
+            <p>Note that when <em>'Treat as records'</em> is enabled, multiple document trees can be generated and will
+               be serialised in sequence in the result display.</p>
+         </section>
+      </section>
+      <section>
+         <h3>Options</h3>
+         <p>The following options controlling grammar parsing, input string treatment and result display are supported
+            via checkboxes. Where appropriate the corresponding option or invocation in the <em>jwiXML.processor</em>
+            API is described:</p>
+         <table class="options">
+            <thead>
+               <tr>
+                  <th>Option</th>
+                  <th>Default</th>
+                  <th>Effect</th>
+                  <th>API equivalent</th>
+               </tr>
+            </thead>
+            <tbody>
+               <option legend="Show Advanced options" default="false"> Make the advanced (<span class="experimental">and
+                     experimental</span>) options visible. Ordinarily these shouldn't be needed - the defaults maximise
+                  the comformity of the processor. See the table below for a description of these options. </option>
+               <option legend="Prohibit unreachable non-terminals" default="false" api="compile() option 'unreachable'">
+                  When checked, all non-terminals in the grammar must be reachable through a reference path from the
+                  start (first) rule. </option>
+               <option legend="Allow an empty string as input" default="false"> Normally if the input is an empty
+                  string, no attempt is made to parse - just the grammar is processed and displayed. Checking this
+                  allows processing of an empty string as input, which is probably only needed for certain test cases. </option>
+               <option legend="Treat as records" default="false" api="parseRecords() 3rd argument $separator"> When
+                  checked, the input is assumed to be a sequence of records separated by character sequences which match
+                  a given regular expression (for which <em>'\n'</em> is the default). The separator can be edited in
+                  the displayed text input, when this option is selected. <br />The result is a <em>sequence</em> of
+                  documents, each serialised in the output result area.<br />For repetitively structured data where the
+                  repetition separators do not appear in the data 'records' this technique can be <em>vastly</em> more
+                  efficient than describing the repetition/separation in the iXML grammar itself. </option>
+               <option legend="Show only one ambiguous solution" default="false" api="parse() option 'justOne'"> When
+                  the parse is ambiguous, with multiple possible solutions, this forces only one to be returned, which
+                  will still be marked as ambiguous. </option>
+               <option legend="Indent result" default="true"> When checked, the results will be displayed as a
+                  serialization of the XML tree with indentation applied. This means that whitespace-only text nodes may
+                  be altered or in some cases deleted. If your application requires strict whitespace preservation,
+                  uncheck this option. </option>s
+            </tbody>
+         </table>
+
+         <table class="options">
+            <thead>
+               <tr>
+                  <th>Advanced Option</th>
+                  <th>Default</th>
+                  <th>Effect</th>
+                  <th>API equivalent</th>
+               </tr>
+            </thead>
+            <tbody>
+               <option legend="Permit missing non-terminals (grammar parsing only)" default="false"
+                  api="compile() option 'missing'"> When checked, missing non-terminals in the grammar may be referenced
+                  in the grammar (for experimentation in grammar combination). <strong>Using this during input parsing will
+                     lead to unpredictable results - usually some sort of crash.</strong>
+               </option>
+               <option legend="Tovey-Walsh rewrites" default="true" api="compile() option 'twRewrites'">
+                  When checked, <code>f+</code> constructs are rewritten as <code>f+ => f-plus. f-plus: f, f-plus|
+                     ().</code> rather than the <code>f-plus: f, f*.</code> rewrite given in the spec. This is
+                  currently the default, as it seems to perform significantly quicker. </option>
+               <option legend="Show Parser States" default="false">
+                  Displays the internal state transitions of the Earley parser operating on the input. This is
+                  <strong>NOT</strong> recommended for use with large grammars and inputs as memory overflows can
+                  be encountered.</option>
+               <option legend="Show all processed marks" default="false" api="parse() option 'suppressMarks''">
+                  If checked, marks for ignore ('-'), attribute ('@') or insertion ('+') serialisation are not
+                  honoured but rather placed on the full parse tree output either as an <code>@ixml:mark</code>
+                  attribute or an <code>ixml:insert</code> element. This ony applies to marks on the original grammar
+                  and not to artefactual marks generated in compiling the grammar, such as those used for generated
+                  non-terminals implementing optionality or repetition.</option>
+               <option legend="Support iXML version 1.1" default="false">
+                  Support additional features of iXML version 1.1 (e.g. renaming)</option>
+               <option class="experimental" legend="Support pragmas" default="false" api="compile() option 'pragmas'">
+                  Experimental support of a small set of pragmas. </option>
+               <option class="experimental" legend="Keep multi-character strings" default="false" api="compile() option 'longStrings'">
+                  Multi-character terminal strings (corresponding to the <code>quoted</code> production of the iXML
+                  spec.) are expanded during compilation to a sequence of single (<code>quoted</code>) character
+                  strings, to correspond to a character-by-character processing of the Earley parser. If this option
+                  is checked such strings are retained as mutliple characters and the Earley parser 'jumps-forward'
+                  to write a new state several character positions forward in its state records.</option>
+               <option class="experimental" legend="Use regular expression matches" default="false" api="compile() option 'regEx'">
+                  Uses regular expression matching for quoted strings, inclusions and exclusions and in some cases
+                  repetition and optional forms of the same. <strong>This will only work properly when the ranges of
+                     characters matched by the following term in sequence can be guaranteed disjoint with that of the
+                     current term.</strong></option>
+            </tbody>
+         </table>
+      </section>
+      <section>
+         <h3>Loading grammars and inputs from external sources</h3>
+
+         <p>Both grammar and input texts can be read from local filestore by using the appropriate 'Choose file' (or
+            'Browse') button, which permits a file to be read and its text loaded into the textarea. The name of the
+            file loaded is displayed next to the file chooser. Files can also be 'drag-and-dropped' onto the textarea,
+            though in Firefox security settings will probably have to be altered (it seems to work fine in Chrome).</p>
+         <img width="300" src="img8.png" />
+
+         <p>Grammars can also be loaded from web-repositories, in particular from the <a
+               href="https://github.com/invisiblexml/ixml/">InvisibleXML test-suites or sample grammars</a> using the
+            Grammar 'Test/sample' dropdown:</p>
+         <img width="300" src="img9.png" />
+         <p>A <a href="https://invisiblexml.org/test-catalog/">browsable catalog</a> of the test suite is also
+            available.</p>
+
+
+         <p>When there are sample inputs available for one of these test or sample grammars, the 'Test/Sample' dropdown
+            above the Input textarea will be populated.</p>
+         <img width="300" src="img10.png" />
+         <section>
+            <h4>Grammars in XML</h4>
+            <p>Note that some of these test cases provide the iXML grammar in its XML serialisation form. The workbench
+               recognises such a situation and will show and use that form, but editing in the textarea under these
+               circumstances will have <em>no effect on the grammar being used in parsing</em>. Files containing iXML
+               grammars serialised as XML loaded by other means (file selection, drag-and-drop) will be (currently)
+               treated as simple text and currently will therefore fail to be parsed. (The <a
+                  href="https://github.com/johnlumley/jwiXML">jwlProcessor.xsl</a> library contains a
+                  <code>jwl:parseXML()</code> function that <strong>will</strong> accept XML-serialised grammars)</p>
+         </section>
+      </section>
+
+      <section>
+         <h3>Change history</h3>
+         <section>
+            <h4>Version 1.1 - 2022nov01</h4>
+            <ul>
+               <li>Improvements to error reporting.</li>
+               <li>Revamped help.</li>
+               <li>Addition of 'unreachable non-terminals check' option.</li>
+               <li>'Pretty-print' reformatting of grammar text.</li>
+               <li>Corrected ixml serialisation of multi-part (alts) option and repetition constructs.</li>
+            </ul>
+         </section>
+         <section>
+            <h4>Version 1.3 - 2023may27</h4>
+            <ul>
+               <li>Tooltip help boxes added.</li>
+               <li>Improvements to error reporting,- tracing now identifies original source line in case of expanded
+                  repeats and optionals.</li>
+               <li>Support for 'Tovey-Walsh' repetition and optional rewrites.</li>
+               <li>Addition of 'permit missing non-terminals' option, for grammar combination testing.</li>
+               <li>Addition of 'identation suppression' in result XML (for cases with significant whitespace)</li>
+            </ul>
+         </section>
+         <section>
+            <h4>Version 1.4 - 2024feb10</h4>
+            <ul>
+               <li>Added syntax highlighting option to formatted iXML display</li>
+               <li>Corrected an error on syntax reformatting of mutli-element repetition separators e.g.
+                     <code>body++(s1,s2)</code></li>
+               <li>Corrected a state propagation fault that manifested itself in failures in parsing with the XPath
+                  grammars when some names where not followed by whitespace. For example parsing the expression
+                     <code>a/(b|c)/d</code> failed whereas <code>a/(b |c)/d </code> (<em>trailing space</em>)
+                  succeeded</li>
+               <li>Added support for iXML version 1.1 features, most notably the <code>naming</code> production of <a
+                     href="https://invisiblexml.org/current/">Invisible XML Specification - Working Draft</a> where
+                     <code>name</code>s can have optional <code>alias</code>es to be used in XML tree production. (<span
+                     class="experimental">experimental</span>) </li>
+               <li>Some tidying up of the workbench interface, including making advanced options hidden by default.</li>
+               <li>Added support for processing multi-character quoted strings <em>en-bloc</em> rather than
+                     character-by-character(<span class="experimental">experimental</span>) </li>
+               <li>Added support for limited forms of pragma (<span class="experimental">experimental</span>) </li>
+               <li>Added support for limited use of regular expressions in character classes (inclusions and exclusions)
+                  and repetititons of both classes and quoted strings (<span class="experimental">experimental</span>)
+               </li>
+            </ul>
+         </section>
+      </section>
+   </body>
+</html>

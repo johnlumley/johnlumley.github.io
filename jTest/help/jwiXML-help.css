@@ -1,0 +1,13 @@
+p, table, ul {
+   font-size: 8pt;
+}
+td.option {
+   font-style: italic;
+   /*font-weight: bold;*/
+}
+td.false::before {
+   content:"\2718";
+}
+td.true::before {
+   content:"\2714";
+}
