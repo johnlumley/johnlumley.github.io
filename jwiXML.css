@@ -1,10 +1,11 @@
 @import "styles/checkbox.css";
 @import "styles/tooltip.css";
+@import "ixmlhighlight.css";
 
 * {
    font-family: arial, helvetica, sans-serif
 }
-pre,
+pre, pre *,
 textarea {
    font-size: smaller;
    font-family: monospace;
@@ -79,7 +80,8 @@ pre.sppf {
    font-size: x-small;
 }
 .resultXML {
-   font-weight: bold;
+  /* font-weight: bold;*/
+  color:blue;
 }
 .testSet {
    background-color: lightBlue;
@@ -135,7 +137,7 @@ a.testName {
    font-size: x-small;
 }
 .derivation {
-   background-color: yellow;
+   background-color: gold;
 }
 .format {
    background-color: green;
@@ -295,10 +297,30 @@ code {
 #helpPage * {
    max-width:600pt;
 }
-
+.hint {
+   font-size: 8px;
+}
+.experimental {
+   color:red;
+}
 table.options tr:nth-child(even) {
    background-color: aliceblue;
 }
 legend:not(:first-of-type) {
    font-weight: bold;
+}
+
+details.advanced > summary {
+   font-size:6pt;
+   padding: 0;
+   /*width: 15em;*/
+   background-color: #eee;
+   border: none;
+   box-shadow: none;
+   /*box-shadow: 3px 3px 4px black;*/
+   cursor: pointer;
+}
+
+.report {
+   font-size: smaller;
 }

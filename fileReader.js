@@ -46,7 +46,7 @@ function addDrag(input, output) {
             reader.addEventListener("load", () => {
                out.value = reader.result;
             });
-            reader.readAsText(file);
+            reader.readAsText(file,'UTF-8');
          }
       });
       out.style.background = "white";
