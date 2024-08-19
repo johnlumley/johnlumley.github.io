@@ -5,6 +5,10 @@ td.option {
    font-style: italic;
    /*font-weight: bold;*/
 }
+td.action {
+   /*font-style: italic;*/
+   font-weight: bold;
+}
 td.false::before {
    content:"\2718";
 }

@@ -3,319 +3,363 @@
 @import "ixmlhighlight.css";
 
 * {
-   font-family: arial, helvetica, sans-serif
+    font-family: arial, helvetica, sans-serif
 }
-pre, pre *,
+pre,
+pre *,
 textarea {
-   font-size: smaller;
-   font-family: monospace;
-   margin-bottom: 1em;
+    font-size: smaller;
+    font-family: monospace;
+    margin-bottom: 1em;
 }
 pre.grammar {
-   font-size: xx-small;
+    font-size: xx-small;
 }
 pre.result {
-   font-size: xx-small;
+    font-size: xx-small;
 }
 pre.input {
-   display: inline-block;
-   font-size: small;
-   padding-right: 2pt;
-   margin: 0;
+    display: inline-block;
+    font-size: small;
+    padding-right: 2pt;
+    margin: 0;
 }
 pre.failed {
-   background-color:pink;
+    background-color: pink;
 }
 
-table{
-margin 0;
-   width: 100%;
+table {
+    margin: 0;
+    width: 100%;
 }
 table td,
 table th {
-   text-align: left;
-   vertical-align: top;
-   padding-right: 10pt;
+    text-align: left;
+    vertical-align: top;
+    padding-right: 10pt;
 }
 table.states {
-   font-size: small;
+    font-size: small;
 }
 td.description {
-   /*font-family: serif;*/
-   font-size: x-small;
+    /*font-family: serif;*/
+    font-size: x-small;
+}
+td.killed {
+    background-color: red;
+    color: white;
 }
 pre.sppf {
-   display: block;
+    display: block;
 }
 .stateSpace {
-   background-color: lightblue;
+    background-color: lightblue;
 }
 .used {
-   background-color: yellow;
+    background-color: yellow;
 }
 .finished {
-   background-color: pink;
+    background-color: pink;
 }
 .finished.used {
-   background-color: lightgreen;
+    background-color: lightgreen;
 }
 .input,
 .parseresult {
-   font-weight: bold;
+    font-weight: bold;
 }
 .parseresult,
 .pass,
-.fail {
-   color: white;
+div.fail {
+    color: white;
 }
 .parseresult.true,
 .pass {
-   background-color: green;
+    background-color: green;
 }
 .parseresult.false,
-.fail {
-   background-color: red;
+div.fail {
+    background-color: red;
+}
+a.looping {
+    font-style: italic;
+}
+.ambiguous {
+    background-color: cyan;
 }
 .timing {
-   font-size: x-small;
+    font-size: x-small;
 }
 .resultXML {
-  /* font-weight: bold;*/
-  color:blue;
+    /* font-weight: bold;*/
+    color: blue;
 }
 .testSet {
-   background-color: lightBlue;
-   width: 100%;
+    background-color: lightBlue;
+    width: 100%;
 }
 .testSetInner {
-   background-color: pink;
-   font-size: x-small;
-   margin: 1pt;
-   width: 100pt;
+    background-color: pink;
+    font-size: x-small;
+    margin: 1pt;
+    width: 100pt;
 }
 div.side > *,
 div.horizontal > *,
 div.horizontal > img,
 div.horizontal > p {
-   display: table-cell;
-   vertical-align: top;
+    display: table-cell;
+    vertical-align: top;
 }
 div.horizontal.header > * {
-   vertical-align: middle;
-   padding-right: 8pt;
+    vertical-align: middle;
+    padding-right: 8pt;
 }
 .testName {
-   display: block;
-   font-weight: bold;
-   font-family: sans-serif;
-   font-size: smaller;
+    display: block;
+    font-weight: bold;
+    font-family: sans-serif;
+    font-size: smaller;
 }
 a.testName {
-   font-weight:normal;
-   font-size:smaller;
+    font-weight: normal;
+    font-size: smaller;
 }
 .notification {
-   font-weight: bold;
-   font-size: smaller;
-   background-color: lightgrey;
+    font-weight: bold;
+    font-size: smaller;
+    background-color: lightgrey;
 }
 .note {
-   font-style: italic;
-   font-size: x-small;
+    font-style: italic;
+    font-size: x-small;
 }
 .instruction {
-   font-size: x-small;
+    font-size: x-small;
 }
 .description {
-   width: 70ex;
-   font-size: x-small;
-   padding-left: 20pt;
-   margin-top: 10pt;
-   vertical-align: top;
+    width: 70ex;
+    font-size: x-small;
+    padding-left: 20pt;
+    margin-top: 10pt;
+    vertical-align: top;
 }
 .showDot {
-   font-size: x-small;
+    font-size: x-small;
 }
 .derivation {
-   background-color: gold;
+    background-color: gold;
 }
 .format {
-   background-color: green;
-   color: white;
-   font-size: small;
-   margin-right: 1em;
+    background-color: green;
+    color: white;
+    font-size: small;
+    margin-right: 1em;
 }
 .uri {
-   /*color: grey;*/
-   font-weight:lighter;
-   font-size: 6pt;
-   margin-right: 1em;
+    /*color: grey;*/
+    font-weight: lighter;
+    font-size: 6pt;
+    margin-right: 1em;
 }
 span[format = xml] {
-   background-color: red;
+    background-color: red;
 }
 
 input[type = file] {
-   font-size: x-small;
-   font-style: italic;
+    font-size: x-small;
+    font-style: italic;
 }
 select,
 .testSample,
 legend {
-   font-size: 70%;
+    font-size: 70%;
 }
 option.separator {
-   color: red;
-   font-weight: bold;
+    color: red;
+    font-weight: bold;
 }
 option.noInput {
- font-style:italic;
+    font-style: italic;
 }
 
 .testSample {
-   font-weight: normal;
-   font-style: italic;
-   vertical-align: middle;
+    font-weight: normal;
+    font-style: italic;
+    vertical-align: middle;
 }
 #go {
-   background-color: green;
-   color: white;
-   cursor: pointer;
+    font-size:12pt;
+    background-color: green;
+    color: white;
+    cursor: pointer;
 }
 #go:disabled {
-   background-color: lightgrey;
+    background-color: lightgrey;
 }
 fieldset.options {
-   max-width: max-content;
+    max-width: max-content;
 }
 label.grammarTest,
 textarea {
-   display: block;
-   text-align: left;
-   vertical-align: top;
-   width: 100%;
+    display: block;
+    text-align: left;
+    vertical-align: top;
+    width: 100%;
 }
 label.grammarTest {
-   display: block;
-   /*width: 20ex;*/
-   font-weight: bold;
-   font-family: sans-serif;
+    display: block;
+    /*width: 20ex;*/
+    font-weight: bold;
+    font-family: sans-serif;
 }
 
 .sample {
-   background-color: lightgreen;
-   width: 80ex;
-   cursor: pointer;
-   font-size: xx-small;
+    background-color: lightgreen;
+    width: 80ex;
+    cursor: pointer;
+    font-size: xx-small;
 }
 label.sample {
-   padding: 0;
-   margin: 0;
+    padding: 0;
+    margin: 0;
 
 }
 label.sample > span {
-   font-size: smaller;
-   font-weight: bold;
+    font-size: smaller;
+    font-weight: bold;
 }
 .sample.tests {
-   background-color: pink;
+    background-color: pink;
 }
 .sample.samples {
-   background-color: lightblue;
+    background-color: lightblue;
 }
 .sample > pre {
-   margin-top: 0;
-   padding-top: 0;
+    margin-top: 0;
+    padding-top: 0;
+}
+button {
+    font-size: 8px;
+    font-weight: bold;
+    display: block;
+    cursor: pointer;
 }
 button.selectAll {
-   font-size: 8px;
-   font-weight: bold;
-   background-color: lightblue;
-   padding: 2pt;
-   border-radius: 5pt;
-   cursor: pointer;
+    background-color: lightblue;
+    padding: 2pt;
+    border-radius: 5pt;
 }
 
 button#reformat {
-   font-size: 8px;
-   font-weight: bold;
-   background-color: pink;
-   border-color: pink;
-   padding: 1pt;
-   border-radius: 3pt;
-   cursor: pointer;
-   margin-left: 10px;
+    background-color: pink;
+    border-color: pink;
+    padding: 1pt;
+    border-radius: 3pt;
+    margin-left: 10px;
 }
 
+button#reduce {
+    background-color: red;
+    border-color: pink;
+    padding: 1pt;
+    border-radius: 3pt;
+    margin-left: 10px;
+}
+
+fieldset.options {
+    display: inline;
+    vertical-align: top;
+}
 
 details > summary {
-   padding: 2px 6px;
-   /*width: 15em;*/
-   background-color: #eee;
-   border: none;
-   box-shadow: 3px 3px 4px black;
-   cursor: pointer;
+    padding: 2px 6px;
+    /*width: 15em;*/
+    background-color: #eee;
+    border: none;
+    box-shadow: 3px 3px 4px black;
+    cursor: pointer;
 }
 
 details > table,
 table.interactive {
-   border-radius: 0 0 10px 10px;
-   background-color: #eee;
-   padding: 2px 6px;
-   margin: 0;
-   box-shadow: 3px 3px 4px black;
+    border-radius: 0 0 10px 10px;
+    background-color: #eee;
+    padding: 2px 6px;
+    margin: 0;
+    box-shadow: 3px 3px 4px black;
 }
 
 .help {
-   color: blue;
-   font-weight: bold;
+    color: blue;
+    font-weight: bold;
 }
 
-#sep , #par, #recr{
-   font-size: x-small;
+#sep,
+#par,
+#recr {
+    font-size: x-small;
 }
 span#grammarFileName,
 span#inputFileName {
-   font-size: small;
-   font-weight: normal;
-   padding-right: 2em;
+    font-size: small;
+    font-weight: normal;
+    padding-right: 2em;
 }
 
 code {
-   font-family: courier, fixed, monospace;
+    font-family: courier, fixed, monospace;
 }
 
-.grammarFailure > pre, pre.grammarFailure, pre.parseFailure {
-   font-size: medium;
-   font-weight: bold;
-   color: red;
-   border: solid;
-   padding:2pt;
-   width:max-content;
+.grammarFailure > pre,
+pre.grammarFailure,
+pre.parseFailure {
+    font-size: medium;
+    font-weight: bold;
+    color: red;
+    border: solid;
+    padding: 2pt;
+    width: max-content;
 }
 
 #helpPage * {
-   max-width:600pt;
+    max-width: 600pt;
 }
-
+.hint {
+    font-size: 8px;
+}
+.experimental {
+    color: red;
+}
 table.options tr:nth-child(even) {
-   background-color: aliceblue;
+    background-color: aliceblue;
 }
 legend:not(:first-of-type) {
-   font-weight: bold;
+    font-weight: bold;
 }
 
 details.advanced > summary {
-   font-size:6pt;
-   padding: 0;
-   /*width: 15em;*/
-   background-color: #eee;
-   border: none;
-   box-shadow: none;
-   /*box-shadow: 3px 3px 4px black;*/
-   cursor: pointer;
+    font-size: 6pt;
+    padding: 0;
+    /*width: 15em;*/
+    background-color: #eee;
+    border: none;
+    box-shadow: none;
+    /*box-shadow: 3px 3px 4px black;*/
+    cursor: pointer;
 }
 
 .report {
-   font-size: smaller;
+    font-size: smaller;
+}
+
+label.text {
+    font: normal 8px arial;
+    display: inline-block;
+    line-height: 10px;
+    vertical-align: top;
+    margin: 2px 0px;
+}
+input.number {
+    width: 5em;
 }
