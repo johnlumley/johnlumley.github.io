@@ -65,24 +65,32 @@
          </li>
          <li>
             <a href="#d2e547">Notes on the XPath/XQuery 4 grammars</a>
-            <a href="#d2e575">Failures</a>
-            <a href="#d2e591">Ambiguities</a>
-            <a href="#d2e613">The Set-subtraction operator</a>
-         </li>
-         <li>
-            <a href="#d2e650">Change history</a>
             <ul>
                <li>
-                  <a href="#d2e654">Version 1.1 - 2022nov01</a>
+                  <a href="#d2e577">Failures</a>
                </li>
                <li>
-                  <a href="#d2e672">Version 1.3 - 2023may27</a>
+                  <a href="#d2e596">Ambiguities</a>
                </li>
                <li>
-                  <a href="#d2e690">Version 1.4 - 2024feb13</a>
+                  <a href="#d2e621">The Set-subtraction operator</a>
+               </li>
+            </ul>
+         </li>
+         <li>
+            <a href="#d2e658">Change history</a>
+            <ul>
+               <li>
+                  <a href="#d2e662">Version 1.1 - 2022nov01</a>
                </li>
                <li>
-                  <a href="#d2e757">Version 1.5 - 2024sep23</a>
+                  <a href="#d2e680">Version 1.3 - 2023may27</a>
+               </li>
+               <li>
+                  <a href="#d2e698">Version 1.4 - 2024feb13</a>
+               </li>
+               <li>
+                  <a href="#d2e765">Version 1.5 - 2024sep23</a>
                </li>
             </ul>
          </li>
@@ -585,76 +593,83 @@ Multiple nodes may not be the final parse result:&lt;expression/&gt;,@compare,&l
             grammar.</p>
          <p>The 'Test/Sample' dropdown contains (at the top) iXML grammars for the 'near-current'
             draft 4.0 versions of the Xpath and XQuery grammars. These are derived programmatically
-            (with a modicum of auotmated patching) directly from the grammar definitions used to generate the
-            specification grammars <a href="https://qt4cg.org/specifications/xquery-40/xpath-40.html#id-grammar">XPath
+            (with a modicum of automated patching) directly from the grammar definitions used to
+            generate the specification grammars <a href="https://qt4cg.org/specifications/xquery-40/xpath-40.html#id-grammar">XPath
                EBNF</a> and <a href="https://qt4cg.org/specifications/xquery-40/xquery-40.html#id-grammar">XQuery
                EBNF</a>. (See my <a href="https://www.balisage.net/Proceedings/vol29/html/Lumley01/BalisageVol29-Lumley01.html">Balisage paper</a> for details of how these are constructed.)</p>
          <p>For both these grammars, there is also a 'reduced tree' version which truncates the very
             deep trees that normally result from parsing and a suitable moderately large expression
-            to be parsed is included for each grammar. Each of the (iXML) contains a date-stamp in a
+            to be parsed is included for each grammar. Each of the (iXML) grammars contains a date-stamp in a
             comment near the top which can be used to verify whether it is 'up to date', by
             comparison with the history of the file: <a href="https://github.com/qt4cg/qtspecs/blob/master/specifications/grammar-40/xpath-grammar.xml">https://github.com/qt4cg/qtspecs/blob/master/specifications/grammar-40/xpath-grammar.xml</a>
          </p>
          <p>Whilst the grammars have been tested across the 35k expressions of the QT4 test sets,
             with only some 50 failures, there are known areas where the grammar fails or produces
             ambiguity. These notes are intended to explain.</p>
-         <h4>
-            <a id="d2e575">Failures</a>
-         </h4>
-         <ul>
-            <li>The iXML grammars (which have to effectively act as their own tokenizers) are very
-               'whitespace sensitive' and several failures occur when certain operator symbols are
-               directly adjacent to operands. The most common is a minus operator (<code>-</code>)
-               unsurrounded by whitespace, e.g. <code>1-1</code>, but others can include examples
-               such as <code>if(foo)else</code>, etc. Attempting to cure these will give rise to
-               explosive ambiguity, especially in supporting a binary minus without surrounding
-               whitespace. In the 35k tests, these failures occur about 20 times. </li>
-            <li>Some very long sections of string/content, e.g. fully embedded transforms within a
-               string initializer, can trigger the parser's 'looping' limit (no more than 1000
-               additional states can be propagated for parsing a single character of the input -
-               this can be altered if desired - see the options above.) </li>
-         </ul>
-         <h4>
-            <a id="d2e591">Ambiguities</a>
-         </h4>
-         <p>The grammars, lacking a tokenizer and the ability to look-ahead without consumption,
-            retain a few ambiguities that are inhernet in the basic EBNF grammars (i.e. without
-            notes)</p>
-         <ul>
-            <li>Function signatures with trailing occurrence indicators
-               <code>fn(){..} as a?</code>
-            </li>
-            <li>Ambiguity from <code>/*/</code>, where the <code>*</code> can be a wildcard or a
-               multiplication</li>
-            <li>Colons in QNames and maps, e.g. <code>map{a:*:c}</code>
-            </li>
-         </ul>
-         <h4>
-            <a id="d2e613">The Set-subtraction operator</a>
-         </h4>
-         <p>The grammars use an experimental 'set-subtraction' operator <code>¬</code> to indicate
-            certain reserved keywords such as limitations on function names: </p>
-         <pre>         FunctionCall: EQName ¬ reservedFunctionNames, ArgumentList.
+         <section>
+            <h4>
+               <a id="d2e577">Failures</a>
+            </h4>
+            <ul>
+               <li>The iXML grammars (which have to effectively act as their own tokenizers) are
+                  very 'whitespace sensitive' and several failures occur when certain operator
+                  symbols are directly adjacent to operands. The most common is a minus operator
+                  (<code>-</code>) unsurrounded by whitespace, e.g. <code>1-1</code>, but others can
+                  include examples such as <code>if(foo)else</code>, etc. Attempting to cure these
+                  will give rise to explosive ambiguity, especially in supporting a binary minus
+                  without surrounding whitespace. In the 35k tests, these failures occur about 20
+                  times. </li>
+               <li>Some very long sections of string/content, e.g. fully embedded transforms within
+                  a string initializer, can trigger the parser's 'looping' limit (no more than 1000
+                  additional states can be propagated for parsing a single character of the input -
+                  this can be altered if desired - see the options above.) </li>
+            </ul>
+         </section>
+         <section>
+            <h4>
+               <a id="d2e596">Ambiguities</a>
+            </h4>
+            <p>The grammars, lacking a tokenizer and the ability to look-ahead without consumption,
+               retain a few ambiguities that are inhernet in the basic EBNF grammars (i.e. without
+               notes)</p>
+            <ul>
+               <li>Function signatures with trailing occurrence indicators
+                  <code>fn(){..} as a?</code>
+               </li>
+               <li>Ambiguity from <code>/*/</code>, where the <code>*</code> can be a wildcard or a
+                  multiplication</li>
+               <li>Colons in QNames and maps, e.g. <code>map{a:*:c}</code>
+               </li>
+            </ul>
+         </section>
+         <section>
+            <h4>
+               <a id="d2e621">The Set-subtraction operator</a>
+            </h4>
+            <p>The grammars use an experimental 'set-subtraction' operator <code>¬</code> to
+               indicate certain reserved keywords such as limitations on function names: </p>
+            <pre>         FunctionCall: EQName ¬ reservedFunctionNames, ArgumentList.
 reservedFunctionNames: types |
                        commands.
                 types: "attribute"; "comment"; ... .
              commands: "fn"; "function"; "if"; "switch"; "typeswitch".         </pre>
-         <p>Removal of the operator and its RH argument will permit the grammar to run on a 1.0
-            conformant iXML processor, though now <code>comment()</code> can be ambiguous. The
-            operator is currently used on the productions for <code>FunctionCall</code>,
-            <code>NamedFunctionRef</code>, <code>DirCommentContents</code>,
-            <code>CompPIConstructor</code>, <code>ElementContentChar</code>,
-            <code>QuotAttrContentChar</code> and <code>AposAttrContentChar</code> and indirectly
-            from <code>CompElemConstructor</code> and <code>CompAttrConstructor</code> (I can
-            arrange for such grammars to be generated - let me know if you wish so.)</p>
+            <p>Removal of the operator and its RH argument will permit the grammar to run on a 1.0
+               conformant iXML processor, though now <code>comment()</code> can be ambiguous. The
+               operator is currently used on the productions for <code>FunctionCall</code>,
+               <code>NamedFunctionRef</code>, <code>DirCommentContents</code>,
+               <code>CompPIConstructor</code>, <code>ElementContentChar</code>,
+               <code>QuotAttrContentChar</code> and <code>AposAttrContentChar</code> and indirectly
+               from <code>CompElemConstructor</code> and <code>CompAttrConstructor</code> (I can
+               arrange for such grammars to be generated - let me know if you wish so.)</p>
+         </section>
       </section>
       <section>
          <h3>
-            <a id="d2e650">Change history</a>
+            <a id="d2e658">Change history</a>
          </h3>
          <section>
             <h4>
-               <a id="d2e654">Version 1.1 - 2022nov01</a>
+               <a id="d2e662">Version 1.1 - 2022nov01</a>
             </h4>
             <ul>
                <li>Improvements to error reporting.</li>
@@ -667,7 +682,7 @@ reservedFunctionNames: types |
          </section>
          <section>
             <h4>
-               <a id="d2e672">Version 1.3 - 2023may27</a>
+               <a id="d2e680">Version 1.3 - 2023may27</a>
             </h4>
             <ul>
                <li>Tooltip help boxes added.</li>
@@ -682,7 +697,7 @@ reservedFunctionNames: types |
          </section>
          <section>
             <h4>
-               <a id="d2e690">Version 1.4 - 2024feb13</a>
+               <a id="d2e698">Version 1.4 - 2024feb13</a>
             </h4>
             <ul>
                <li>Added syntax highlighting option to formatted iXML display</li>
@@ -713,7 +728,7 @@ reservedFunctionNames: types |
          </section>
          <section>
             <h4>
-               <a id="d2e757">Version 1.5 - 2024sep23</a>
+               <a id="d2e765">Version 1.5 - 2024sep23</a>
             </h4>
             <ul>
                <li>Corrected <a href="https://github.com/johnlumley/jwiXML/issues/10">issue#10</a>
