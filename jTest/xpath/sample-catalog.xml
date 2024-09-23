@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sample-catalog xmlns="https://github.com/invisibleXML/ixml/test-catalog" release-date="2022-06-01"
+   name="XPath/XQuery 4.0 iXML Grammars" ZZbaseURI="https://raw.githubusercontent.com/invisibleXML/ixml/master/samples/">
+   <description>
+      <p>Top-level catalog for XPath/XQuery 4 sample grammars in the iXML Community Group Sample set.</p>
+   </description>
+
+   <sample name="XPath4">
+      <ixml-grammar-ref href="xpath40.extracted.ixml"/>
+      <test-case name="Large">
+         <test-string-ref href="expressions/xpath.large.inp"/>
+      </test-case>
+     <!-- <test-case name="b">
+         <test-string>b</test-string>
+      </test-case>-->
+   </sample>
+   <sample name="XPath4Reduced">
+      <ixml-grammar-ref href="xpath40.extracted.reduced.ixml"/>
+      <test-case name="Large">
+         <test-string-ref href="expressions/xpath.large.inp"/>
+      </test-case>
+   </sample>
+   
+   <sample name="XQuery4">
+      <ixml-grammar-ref href="xquery40.extracted.ixml"/>
+      <test-case name="Large">
+         <test-string-ref href="expressions/xquery.large.inp"/>
+      </test-case>
+   </sample>
+   <sample name="XQuery4Reduced">
+      <ixml-grammar-ref href="xquery40.extracted.reduced.ixml"/>
+      <test-case name="Large">
+         <test-string-ref href="expressions/xquery.large.inp"/>
+      </test-case>
+   </sample>
+   
+ 
+
+</sample-catalog>
