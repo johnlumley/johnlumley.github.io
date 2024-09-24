@@ -1,0 +1,77 @@
+declare decimal-format local:de decimal-separator = "," grouping-separator = "."; 
+declare decimal-format local:en decimal-separator = "." grouping-separator = ","; 
+       
+let $numbers := (1234.567, 789, 1234567.765) 
+for $i in $numbers
+return ( 
+  format-number($i, "#.###,##", "local:de"), 
+  format-number($i, "#,###.##", "local:en") 
+),
+<foo:elem xmlns:foo="http://www.w3.org/XQueryTest/Construct"
+  xmlns:bar="http://www.w3.org/XQueryTest/Construct"></bar:elem>,
+let $crlf := 
+          char('\r')||char('\n')
+           return 
+
+        
+          let $csv-uneven-cols := 
+          concat(
+`date,name,city,amount,currency,original amount,note{$crlf}`,
+`2023-07-19,Bob,Berlin,10.00,USD,13.99{$crlf}`,
+`2023-07-20,Alice,Aachen,15.00{$crlf}`,
+`2023-07-20,Charlie,Celle,15.00,GBP,11.99,cake,not a lie{$crlf}`)
+           return 
+
+        
+        for $r in parse-csv($csv-uneven-cols, 
+                    map { "column-names": true(), 
+                          "number-of-columns": 6 })?rows["justTemp"] 
+return array { $r?fields },
+let $data := map{
+         "fr":map{"capital":"Paris", "languages":["French"]}, 
+         "de":map{"capital":"Berlin", "languages":["German"]}
+       } return pin($data)??languages[.='German']!label()?path()[1],
+replace(
+  "57°43′30″",
+  "([0-9]+)°([0-9]+)′([0-9]+)″",
+  action := function($s, $groups) {
+    string($groups[1] + $groups[2] ÷ 60 + $groups[3] ÷ 3600) || '°'
+  }
+),
+( if (3 != 2) then 16 else 0 ) + ( if (8 = 7) then 4 else 1 ) ,
+if (/doc/widget1/@unit-cost = /doc/widget2/@unit-cost) then /doc/widget1/@name else /doc/widget2/@name,
+ if (if (5 != 3) then fn:true() else fn:empty(/doc/widget1)) then "search" else "assume",
+every $emp in /emps/employee satisfies (
+  some $sal in $emp/salary satisfies $sal/@current = 'true'              
+),
+"red" instance of enum("red", "green", "blue"),
+let $x := "[A fine romance]"
+let $x := substring-after($x, "[")
+let $x := substring-before($x, "]")
+return upper-case($x),
+$tree ??$cities => 
+     map:for-each( fn($key, $val) { $val ??to ! ($key || "-" || .) } ),
+if (@code = 1) {
+  "food"
+} else if (@code = 2) {
+  "fashion"
+} else if (@code = 3) {
+  "household"
+} else {
+  "general"
+},
+if ($x castable as hatsize)
+  then $x cast as hatsize
+  else if ($x castable as IQ)
+  then $x cast as IQ
+  else $x cast as xs:string,
+"The cat sat on the mat"
+=> tokenize()
+=!> concat(".")
+=!> upper-case()
+=> string-join("-"),
+not($M instance of map(xs:int, xs:string)),
+3.14159_26535_89793e0,
+0xffff,
+0b1000_0001,
+12345

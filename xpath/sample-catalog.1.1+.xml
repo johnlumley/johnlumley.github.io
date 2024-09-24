@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sample-catalog xmlns="https://github.com/invisibleXML/ixml/test-catalog" release-date="2022-06-01"
+   name="iXML v1.1+ (reserved keywords)" ZZbaseURI="https://raw.githubusercontent.com/invisibleXML/ixml/master/samples/">
+   <description>
+      <p>Catalog for XPath/XQuery 4 sample grammars in iXML version 1.1+ (includes subtraction operator)</p>
+   </description>
+
+ 
+   <sample name="XPath4">
+      <ixml-grammar-ref href="xpath40.extracted.1.1+.ixml"/>
+      <test-case name="Large">
+         <test-string-ref href="expressions/xpath.large.inp"/>
+      </test-case>
+   </sample>
+   <sample name="XPath4 Reduced">
+      <ixml-grammar-ref href="xpath40.extracted.1.1+.reduced.ixml"/>
+      <test-case name="Large">
+         <test-string-ref href="expressions/xpath.large.inp"/>
+      </test-case>
+   </sample>
+   
+   
+   <sample name="XQuery4">
+      <ixml-grammar-ref href="xquery40.extracted.1.1+.ixml"/>
+      <test-case name="Large">
+         <test-string-ref href="expressions/xquery.large.inp"/>
+      </test-case>
+   </sample>
+   <sample name="XQuery4 Reduced">
+      <ixml-grammar-ref href="xquery40.extracted.1.1+.reduced.ixml"/>
+      <test-case name="Large">
+         <test-string-ref href="expressions/xquery.large.inp"/>
+      </test-case>
+   </sample>
+   
+ 
+
+</sample-catalog>
