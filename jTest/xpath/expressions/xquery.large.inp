@@ -7,6 +7,8 @@ return (
   format-number($i, "#.###,##", "local:de"), 
   format-number($i, "#,###.##", "local:en") 
 ),
+<foo:elem xmlns:foo="http://www.w3.org/XQueryTest/Construct"
+  xmlns:bar="http://www.w3.org/XQueryTest/Construct"></bar:elem>,
 let $crlf := 
           char('\r')||char('\n')
            return 

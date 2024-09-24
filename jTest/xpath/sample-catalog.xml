@@ -5,14 +5,11 @@
       <p>Top-level catalog for XPath/XQuery 4 sample grammars in the iXML Community Group Sample set.</p>
    </description>
 
-   <sample name="XPath4">
+  <!-- <sample name="XPath4">
       <ixml-grammar-ref href="xpath40.extracted.ixml"/>
       <test-case name="Large">
          <test-string-ref href="expressions/xpath.large.inp"/>
       </test-case>
-     <!-- <test-case name="b">
-         <test-string>b</test-string>
-      </test-case>-->
    </sample>
    <sample name="XPath4Reduced">
       <ixml-grammar-ref href="xpath40.extracted.reduced.ixml"/>
@@ -32,8 +29,11 @@
       <test-case name="Large">
          <test-string-ref href="expressions/xquery.large.inp"/>
       </test-case>
-   </sample>
-   
+   </sample>-->
+   <sample-catalog-ref href="sample-catalog.1.1+.xml"/>
+   <sample-catalog-ref href="sample-catalog.1.1.xml"/>
+   <sample-catalog-ref href="sample-catalog.1.0.xml"/>   
+  
  
 
 </sample-catalog>
