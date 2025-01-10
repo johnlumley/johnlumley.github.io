@@ -1,0 +1,45 @@
+:root {
+   /* --symbol-fonts: "Arial Unicode", "Apple Symbols", "Symbol", "Symbola_hint";
+    --body-family: "Noto Serif", serif, var(--symbol-fonts);
+    --title-family: "Noto Sans", sans-serif, var(--symbol-fonts);
+    --mono-family: "B612 Mono", monospace, var(--symbol-fonts);*/
+    --text-color: rgb(0,0,0);
+    --comment-color: rgb(86,180,233);
+    --value-color: rgb(0,114,178);
+    --name-color: rgb(0,158,115);
+    --mark-color: rgb(213,94,0);
+}
+pre.highlightSyntax *{
+    font-family: monospace;
+}
+.mark, .tmark {
+   color:red;
+}
+.alias {
+   color:brown;
+}
+.occurrence {
+   color: red;
+}
+.version {
+   font-weight:bold;
+   color: green;
+}
+.name {
+   font-weight:bold;
+   color: var(--value-color);
+}
+.nonterminal {
+   color: blue;
+}
+.string, .from, .to, .hex, .code {
+   color: darkgreen;
+}
+
+.comment {
+   font-size:smaller;
+   color: var(--comment-color);
+}
+.noRef {
+    font-style: italic;
+}
