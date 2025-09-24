@@ -117,22 +117,30 @@
 
                <!-- if the record type is extensible, choose a name for the options parameter -->
                <xsl:variable name="options-param" as="xs:string?">
-                  <xsl:if test="normalize-space(@extensible) = ('yes', 'true', 'a')" then="('options', (1 to count(xsl:field)) ! `options{.}`)
+                  <xsl:if test="normalize-space(@extensible) = ('yes', 'true', 'a')">
+                     <xsl:sequence select="('options', (1 to count(xsl:field)) ! `options{.}`)
                   [not(. = current()/xsl:field/@name)][1]"/>
+                  </xsl:if>
                </xsl:variable>
 
                <!-- declare the parameters -->
                <xsl:for-each select="xsl:field">
-                  <X:param name="{@name}" required="{@required otherwise 'yes'}">
+                  <X:param name="{@name}" required="{(@required,'yes')[1]}">
                      <xsl:attribute name="as">
-                        <xsl:variable name="as" select="normalize-space(@as otherwise 'item()*')"/>
+                        <xsl:variable name="as" select="normalize-space((@as, 'item()*')[1])"/>
                         <xsl:variable name="optional" select="normalize-space(@required) = ('no', 'false', '0')"/>
                         <xsl:choose>
                            <xsl:when test="not($optional)" select="$as"/>
                            <!-- for optional fields, amend the required type to allow () -->
-                           <xsl:when test="matches($as, '[?*]$')" select="$as"/>
-                           <xsl:when test="matches($as, '\+$')" select="replace($as, '\+$', '*')"/>
-                           <xsl:otherwise select="$as || '?'"/>
+                           <xsl:when test="matches($as, '[?*]$')">
+                              <xsl:sequence select="$as"/>
+                           </xsl:when>
+                           <xsl:when test="matches($as, '\+$')">
+                              <xsl:sequence select="replace($as, '\+$', '*')"/>
+                           </xsl:when>
+                           <xsl:otherwise>
+                              <xsl:sequence select="$as || '?'"/>
+                           </xsl:otherwise>
                         </xsl:choose>
                      </xsl:attribute>
                      <xsl:if test="@default">
