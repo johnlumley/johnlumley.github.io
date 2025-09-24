@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tests QT4="https://raw.githubusercontent.com/qt4cg/qt4tests/refs/heads/master" XSLT4="https://raw.githubusercontent.com/qt4cg/xslt40-test/refs/heads/master">
+    <example name="default-namespaces" href="samples/test1.4.xsl">
+        <input name="books"
+            href="https://raw.githubusercontent.com/w3c/xslt30-test/refs/heads/master/tests/expr/for/for01.xml"
+        />
+    </example>
+    <example name="enclosed mode" href="samples/test2.4.xsl">
+        <input name="books" href="$QT4/op/union/bib2.xml"/>
+        <input name="works" href="$QT4/op/is-same-node/works.xml"/>
+        <input name="staff" href="$QT4/op/is-same-node/staff.xml"/>
+        <input name="nw_Customers" href="$QT4/prod/AxisStep/nw_Customers.xml"/>
+    </example>
+   <example name="switch" href="samples/test3.4.xsl">
+      <input name="months" href="samples/test3.xml"/>
+      <input name="prague" href="$XSLT4/tests/misc/docbook/prague2016mhk.xml"/>
+   </example>
+
+    <!--<samples href="pragmas/marks/sample-catalog.mark.xml" title="Marks" role="marks"/>-->
+    <!--<samples href="xpath/sample-catalog.xml" title="XPath/XQuery 4.0 Grammars" role="samples"/>
+    <!-\- <samples href="xpath/sample-catalog.1.0.xml" title="XPath/XQuery 4 (iXML v1.0)" role="samples"/>
+    <samples href="xpath/sample-catalog.1.0+.xml" title="XPath/XQuery 4 (iXML v1.1+)" role="samples"/>-\->
+    <samples href="tsc/sample-catalog.xml" title="Typescript" role="samples"/>
+    <samples href="myTests/mk2/sample-catalog.xml" title="Mk2" role="samples"/>
+    <samples href="myTests/subtraction/sample-catalog.xml" title="Subtraction Samples"
+        role="samples"/>
+    <samples href="myTests/naming/sample-catalog.xml" title="Naming Samples" role="samples"/>
+    <samples href="sample-catalog.xml" title="Samples" role="samples"/>
+    <samples href="pragmas/sample-catalog.xml" title="Pragma Samples" pragma="yes"/>
+    <samples
+        href="https://raw.githubusercontent.com/invisibleXML/ixml/master/tests/test-catalog.xml"
+        title="Test Suite" role="tests"/>-->
+
+
+
+</tests>
