@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>jωL QT4 workbench</title>
+        <link rel="stylesheet" href="../jwiXML.css" type="text/css" />
+        <script type="text/javascript" src="../saxonJS/SaxonJS2.js" language="javascript"></script>
+        <!--<script type="text/javascript" src="build/jwiXML.adv.cls.js" language="javascript"></script>-->
+        <!-- <script type="text/javascript" src="build/jwiXML.cls.js" language="javascript"></script>-->
+        <script type="text/javascript" src="fileReader.js" language="javascript"></script>
+    </head>
+    <body onload="SaxonJS.transform({
+        'stylesheetLocation' : 'jwLQT4.3.sef.json',
+        'sourceLocation' : 'jwLQT4.xml',
+        'initialTemplate' : 'Q{}go'
+        })">
+        <div id="body">
+            <div class="horizontal header">
+
+                <!--<a href="https://invisiblexml.org/">
+                    <img src="logos/logo_gradient.png" alt="InvisibleXML Logo" width="48pt" />
+                </a>
+
+
+                <h2><span style="font-style:italic">j</span>ω<img src="logos/logotype.png" alt="InvisibleXML Logo"
+                        width="60pt" /> processor</h2>
+-->
+                <p id="status" class="note">A SaxonJS/JavaScript processor of <a href="https://qt4cg.org/specifications/xslt-40/Overview.html"
+                        >XSLT 4.0</a></p>
+
+                <p class="description">This processor runs <i>entirely</i> within the browser client, using <a
+                        href="https://www.saxonica.com/saxon-js/documentation2/index.html">SaxonJS 2</a> as the top-level
+                    program and an XSLT4 → XSLT3 conversion stylesheet. There is <i>no</i> server-side processing,
+                    apart from initial delivery of necessary files. <br /><span
+                        style="font-weight:bold;font-size:150%;color:red"><a target="_blank"
+                            href="help/jwiXML-help.xhtml">See HELP for instructions (and XPath/XQuery notes)</a></span></p>
+            </div>
+            <p id="messages">
+                <span style="color:red;font-weight:bold;font-style:italic">Please wait - loading data</span>
+            </p>
+            <div id="sandpit"></div>
+        </div>
+    </body>
+</html>
