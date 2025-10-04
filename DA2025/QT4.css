@@ -1,0 +1,10 @@
+@import "../jwiXML.css";
+
+option.xpath {
+    color: blue; 
+    font-style: italic;
+}
+span.selectAll {
+    font-size: 8px;
+    font-weight: bold;
+}

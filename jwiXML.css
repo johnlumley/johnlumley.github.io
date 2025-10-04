@@ -2,11 +2,13 @@
 @import "styles/tooltip.css";
 @import "ixmlhighlight.css";
 
+
 * {
     font-family: arial, helvetica, sans-serif
 }
+
 pre,
-pre *,
+/*pre *,*/
 textarea {
     font-size: smaller;
     font-family: monospace;
@@ -84,7 +86,10 @@ div.fail {
 a.looping {
     font-style: italic;
 }
-.ambiguous {
+/*a.infn {
+    color: red;
+}*/
+div.ambiguous {
     background-color: cyan;
 }
 .timing {
@@ -94,9 +99,14 @@ a.looping {
     /* font-weight: bold;*/
     color: blue;
 }
+table.results {
+    width:auto;
+    font-size:smaller;
+}
 .testSet {
-    background-color: lightBlue;
-    width: 100%;
+    /*background-color: lightBlue;
+    width: 100%;*/
+    /*font-size:smaller;*/
 }
 .testSetInner {
     background-color: pink;
@@ -245,7 +255,7 @@ button {
     display: block;
     cursor: pointer;
 }
-button.selectAll {
+button.selectAll, span.selectAll {
     background-color: lightblue;
     padding: 2pt;
     border-radius: 5pt;

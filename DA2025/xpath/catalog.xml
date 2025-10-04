@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tests QT4="https://raw.githubusercontent.com/qt4cg/qt4tests/refs/heads/master"
+   XSLT4="https://raw.githubusercontent.com/qt4cg/xslt40-test/refs/heads/master">
+   <group name="CSV Processing" href="CSV/">
+      <xquery name="csv1" href="csv1.xquery"/>
+      <xquery name="csv2" href="csv2.xquery"/>
+      <xquery name="csv3" href="csv3.xquery">
+         <input name="date/people/money" href="csv3.csv"/>
+      </xquery>
+   </group>
+   <group name="Higher-Order" href="HOF/">
+      <xpath name="do-until() - Squares" href="do-until1.xp"/>
+      <xpath name="do-until() - Fibonacci" href="do-until2.xp"/>
+      <xpath name="transitive-closure() - Reporting" href="transitive-closure1.xp">
+         <input name="management" href="management.xml"/>
+      </xpath>
+   </group>
+
+</tests>
