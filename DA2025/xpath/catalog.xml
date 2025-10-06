@@ -11,6 +11,10 @@
    <group name="Higher-Order" href="HOF/">
       <xpath name="do-until() - Squares" href="do-until1.xp"/>
       <xpath name="do-until() - Fibonacci" href="do-until2.xp"/>
+      <xpath name="partition() - group-together" href="partition1.xp"/>
+      <xpath name="partition() - line length" href="partition2.xp">
+         <input name="John 1" href="john1.txt"/>
+      </xpath>
       <xpath name="transitive-closure() - Reporting" href="transitive-closure1.xp">
          <input name="management" href="management.xml"/>
       </xpath>

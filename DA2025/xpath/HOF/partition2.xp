@@ -1,0 +1,12 @@
+let $p := function($in,$length as xs:integer) {
+  partition(
+     tokenize($in), 
+     fn($partition, $next) {
+        sum(($partition, $next) ! string-length()) + count($partition) gt $length
+     }
+  ) =!> string-join(" ")
+}
+let $sentences := normalize-space(.) => tokenize("\.\s*") => filter(matches(?,"\S"))
+return
+  for $s in $sentences 
+      return $p($s,30) => string-join("&#xA;") => concat(".")
