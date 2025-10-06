@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tests QT4="https://raw.githubusercontent.com/qt4cg/qt4tests/refs/heads/master"
+   XSLT4="https://raw.githubusercontent.com/qt4cg/xslt40-test/refs/heads/master" title="XQuery">
+   <group name="Computed Nodes">
+      <xquery name="simple" href="compElement.xq"/>
+   </group>
+   <!--<group name="CSV Processing" href="CSV/">
+      <xpath name="csv1" href="csv1.xquery"/>
+      <xpath name="csv2" href="csv2.xquery"/>
+      <xpath name="csv3" href="csv3.xquery">
+         <input type="text" name="date/people/money" href="csv3.csv"/>
+         <input type="text" name="foo" href="csv3.csv"/>
+      </xpath>
+   </group>
+   <group name="Higher-Order" href="HOF/">
+      <xpath name="do-until() - Squares" href="do-until1.xp"/>
+      <xpath name="do-until() - Fibonacci" href="do-until2.xp"/>
+      <xpath name="partition() - group-together" href="partition1.xp"/>
+      <xpath name="partition() - line length" href="partition2.xp">
+         <input type="text" name="John 1" href="john1.txt"/>
+      </xpath>
+      <xpath name="partition() - line length (terser)" href="partition2a.xp">
+         <input type="text" name="John 1" href="john1.txt"/>
+      </xpath>
+      <xpath name="transitive-closure() - Reporting" href="transitive-closure1.xp">
+         <input type="xml" name="management" href="management.xml"/>
+      </xpath>
+   </group>
+-->
+</tests>
