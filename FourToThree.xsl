@@ -97,11 +97,16 @@
       <X:item-type name="{@name}" visibility="{@visibility otherwise 'private'}">
          <xsl:attribute name="as">
             <xsl:text>record(</xsl:text>
-            <xsl:for-each select="xsl:field" separator=", ">
-               <xsl:variable name="optional" as="xs:boolean" select="normalize-space(@required) = ('no', 'false', '0')"/> {@name}{'?'[$optional]} as {@as otherwise 'item()*'} </xsl:for-each>
+            <xsl:for-each select="xsl:field">
+               <xsl:variable name="optional" as="xs:boolean" select="normalize-space(@required) = ('no', 'false', '0')"/> {@name}{'?'[$optional]} as {(@as,'item()*')[1]}<xsl:if
+                  test="position() lt last()">
+                  <xsl:text>, </xsl:text>
+               </xsl:if>
+            </xsl:for-each>
             <xsl:if test="normalize-space(@extensible) = ('yes', 'true', '1')">
                <xsl:text>, *</xsl:text>
             </xsl:if>
+
             <xsl:text>)</xsl:text>
          </xsl:attribute>
       </X:item-type>
@@ -109,7 +114,7 @@
    <xsl:template match="xsl:record-type" mode="record-type-constructor" expand-text="yes">
       <xsl:if test="f:boolean((@constructor, 'true')[1])">
          <xsl:variable name="constructor">
-            <X:function name="{@name}" visibility="{(@visibility otherwise 'private')}">
+            <X:function name="{@name}" visibility="{(@visibility,'private')[1]}">
                <xsl:variable name="as" as="element()">
                   <X:temp as="{@name}"/>
                </xsl:variable>
@@ -118,8 +123,9 @@
                <!-- if the record type is extensible, choose a name for the options parameter -->
                <xsl:variable name="options-param" as="xs:string?">
                   <xsl:if test="normalize-space(@extensible) = ('yes', 'true', 'a')">
-                     <xsl:sequence select="('options', (1 to count(xsl:field)) ! `options{.}`)
-                  [not(. = current()/xsl:field/@name)][1]"/>
+                     <xsl:sequence select="
+                           ('options', (1 to count(xsl:field)) ! ('options' || .))
+                           [not(. = current()/xsl:field/@name)][1]"/>
                   </xsl:if>
                </xsl:variable>
 
@@ -130,7 +136,9 @@
                         <xsl:variable name="as" select="normalize-space((@as, 'item()*')[1])"/>
                         <xsl:variable name="optional" select="normalize-space(@required) = ('no', 'false', '0')"/>
                         <xsl:choose>
-                           <xsl:when test="not($optional)" select="$as"/>
+                           <xsl:when test="not($optional)">
+                              <xsl:sequence select="$as"/>
+                           </xsl:when>
                            <!-- for optional fields, amend the required type to allow () -->
                            <xsl:when test="matches($as, '[?*]$')">
                               <xsl:sequence select="$as"/>
@@ -187,6 +195,54 @@
 
    <xsl:template match="xsl:pipeline">
       <xsl:apply-templates select="." mode="pipeline"/>
+   </xsl:template>
+
+   <xsl:template match="xsl:for-each-group[@split-when]">
+      <xsl:variable name="split" select="@split-when"/>
+      <xsl:variable name="body">
+         <xsl:apply-templates select="node() except xsl:sort"/>
+      </xsl:variable>
+      <X:iterate select="tail(({@select}))">
+         <X:param name="this" select="head(({@select}))"/>
+         <X:param name="group" select="()"/>
+         <X:on-completion>
+            <X:variable name="current-group" select="$group"/>
+            <X:variable name="next" select="()"/>
+            <X:variable name="splits" select="$this ! ({$split})" as="xs:boolean"/>
+            <X:choose>
+               <X:when test="$splits">
+                  <xsl:sequence select="$body"/>
+                  <X:variable name="current-group" select="$this"/>
+                  <xsl:sequence select="$body"/>
+               </X:when>
+               <X:otherwise>
+                  <X:variable name="current-group" select="$group, $this"/>
+                  <xsl:sequence select="$body"/>
+               </X:otherwise>
+            </X:choose>
+         </X:on-completion>
+         <X:variable name="next" select="."/>
+         <X:variable name="splits" select="let $group := ($group,$this) return $this ! ({$split})" as="xs:boolean"/>
+         <X:choose>
+            <X:when test="$splits">
+               <X:variable name="current-group" select="$group"/>
+               <xsl:sequence select="$body"/>
+               <X:next-iteration>
+                  <X:with-param name="group" select="$this"/>
+                  <X:with-param name="this" select="$next"/>
+               </X:next-iteration>
+            </X:when>
+            <X:otherwise>
+               <X:next-iteration>
+                  <X:with-param name="group" select="$group, $this"/>
+                  <X:with-param name="this" select="$next"/>
+               </X:next-iteration>
+            </X:otherwise>
+         </X:choose>
+      </X:iterate>
+   </xsl:template>
+   <xsl:template match="xsl:for-each-group[@split-when]//*/@*">
+      <xsl:attribute name="{name()}" select=". => replace('current-group\(\)', '\$current-group')"/>
    </xsl:template>
 
    <xsl:template match="
@@ -402,7 +458,7 @@
             <xsl:apply-templates select="preceding-sibling::xsl:param" mode="#current"/>
             <xsl:choose>
                <xsl:when test="exists(@select)">
-                  <X:sequence select="{$definition/@name}({(preceding-sibling::xsl:param)!('$'||@name)=> string-join(',')},{@select})"/>
+                  <X:sequence select="{$definition/@name}({((preceding-sibling::xsl:param)!('$'||@name),@select)=> string-join(',')})"/>
                </xsl:when>
                <xsl:otherwise>
                   <X:variable>
