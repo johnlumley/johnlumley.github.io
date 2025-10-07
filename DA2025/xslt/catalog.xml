@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tests QT4="https://raw.githubusercontent.com/qt4cg/qt4tests/refs/heads/master"
-   XSLT4="https://raw.githubusercontent.com/qt4cg/xslt40-test/refs/heads/master">
+   XSLT4="https://raw.githubusercontent.com/qt4cg/xslt40-test/refs/heads/master"
+   title="XSLT">
    <xslt name="default-namespaces" href="test1.4.xsl">
       <input name="books"
          href="https://raw.githubusercontent.com/w3c/xslt30-test/refs/heads/master/tests/expr/for/for01.xml"

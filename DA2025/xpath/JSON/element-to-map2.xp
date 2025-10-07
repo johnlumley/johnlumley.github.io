@@ -1,0 +1,4 @@
+element-to-map(./*,
+    { 'plan': {'name': { 'layout': 'record' }},
+      'name-format' : 'local'
+    })
