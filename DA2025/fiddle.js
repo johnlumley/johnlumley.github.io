@@ -1,33 +1,51 @@
-function fiddle(input) {
-   alert('Input:'+input);
-getData()
-}
-async function getData() {
-  const url = "https://fiddle.basex.org/api/xquery";
-   let req = new Request(url, {
-      method: 'POST',
-      mode:'cors',
-      headers: {
-         query: '1+2'
-      }
-   });
-  try {
-    const response = await fetch(req);
-    if (!response.ok) {
-      throw new Error(`Response status: ${response.status}`);
-    }
 
-    const result = await response.json();
-    console.log(result);
-  } catch (error) {
-    console.error(error.message);
-  }
+async function baseX(query, context, resultPlace/*, place*/) {
+   const q = "(" + query + ") => serialize({'method':'adaptive'})";
+   const d = new FormData();
+   d.append('query', query);
+   d.append('context', context);
+   d.append('contextContentType', 'text');
+   let p = fetch(
+   'https://fiddle.basex.org/api/xquery', {
+      method: 'POST',
+      body: d,
+   }).then((response) => response.text());
+   p.then((txt) => {
+      const t = txt.replaceAll('""', "'");
+      const j = JSON.parse(t);
+      results(j.result,resultPlace);
+   })
+}
+
+function results(input, place) {
+   place.replaceChildren();
+   let r = document.createElement("pre");
+   r.textContent = input.length + " item" + (input.length != 1 ? "s" : "");
+   place.append(r);
+   input.forEach((item) => {
+      r = document.createElement("pre");
+      r.textContent = item.replaceAll('&#xA;', '\n');
+      place.append(r);
+   })
+}
+async function baseX2(query, context, result) {
+   /*const result = document.getElementById(resultID);*/
+   const q = "(" + query + ") => serialize({'method':'json'})";
+   const d = new FormData();
+   d.append('query', query);
+   d.append('context', context);
+   d.append('contextContentType', 'text');
+   let p = fetch(
+   'https://fiddle.basex.org/api/xquery', {
+      method: 'POST',
+      body: d,
+   }).then((response) => response.json());
+   p.then((json) => result.textContent = json.result);
 }
 async function setClipboard(text) {
-  const type = "text/plain";
-  const clipboardItemData = {
-    [type]: text,
-  };
-  const clipboardItem = new ClipboardItem(clipboardItemData);
-  await navigator.clipboard.write([clipboardItem]);
+   const type = "text/plain";
+   const clipboardItemData = {[type]: text,
+   };
+   const clipboardItem = new ClipboardItem(clipboardItemData);
+   await navigator.clipboard.write([clipboardItem]);
 }
