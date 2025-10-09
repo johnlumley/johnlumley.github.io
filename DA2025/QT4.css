@@ -22,8 +22,9 @@ span.selectAll {
    font-weight: normal;
 }
 #contextType {
-   font-size: small;
-   font-weight: bold;
+   font-size: smaller;
+   /*font-weight: bold;*/
    background-color: lightblue;
    color: white;
+   margin-bottom: 1em;
 }

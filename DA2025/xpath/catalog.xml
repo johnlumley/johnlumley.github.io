@@ -24,6 +24,9 @@
       </xpath>
    </group>
    <group name="JSON" href="JSON/">
+      <xpath name="lookup" href="lookup1.xp">
+         <input type="json" name="people" href="people.json"/>
+      </xpath>
       <xpath name="element-to-map()" href="element-to-map1.xp">
          <input type="xml" name="Simple" href="in1.xml"/>
          <input type="xml" name="Attributes" href="in2.xml"/>
@@ -38,7 +41,8 @@
    <group name="Maps" href="MAP/">
       <xpath name="map-build()" href="map-build1.xp"> </xpath>
       <xpath name="map-build() - index" href="map-build2.xp">
-         <input name="Prague" href="$XSLT4/tests/misc/docbook/prague2016mhk.xml"> </input>
+         <input name="Prague" type="xml" href="$XSLT4/tests/misc/docbook/prague2016mhk.xml"
+         > </input>
       </xpath>
    </group>
 
