@@ -1,5 +1,4 @@
 map:build(.//citation,
-function ($c) {
-   $c/ancestor::sect1[1]/title
-},
-data#1)
+   fn ($cit) { $cit/ancestor::sect1[1]/title },
+   data#1
+)
