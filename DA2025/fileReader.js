@@ -7,20 +7,21 @@ function addFileReader(input, output) {
    const fileX = document.getElementById(input);
    const out = document.getElementById(output);
    const fileName = document.getElementById(input + "Name");
-   fileX.addEventListener("change", () => {
-      const[file] = fileX.files;
-      fileX.value = ""; /*  Forces a subsequent read if no change in file chosen */
-      if (file) {
-         fileName.textContent = file.name;
-         const reader = new FileReader();
-         reader.addEventListener("load", () => {
-            out.value = reader.result;
-         });
-         reader.readAsText(file);
-      } else {
-         fileName.textContent = "";
-      }
-   })
+   if (fileX) { fileX.addEventListener("change", () => {
+         const[file] = fileX.files;
+         /*fileX.value = "";*/ /*  Forces a subsequent read if no change in file chosen */
+         if (file) {
+            fileName.textContent = file.name;
+            const reader = new FileReader();
+            reader.addEventListener("load", () => {
+               out.value = reader.result;
+            });
+            reader.readAsText(file);
+         } else {
+            fileName.textContent = "";
+         }
+      })
+   }
 }
 
 function addDrag(input, output) {
@@ -35,7 +36,7 @@ function addDrag(input, output) {
    });
    out.addEventListener("dragleave", (event) => {
       out.style.background = "white";
-       event.preventDefault();
+      event.preventDefault();
    });
    out.addEventListener("drop", (event) => {[...event.dataTransfer.items].forEach((item, i) => {
          // If dropped items aren't files, reject them
@@ -46,7 +47,7 @@ function addDrag(input, output) {
             reader.addEventListener("load", () => {
                out.value = reader.result;
             });
-            reader.readAsText(file,'UTF-8');
+            reader.readAsText(file, 'UTF-8');
          }
       });
       out.style.background = "white";
@@ -55,6 +56,6 @@ function addDrag(input, output) {
 }
 
 function toBase64(input) {
-    const u = new Uint8Array(input);
-    return u.toBase64();
+   const u = new Uint8Array(input);
+   return u.toBase64();
 }

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-   xmlns:map="http://www.w3.org/2005/xpath-functions/map" xmlns:saxon="http://saxon.sf.net/" xmlns:f="MyFunctions" xmlns:err="http://www.w3.org/2005/xqt-errors" xmlns:X="xslt2"
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+   xmlns:math="http://www.w3.org/2005/xpath-functions/math"
+   xmlns:map="http://www.w3.org/2005/xpath-functions/map" xmlns:saxon="http://saxon.sf.net/"
+   xmlns:f="MyFunctions" xmlns:err="http://www.w3.org/2005/xqt-errors" xmlns:X="xslt2"
    exclude-result-prefixes="xs X math f saxon" version="4.0" expand-text="true">
 
    <xsl:output method="xml" indent="true"/>
@@ -18,12 +21,16 @@
    <xsl:function name="f:err0010">
       <xsl:param name="context"/>
       <xsl:param name="content"/>
-      <xsl:sequence select="error(xs:QName('err:XTSE0010'), 'An ' || name($context) || ' element may not contain ' || string-join($content ! name(.), ',') || ' elements')"/>
+      <xsl:sequence
+         select="error(xs:QName('err:XTSE0010'), 'An ' || name($context) || ' element may not contain ' || string-join($content ! name(.), ',') || ' elements')"
+      />
    </xsl:function>
    <xsl:function name="f:err3185">
       <xsl:param name="context"/>
       <xsl:param name="attribute" as="xs:string"/>
-      <xsl:sequence select="error(xs:QName('err:XTSE3185'), 'An ' || name($context) || ' element with a ' || $attribute || ' attribute must be empty')"/>
+      <xsl:sequence
+         select="error(xs:QName('err:XTSE3185'), 'An ' || name($context) || ' element with a ' || $attribute || ' attribute must be empty')"
+      />
    </xsl:function>
    <xsl:function name="f:err3185">
       <xsl:param name="context"/>
@@ -43,7 +50,8 @@
             <xsl:sequence select="false()"/>
          </xsl:when>
          <xsl:otherwise>
-            <xsl:sequence select="error(xs:QName('err:XTSE0010'), $in || ' is not a valid boolean value')"/>
+            <xsl:sequence
+               select="error(xs:QName('err:XTSE0010'), $in || ' is not a valid boolean value')"/>
          </xsl:otherwise>
       </xsl:choose>
    </xsl:function>
@@ -57,6 +65,10 @@
       </xsl:try>
    </xsl:template>
 
+   <xsl:variable name="extNT" as="element()*">
+      <xsl:apply-templates select="/*" mode="collect-extension-named-templates"/>
+   </xsl:variable>
+
    <xsl:template match="xsl:stylesheet">
       <xsl:apply-templates mode="inclusions"/>
       <xsl:copy>
@@ -65,22 +77,28 @@
          </xsl:text>
          <xsl:comment>DO NOT EDIT - 
             generated from {base-uri(.)} at {current-dateTime()} by {system-property('xsl:product-version')}</xsl:comment>
-         <xsl:variable name="extension-element-prefixes" select="tokenize(@extension-element-prefixes)"/>
-         <xsl:variable name="extension-named-templates" select="xsl:template[contains(@name, ':') and substring-before(@name, ':') = $extension-element-prefixes]"/>
+         <xsl:comment>exNT: {$extNT/@name}</xsl:comment>
+<xsl:variable name="extension-element-prefixes"
+            select="tokenize(@extension-element-prefixes)"/>
+         <xsl:variable name="extension-named-templates"
+            select="xsl:template[contains(@name, ':') and substring-before(@name, ':') = $extension-element-prefixes]"/>
          <!--<xsl:comment>{$extension-named-templates/@name}</xsl:comment>-->
 
          <xsl:variable name="record-types" as="element()*">
             <xsl:apply-templates select="xsl:record-type" mode="record-type"/>
          </xsl:variable>
-         <xsl:variable name="item-types" select="map:merge((xsl:item-type, $record-types) ! map {@name: @as})"/>
+         <xsl:variable name="item-types"
+            select="map:merge((xsl:item-type, $record-types) ! map {@name: @as})"/>
          <xsl:apply-templates select="xsl:record-type" mode="record-type-constructor">
             <xsl:with-param name="item-types" as="map(*)" select="$item-types" tunnel="true"/>
          </xsl:apply-templates>
 
          <!-- <xsl:comment>item types: {map:keys($item-types)}</xsl:comment>-->
          <xsl:apply-templates>
-            <xsl:with-param name="extension-named-templates" select="map:merge($extension-named-templates ! map:entry(@name, .))" tunnel="true"/>
-            <xsl:with-param name="item-types" as="map(*)" select="$item-types" tunnel="true"/>
+            <!--<xsl:with-param name="extension-named-templates"
+               select="map:merge($extension-named-templates ! map:entry(@name, .))" tunnel="true"/>-->
+            <xsl:with-param name="extension-named-templates"
+               select="map:merge($extNT ! map:entry(@name, .))" tunnel="true"/><xsl:with-param name="item-types" as="map(*)" select="$item-types" tunnel="true"/>
          </xsl:apply-templates>
       </xsl:copy>
    </xsl:template>
@@ -98,8 +116,9 @@
          <xsl:attribute name="as">
             <xsl:text>record(</xsl:text>
             <xsl:for-each select="xsl:field">
-               <xsl:variable name="optional" as="xs:boolean" select="normalize-space(@required) = ('no', 'false', '0')"/> {@name}{'?'[$optional]} as {(@as,'item()*')[1]}<xsl:if
-                  test="position() lt last()">
+               <xsl:variable name="optional" as="xs:boolean"
+                  select="normalize-space(@required) = ('no', 'false', '0')"/>
+               {@name}{'?'[$optional]} as {(@as,'item()*')[1]}<xsl:if test="position() lt last()">
                   <xsl:text>, </xsl:text>
                </xsl:if>
             </xsl:for-each>
@@ -134,7 +153,8 @@
                   <X:param name="{@name}" required="{(@required,'yes')[1]}">
                      <xsl:attribute name="as">
                         <xsl:variable name="as" select="normalize-space((@as, 'item()*')[1])"/>
-                        <xsl:variable name="optional" select="normalize-space(@required) = ('no', 'false', '0')"/>
+                        <xsl:variable name="optional"
+                           select="normalize-space(@required) = ('no', 'false', '0')"/>
                         <xsl:choose>
                            <xsl:when test="not($optional)">
                               <xsl:sequence select="$as"/>
@@ -165,7 +185,8 @@
                <!-- function body: construct a map -->
                <X:map duplicates="fn($first, $second){{$first}}">
                   <xsl:for-each select="xsl:field">
-                     <xsl:variable name="optional" select="normalize-space(@required) = ('no', 'false', '0')"/>
+                     <xsl:variable name="optional"
+                        select="normalize-space(@required) = ('no', 'false', '0')"/>
                      <xsl:choose>
                         <xsl:when test="$optional and not(@default)">
                            <!-- omit map entries for optional fields if no value is supplied -->
@@ -204,11 +225,11 @@
       </xsl:variable>
       <X:iterate select="tail(({@select}))">
          <X:param name="this" select="head(({@select}))"/>
-         <X:param name="group" select="()"/>
+         <X:param name="group" select="(head(({@select})))"/>
          <X:on-completion>
             <X:variable name="current-group" select="$group"/>
             <X:variable name="next" select="()"/>
-            <X:variable name="splits" select="$this ! ({$split})" as="xs:boolean"/>
+            <X:variable name="splits" select="$this ! ({$split})" as="xs:boolean?"/>
             <X:choose>
                <X:when test="$splits">
                   <xsl:sequence select="$body"/>
@@ -222,7 +243,8 @@
             </X:choose>
          </X:on-completion>
          <X:variable name="next" select="."/>
-         <X:variable name="splits" select="let $group := ($group,$this) return $this ! ({$split})" as="xs:boolean"/>
+         <X:variable name="splits" select="let $group := ($group,$this) return $this ! ({$split})"
+            as="xs:boolean?"/>
          <X:choose>
             <X:when test="$splits">
                <X:variable name="current-group" select="$group"/>
@@ -364,7 +386,9 @@
                </xsl:for-each>
             </xsl:when>
             <xsl:otherwise>
-               <xsl:sequence select="error(xs:QName('err:XTSE0122'), '&quot;' || . || '&quot; is not a permitted form for a fixed-namespace token')"/>
+               <xsl:sequence
+                  select="error(xs:QName('err:XTSE0122'), '&quot;' || . || '&quot; is not a permitted form for a fixed-namespace token')"
+               />
             </xsl:otherwise>
          </xsl:choose>
       </xsl:for-each>
@@ -387,7 +411,9 @@
 
    <xsl:template match="xsl:mode[xsl:template]">
       <xsl:if test="empty(@name)">
-         <xsl:sequence select="error(xs:QName('err:XTSE4005'), 'An enclosing mode must have a @name attribute')"/>
+         <xsl:sequence
+            select="error(xs:QName('err:XTSE4005'), 'An enclosing mode must have a @name attribute')"
+         />
       </xsl:if>
       <xsl:comment use-when="$debug">Enclosing mode: {@name}</xsl:comment>
       <xsl:copy>
@@ -399,8 +425,10 @@
             <xsl:attribute name="mode" select="@name"/>
          </xsl:with-param>
          <xsl:with-param name="as" select="@as" as="attribute()?" tunnel="true"/>
-         <xsl:with-param name="xpath-default-namespace" select="@xpath-default-namespace" as="attribute()?" tunnel="true"/>
-         <xsl:with-param name="tunnel-parameters" as="element()*" select="xsl:note[@type eq 'tunnel-parameters']/xsl:param" tunnel="true"/>
+         <xsl:with-param name="xpath-default-namespace" select="@xpath-default-namespace"
+            as="attribute()?" tunnel="true"/>
+         <xsl:with-param name="tunnel-parameters" as="element()*"
+            select="xsl:note[@type eq 'tunnel-parameters']/xsl:param" tunnel="true"/>
       </xsl:apply-templates>
       <xsl:comment use-when="$debug">End mode: {@name}</xsl:comment>
    </xsl:template>
@@ -412,13 +440,19 @@
       <xsl:param name="tunnel-parameters" as="element()*" tunnel="true"/>
       <xsl:choose>
          <xsl:when test="empty(@match)">
-            <xsl:sequence select="error(xs:QName('err:XTSE4010'), 'A template within an enclosing mode must have @match attribute')"/>
+            <xsl:sequence
+               select="error(xs:QName('err:XTSE4010'), 'A template within an enclosing mode must have @match attribute')"
+            />
          </xsl:when>
          <xsl:when test="exists(@name)">
-            <xsl:sequence select="error(xs:QName('err:XTSE4010'), 'A template within an enclosing mode must not have a name=&quot;' || @name || '&quot; attribute')"/>
+            <xsl:sequence
+               select="error(xs:QName('err:XTSE4010'), 'A template within an enclosing mode must not have a name=&quot;' || @name || '&quot; attribute')"
+            />
          </xsl:when>
          <xsl:when test="exists(@mode)">
-            <xsl:sequence select="error(xs:QName('err:XTSE4010'), 'A template within an enclosing mode must not have a mode=&quot;' || @mode || '&quot; attribute. ')"/>
+            <xsl:sequence
+               select="error(xs:QName('err:XTSE4010'), 'A template within an enclosing mode must not have a mode=&quot;' || @mode || '&quot; attribute. ')"
+            />
          </xsl:when>
       </xsl:choose>
       <xsl:copy>
@@ -458,13 +492,17 @@
             <xsl:apply-templates select="preceding-sibling::xsl:param" mode="#current"/>
             <xsl:choose>
                <xsl:when test="exists(@select)">
-                  <X:sequence select="{$definition/@name}({((preceding-sibling::xsl:param)!('$'||@name),@select)=> string-join(',')})"/>
+                  <X:sequence
+                     select="{$definition/@name}({((preceding-sibling::xsl:param)!('$'||@name),@select)=> string-join(',')})"
+                  />
                </xsl:when>
                <xsl:otherwise>
                   <X:variable>
                      <xsl:sequence select="@* except @required, node()"/>
                   </X:variable>
-                  <X:sequence select="{$definition/@name}({(preceding-sibling::xsl:param|.)!('$'||@name)=> string-join(',')})"/>
+                  <X:sequence
+                     select="{$definition/@name}({(preceding-sibling::xsl:param|.)!('$'||@name)=> string-join(',')})"
+                  />
                </xsl:otherwise>
             </xsl:choose>
          </X:function>
@@ -496,6 +534,17 @@
    </xsl:template>
 
 
+   <xsl:mode name="collect-extension-named-templates" on-no-match="deep-skip"/>
+   <xsl:template match="xsl:stylesheet" mode="collect-extension-named-templates" as="element()*">
+      <xsl:variable name="extension-element-prefixes" select="tokenize(@extension-element-prefixes)"/>
+      <xsl:sequence
+         select="xsl:template[contains(@name, ':') and substring-before(@name, ':') = $extension-element-prefixes]"/>
+      <xsl:apply-templates
+         select="(xsl:include | xsl:import) ! doc(resolve-uri(@href, base-uri(.)))/*"
+         mode="#current"/>
+   </xsl:template>
+
+
    <xsl:mode name="extension-named-template" on-no-match="deep-skip"/>
    <xsl:template match="*" mode="extension-named-template">
       <xsl:param name="extension-named-templates" as="map(*)" tunnel="true"/>
@@ -509,7 +558,9 @@
       <xsl:param name="params" as="element()*"/>
       <xsl:variable name="param" select="$params[@name eq current()/name()]"/>
       <xsl:if test="empty($param)">
-         <xsl:sequence select="error(xs:QName('err:XTSE0680'), 'Template ' || ../name() || ', invoked as an extension instruction, does not have a parameter &quot;' || name() || '&quot;.')"/>
+         <xsl:sequence
+            select="error(xs:QName('err:XTSE0680'), 'Template ' || ../name() || ', invoked as an extension instruction, does not have a parameter &quot;' || name() || '&quot;.')"
+         />
       </xsl:if>
       <xsl:variable name="type" select="($param/@as, 'item()*')[1]"/>
       <xsl:choose>

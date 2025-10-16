@@ -5,7 +5,7 @@
       <xpath name="csv2" href="csv2.xquery"/>
       <xpath name="csv3" href="csv3.xquery">
          <input type="text" name="date/people/money" href="csv3.csv"/>
-         <input type="text" name="foo" href="csv3.csv"/>
+         <input type="text" name="larger" href="csv4.csv"/>
       </xpath>
    </group>
    <group name="Higher-Order" href="HOF/">
@@ -14,6 +14,7 @@
       <xpath name="partition() - group-together" href="partition1.xp"/>
       <xpath name="partition() - line length" href="partition2.xp">
          <input type="text" name="John 1" href="john1.txt"/>
+         <!--<input type="text" name="John" href="john.txt"/>-->
       </xpath>
       <xpath name="partition() - line length (terser)" href="partition2a.xp">
          <input type="text" name="John 1" href="john1.txt"/>
