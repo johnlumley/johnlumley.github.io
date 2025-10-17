@@ -25,6 +25,7 @@
    <group name="Callable" href="callable/">
       <xslt name="extension call" href="extensionCT.4.xsl">
          <input name="addition" href="complex1.xml"/>
+         <input name="prague" href="$XSLT4/tests/misc/docbook/prague2016mhk.xml"/>
       </xslt>
    </group>
    <xslt name="switch" href="test3.4.xsl">

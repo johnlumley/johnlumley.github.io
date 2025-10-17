@@ -3,7 +3,12 @@
    xmlns:f="MyFunctions" extension-element-prefixes="f" exclude-result-prefixes="#all" version="4.0">
 
    <xsl:template match="/">
-      <f:report code="123" message="boo" rest="1 to 5"/>
+      <output>
+         <f:report code="123" message="boo" rest="1 to 5"/>
+         <f:report code="456" message="hoo"/>
+         <f:report code="count(.//*)" message="!!!"/>
+         <f:report code="789" message="so there" rest=".//*[empty(*)]"/>
+      </output>
    </xsl:template>
 
    <xsl:template name="f:report" expand-text="yes">
@@ -13,7 +18,9 @@
       <report code="{$code}">
          <message>{$message}</message>
          <xsl:if test="exists($rest)">
-            <rest>{$rest}</rest>
+            <rest>
+               <xsl:sequence select="$rest"/>
+            </rest>
          </xsl:if>
       </report>
    </xsl:template>
