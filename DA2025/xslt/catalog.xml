@@ -1,17 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tests QT4="https://raw.githubusercontent.com/qt4cg/qt4tests/refs/heads/master"
    XSLT4="https://raw.githubusercontent.com/qt4cg/xslt40-test/refs/heads/master" title="XSLT">
-   <xslt name="default-namespaces" href="test1.4.xsl">
-      <input name="books"
-         href="https://raw.githubusercontent.com/w3c/xslt30-test/refs/heads/master/tests/expr/for/for01.xml"
-      />
-   </xslt>
-   <group name="enclosed mode">
-      <xslt name="enclosed mode" href="test2.4.xsl">
+   <group name="miscellaneous">
+      <xslt name="default-namespaces" href="test1.4.xsl">
+         <input name="books"
+            href="https://raw.githubusercontent.com/w3c/xslt30-test/refs/heads/master/tests/expr/for/for01.xml"
+         />
+      </xslt>
+   </group>
+   <group name="Mode" href="modes/">
+      <xslt name="enclosed mode" href="enclosed-mode.4.xsl">
          <input name="books" href="$QT4/op/union/bib2.xml"/>
          <input name="works" href="$QT4/op/is-same-node/works.xml"/>
          <input name="staff" href="$QT4/op/is-same-node/staff.xml"/>
          <input name="nw_Customers" href="$QT4/prod/AxisStep/nw_Customers.xml"/>
+      </xslt>
+   </group>
+   <group name="Item/Record type" href="record-type/">
+      <xslt name="complex numbers" href="complex.4.xsl">
+         <input name="addition" href="complex1.xml"/>
+         <input name="add/sub" href="complex2.xml"/>
+      </xslt>
+   </group>
+   <group name="Callable" href="callable/">
+      <xslt name="extension call" href="extensionCT.4.xsl">
+         <input name="addition" href="complex1.xml"/>
       </xslt>
    </group>
    <xslt name="switch" href="test3.4.xsl">
