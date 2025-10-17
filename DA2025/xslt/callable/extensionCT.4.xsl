@@ -6,8 +6,9 @@
       <output>
          <f:report code="123" message="boo" rest="1 to 5"/>
          <f:report code="456" message="hoo"/>
-         <f:report code="count(.//*)" message="!!!"/>
-         <f:report code="789" message="so there" rest=".//*[empty(*)]"/>
+         <xsl:variable name="leaf-nodes" select=".//*[empty(*)]"/>
+         <f:report code="count(.//*)" message="total nodes"/>
+         <f:report code="count($leaf-nodes)" message="leaf nodes" rest="$leaf-nodes"/>
       </output>
    </xsl:template>
 
