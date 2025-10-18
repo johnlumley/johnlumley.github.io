@@ -7,6 +7,8 @@
             href="https://raw.githubusercontent.com/w3c/xslt30-test/refs/heads/master/tests/expr/for/for01.xml"
          />
       </xslt>
+      <xslt name="initial template" href="test2.4.xsl"/>
+      <xslt name="error" href="test3.4.xsl"/>
    </group>
    <group name="Mode" href="modes/">
       <xslt name="enclosed mode" href="enclosed-mode.4.xsl">
@@ -28,12 +30,17 @@
          <input name="prague" href="$XSLT4/tests/misc/docbook/prague2016mhk.xml"/>
       </xslt>
    </group>
-   <xslt name="switch" href="test3.4.xsl">
-      <input name="months" href="test3.xml"/>
-      <input name="prague" href="$XSLT4/tests/misc/docbook/prague2016mhk.xml"/>
-   </xslt>
-   <xslt name="split-when" href="test4.4.xsl">
-      <input name="months" href="test3.xml"/>
-   </xslt>
+   <group name="Conditional" href="conditional/">
+      <xslt name="switch" href="switch.4.xsl">
+         <input name="months" href="../test3.xml"/>
+         <input name="prague" href="$XSLT4/tests/misc/docbook/prague2016mhk.xml"/>
+      </xslt>
+   </group>
+   <group name="Grouping" href="grouping/">
+      <xslt name="split-when" href="split-when.4.xsl"/>
+      <xslt name="line-wrap" href="line-wrap.4.xsl">
+         <input name="prague" href="$XSLT4/tests/misc/docbook/prague2016mhk.xml"/>
+      </xslt>
+   </group>
 
 </tests>
