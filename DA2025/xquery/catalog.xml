@@ -2,29 +2,45 @@
 <tests QT4="https://raw.githubusercontent.com/qt4cg/qt4tests/refs/heads/master"
    XSLT4="https://raw.githubusercontent.com/qt4cg/xslt40-test/refs/heads/master" title="XQuery">
    <group name="Computed Nodes">
-      <xquery name="simple" href="compElement.xq"/>
+      <xquery name="Computed element constructor" href="compElement.xq"/>
    </group>
-   <!--<group name="CSV Processing" href="CSV/">
-      <xpath name="csv1" href="csv1.xquery"/>
-      <xpath name="csv2" href="csv2.xquery"/>
-      <xpath name="csv3" href="csv3.xquery">
-         <input type="text" name="date/people/money" href="csv3.csv"/>
-         <input type="text" name="foo" href="csv3.csv"/>
-      </xpath>
+   <group name="Declared Context">
+      <xquery name="Computed element constructor" href="declare-context.xq"/>
    </group>
-   <group name="Higher-Order" href="HOF/">
-      <xpath name="do-until() - Squares" href="do-until1.xp"/>
-      <xpath name="do-until() - Fibonacci" href="do-until2.xp"/>
-      <xpath name="partition() - group-together" href="partition1.xp"/>
-      <xpath name="partition() - line length" href="partition2.xp">
-         <input type="text" name="John 1" href="john1.txt"/>
-      </xpath>
-      <xpath name="partition() - line length (terser)" href="partition2a.xp">
-         <input type="text" name="John 1" href="john1.txt"/>
-      </xpath>
-      <xpath name="transitive-closure() - Reporting" href="transitive-closure1.xp">
-         <input type="xml" name="management" href="management.xml"/>
-      </xpath>
+   <group name="Enums" href="enums/">
+      <xquery name="Declare enum" href="enumeration-type.xq"/>
+      <xquery name="Enums in arguments" href="enumeration-types-convert.xq"/>
+      <xquery name="Enum in my:rect" href="record-with-enum.xq"/>
    </group>
--->
+   <group name="Declare Record" href="record/">
+      <xpath name="Declare rectangle record 1" href="my-rect-1.xq"/>
+      <xpath name="Declare rectangle record 2" href="my-rect-2.xq"/>
+      <xpath name="Declare rectangle record 3" href="my-rect-3.xq"/>
+   </group>
+   <group name="Functions in no Namespace" href="no-ns-fn/">
+      <xpath name="Function and variable namespaces" href="declare-fn-no-ns-1.xq"/>
+      <xpath name="A Function in no namespace 1" href="declare-fn-no-ns-2.xq"/>
+      <xpath name="A better sum 1" href="better-sum-1.xq"/>
+      <xpath name="A better sum 2" href="better-sum-2.xq"/>
+      <xpath name="A better sum 3" href="better-sum-3.xq"/>
+      <xpath name="A better sum 4" href="better-sum-4.xq"/>
+   </group>
+   <group name="Quality of life keywords" href="filter/">
+      <xquery name="follows person" href="follows.xq">
+         <input type="text" name="People in the Room" href="room.xml"/>
+      </xquery>
+      <xquery name="follows person (keyword)" href="follows2.xq">
+         <input type="text" name="People in the Room" href="room.xml"/>
+      </xquery>
+      <xquery name="preceding person" href="preceding.xq">
+         <input type="text" name="People in the Room" href="room.xml"/>
+      </xquery>
+      <xquery name="preceding person (keyword)" href="preceding2.xq">
+         <input type="text" name="People in the Room" href="room.xml"/>
+      </xquery>
+      <xquery name="is-not person" href="is-not.xq">
+         <input type="text" name="People in the Room" href="room.xml"/>
+      </xquery>
+   </group>
+   
 </tests>
