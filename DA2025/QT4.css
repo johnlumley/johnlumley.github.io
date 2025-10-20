@@ -45,9 +45,16 @@ div.intro {
    color: red;
 }
 #run:disabled {
-   cursor:default;
+   cursor: default;
 }
 #run:enabled {
    background-color: green;
    color: white;
+}
+#problem {
+   background-color: rgb(241 245 249);
+   font-size: smaller;
+}
+.problem {
+   color: red;
 }
