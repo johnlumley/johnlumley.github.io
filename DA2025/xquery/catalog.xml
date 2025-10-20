@@ -8,7 +8,7 @@
       <xquery name="Computed element constructor" href="declare-context.xq"/>
    </group>
    <group name="Enums" href="enums/">
-      <xquery name="Declare enum" href="enumeration-type.xq"/>
+      <xquery name="Declare enum" href="enumeration-types.xq"/>
       <xquery name="Enums in arguments" href="enumeration-types-convert.xq"/>
       <xquery name="Enum in my:rect" href="record-with-enum.xq"/>
    </group>
@@ -27,19 +27,19 @@
    </group>
    <group name="Quality of life keywords" href="filter/">
       <xquery name="follows person" href="follows.xq">
-         <input type="text" name="People in the Room" href="room.xml"/>
+         <input type="xml" name="People in the Room" href="room.xml"/>
       </xquery>
       <xquery name="follows person (keyword)" href="follows2.xq">
-         <input type="text" name="People in the Room" href="room.xml"/>
+         <input type="xml" name="People in the Room" href="room.xml"/>
       </xquery>
       <xquery name="preceding person" href="preceding.xq">
-         <input type="text" name="People in the Room" href="room.xml"/>
+         <input type="xml" name="People in the Room" href="room.xml"/>
       </xquery>
       <xquery name="preceding person (keyword)" href="preceding2.xq">
-         <input type="text" name="People in the Room" href="room.xml"/>
+         <input type="xml" name="People in the Room" href="room.xml"/>
       </xquery>
       <xquery name="is-not person" href="is-not.xq">
-         <input type="text" name="People in the Room" href="room.xml"/>
+         <input type="xml" name="People in the Room" href="room.xml"/>
       </xquery>
    </group>
    
