@@ -18,8 +18,8 @@
       <xpath name="partition() - group-together" href="partition1.xp"/>
       <xpath name="line-wrapping" href="line-wrap-1.xp">
          <problem>Line wrap a string using the <spec-link ref="func-partition"
-               >partition()</spec-link> function. The input to <code>$line-wrap()</code> is supplied as a non-empty normalized
-            string.</problem>
+               >partition()</spec-link> function. The input to <code>$line-wrap()</code> is supplied
+            as a non-empty normalized string.</problem>
          <input type="text" name="John 1" href="john1.txt"/>
       </xpath>
       <xpath name="line-wrapping solution" href="line-wrap-2.xp">
@@ -55,6 +55,11 @@
       <xpath name="map-build() - index" href="map-build2.xp">
          <input name="Prague" type="xml" href="$XSLT4/tests/misc/docbook/prague2016mhk.xml"
          > </input>
+      </xpath>
+      <xpath name="map-merge()" href="map-merge-1.xp">
+         <problem>Explore how <spec-link ref="func-map-build">map:build()</spec-link>, <spec-link
+               ref="func-map-build">map:entries()</spec-link> and <spec-link ref="func-map-build"
+               >map:merge()</spec-link> are related</problem>
       </xpath>
    </group>
 
