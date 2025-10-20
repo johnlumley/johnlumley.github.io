@@ -1,0 +1,10 @@
+let $line-wrap := function($in as xs:string,$length as xs:integer) {
+  partition(
+     (: input splitting :), 
+     (: split-when function($partion,$next, $pos) :)
+  ) (: anything else ? :)
+}
+let $sentences := normalize-space(.) => tokenize("\.\s*") => filter(matches(?,"\S"))
+return
+  for $s in $sentences 
+      return $line-wrap($s,30) => string-join("&#xA;") => concat(".")

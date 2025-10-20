@@ -1,5 +1,9 @@
 <tests QT4="https://raw.githubusercontent.com/qt4cg/qt4tests/refs/heads/master"
-   XSLT4="https://raw.githubusercontent.com/qt4cg/xslt40-test/refs/heads/master" title="XQuery">
+   XSLT4="https://raw.githubusercontent.com/qt4cg/xslt40-test/refs/heads/master"
+   SPEC="https://qt4cg.org/specifications/xpath-functions-40/Overview.html" title="XQuery">
+   <group name="General" href="general/">
+      <xpath name="argument keywords" href="keywords.xp"/>
+   </group>
    <group name="CSV Processing" href="CSV/">
       <xpath name="csv1" href="csv1.xquery"/>
       <xpath name="csv2" href="csv2.xquery"/>
@@ -12,11 +16,18 @@
       <xpath name="do-until() - Squares" href="do-until1.xp"/>
       <xpath name="do-until() - Fibonacci" href="do-until2.xp"/>
       <xpath name="partition() - group-together" href="partition1.xp"/>
-      <xpath name="partition() - line length" href="partition2.xp">
+      <xpath name="line-wrapping" href="line-wrap-1.xp">
+         <problem>Line wrap a string using the <spec-link ref="func-partition"
+               >partition()</spec-link> function. The input to <code>$line-wrap()</code> is supplied as a non-empty normalized
+            string.</problem>
          <input type="text" name="John 1" href="john1.txt"/>
-         <!--<input type="text" name="John" href="john.txt"/>-->
       </xpath>
-      <xpath name="partition() - line length (terser)" href="partition2a.xp">
+      <xpath name="line-wrapping solution" href="line-wrap-2.xp">
+         <problem>This is a potential solution. See if you can make the processing of the sentences
+            as a whole more terse.</problem>
+         <input type="text" name="John 1" href="john1.txt"/>
+      </xpath>
+      <xpath name="line-wrapping solution (terser)" href="line-wrap-3.xp">
          <input type="text" name="John 1" href="john1.txt"/>
       </xpath>
       <xpath name="transitive-closure() - Reporting" href="transitive-closure1.xp">
