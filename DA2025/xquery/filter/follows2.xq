@@ -1,0 +1,1 @@
+/room/person[. follows "Karen"]

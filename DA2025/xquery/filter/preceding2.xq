@@ -1,0 +1,1 @@
+/room/person[. is-not "Karen"]
