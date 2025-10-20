@@ -1,4 +1,4 @@
-let $p := function($in,$length as xs:integer) {
+let $line-wrap-:= function($in,$length as xs:integer) {
   partition(
      tokenize($in), 
      fn($partition, $next) {
@@ -8,4 +8,4 @@ let $p := function($in,$length as xs:integer) {
 }
 return 
    (normalize-space(.) => tokenize("\.\s*") => filter(matches(?,"\S"))) !
-   ($p(.,30) => string-join("&#xA;") => concat("."))
+   ($line-wrap(.,30) => string-join("&#xA;") => concat("."))
