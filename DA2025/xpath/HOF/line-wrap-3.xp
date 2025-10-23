@@ -7,5 +7,12 @@ let $line-wrap-:= function($in,$length as xs:integer) {
   ) =!> string-join(" ")
 }
 return 
-   (normalize-space(.) => tokenize("\.\s*") => filter(matches(?,"\S"))) !
-   ($line-wrap(.,30) => string-join("&#xA;") => concat("."))
+   (
+    normalize-space(.) 
+    => tokenize("\.\s*") 
+    => filter(matches(?,"\S"))
+   ) ! (
+    $line-wrap(.,30) 
+    => string-join("&#xA;") 
+    => concat(".")
+   )

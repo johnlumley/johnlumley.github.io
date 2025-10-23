@@ -15,7 +15,7 @@
       <xsl:variable name="t" select="string-join(text(), ' ')"/>
       <xsl:variable name="lines" as="xs:string*">
          <xsl:for-each-group select="tokenize($t, '\s+')"
-            split-when="sum(($group, $next) ! string-length()) + count($group) gt $length">
+            split-when="($group, $next) ! string-length() => sum() + count($group) gt $length">
             <xsl:sequence select="string-join(current-group(), ' ') || '&#xA;'"/>
          </xsl:for-each-group>
       </xsl:variable>

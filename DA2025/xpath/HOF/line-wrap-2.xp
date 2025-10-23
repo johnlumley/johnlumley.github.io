@@ -6,7 +6,11 @@ let $line-wrap := function($in,$length as xs:integer) {
      }
   ) =!> string-join(" ")
 }
-let $sentences := normalize-space(.) => tokenize("\.\s*") => filter(matches(?,"\S"))
+let $sentences := normalize-space(.)
+    => tokenize("\.\s*") 
+    => filter(matches(?,"\S"))
 return
   for $s in $sentences 
-      return $line-wrap($s,30) => string-join("&#xA;") => concat(".")
+      return $line-wrap($s,30) 
+             => string-join("&#xA;")
+             => concat(".")

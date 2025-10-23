@@ -17,6 +17,9 @@ span.selectAll {
    background-color: lightblue;
    color: white;
 }
+#result > *.caution:first-child {
+   color: red;
+}
 #result > *.error {
    background-color: red;
    font-weight: normal;
@@ -54,7 +57,9 @@ div.intro {
 #problem {
    background-color: rgb(241 245 249);
    font-size: smaller;
+   width: 50%;
 }
 .problem {
    color: red;
+  
 }
