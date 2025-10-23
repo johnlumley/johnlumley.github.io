@@ -1,0 +1,26 @@
+let $words := .//para 
+    =!> normalize-space() 
+    =!> tokenize() 
+    =!> replace('\(|\)|\.|,|"','')
+    => filter(matches(?,'\S'))
+let $lcase := $words =!> lower-case()
+let $distinct := distinct-values($words)
+let $longest := max($distinct =!> string-length())
+return
+($longest, count($distinct), $distinct[string-length(.) eq $longest],
+( 
+  map:build($distinct,
+     identity#1,
+     fn ($w) {let $lc := lower-case($w) 
+            return count($lcase[. eq $lc])}
+  ) 
+  => map:entries()
+  => sort-with(fn($x,$y) {if($x?* gt $y?*) then -1 else 0})
+  => subsequence(1,20)
+) ! (
+  let $k := map:keys(.)
+  return 
+     (replicate(' ', ($longest - string-length($k))), $k, " ", string(.?*)) 
+      => string-join()
+)
+)

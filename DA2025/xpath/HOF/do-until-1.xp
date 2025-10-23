@@ -1,0 +1,5 @@
+do-until(
+  (),
+  fn($value, $pos) { $value, $pos * $pos },
+  fn($value) { foot($value) > 50  }
+)
