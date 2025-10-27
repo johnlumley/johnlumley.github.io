@@ -5,12 +5,17 @@
       <xquery name="Computed element constructor" href="compElement.xq"/>
    </group>
    <group name="Declared Context">
-      <xquery name="Computed element constructor" href="declare-context.xq"/>
+      <xquery name="Declared Context with default" href="declare-context.xq">
+         <input type="xml" name="People in the Room" href="filter/room.xml"/>
+      </xquery>
    </group>
    <group name="Enums" href="enums/">
-      <xquery name="Declare enum" href="enumeration-types.xq"/>
-      <xquery name="Enums in arguments" href="enumeration-types-convert.xq"/>
-      <xquery name="Enum in my:rect" href="record-with-enum.xq"/>
+      <xquery name="Declare an enum type" href="enumeration-types.xq"/>
+      <xquery name="Enums in arguments 1" href="my-unit-convert-1.xq"/>
+      <xquery name="Enums in arguments 2" href="my-unit-convert-2.xq"/>
+      <xquery name="Enum in my:rect 1" href="record-with-enum-1.xq"/>
+      <xquery name="Enum in my:rect 2" href="record-with-enum-2.xq"/>
+      <xquery name="Enum in my:rect 3" href="record-with-enum-3.xq"/>
    </group>
    <group name="Declare Record" href="record/">
       <xpath name="Declare rectangle record 1" href="my-rect-1.xq"/>

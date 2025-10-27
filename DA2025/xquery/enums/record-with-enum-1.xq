@@ -17,21 +17,17 @@ declare record my:rect(
   length as xs:decimal,
   width as xs:decimal,
   unit as my:unit,
-  convert as fn($to as my:unit) as xs:decimal := fn {
-    let $factor := my:factor(?unit, $to)
-    return my:rect(?length * $factor,  ?width * $factor, $to)
+  area as fn(my:rect) as xs:decimal := fn {
+    ?length × ?width
   },
-  area as fn() as xs:decimal := fn {
-    ?length * ?width
-  }
-  describe as fn() as xs:string := fn {
-    `A rectangle with length {?length} {?unit}, width {?width} {?unit} and an area of {. =?> area()} square {?unit}`
+  convert as fn(my:rect, my:unit) as xs:decimal := fn($rect, $to) {
+    (: use my:factor to convert the lenght and widht of my:rect to a different unit :)
+    (: return a modified version of my:rect by using a series of map:put :)
   }
 );
 
 let $pool := my:rect(50.0, 30.0, "metres")
 
-return (
-  $pool =?> describe(),
-  $pool =?> convert("yards") =?> describe()
-)
+return $pool
+  =?> convert("yards")
+  =?> area()
