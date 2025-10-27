@@ -17,18 +17,21 @@
       <xpath name="do-until() - Squares" href="do-until-1.xp"/>
       <xpath name="do-until() - Fibonacci" href="do-until-2.xp"/>
       <xpath name="partition() - group-together" href="partition-1.xp"/>
-      <xpath name="line-wrapping" href="line-wrap-1.xp">
-         <problem>Line wrap a string using the <spec-link ref="func-partition"
-               >partition()</spec-link> function. The input to <code>$line-wrap()</code> is supplied
+      <xpath name="partition() - line-wrapping" href="line-wrap-1.xp">
+         <problem>Line wrap each of the sentences using the <spec-link ref="func-partition"
+               >partition()</spec-link> function. The input to <code>$line-wrap()</code> for each sentence is supplied
             as a non-empty normalized string.</problem>
          <input type="text" name="John 1" href="john1.txt"/>
       </xpath>
-      <xpath name="line-wrapping solution" href="line-wrap-2.xp">
-         <problem>This is a potential solution. See if you can make the processing of the sentences
-            as a whole more terse.</problem>
+      <xpath name="partition() - line-wrapping" href="line-wrap-2.xp">
+         <!--<problem>Line wrap a string using the <spec-link ref="func-partition"
+               >partition()</spec-link> function. The input to <code>$line-wrap()</code> is supplied
+            as a non-empty normalized string.</problem>-->
+         <solution>This is a potential solution. See if you can make the processing of the sentences
+            as a whole more terse.</solution>
          <input type="text" name="John 1" href="john1.txt"/>
       </xpath>
-      <xpath name="line-wrapping solution (terser)" href="line-wrap-3.xp">
+      <xpath solution="" name="partition() - line-wrapping (terser)" href="line-wrap-3.xp">
          <input type="text" name="John 1" href="john1.txt"/>
       </xpath>
       <xpath name="transitive-closure() - Reporting" href="transitive-closure-1.xp">
@@ -58,18 +61,17 @@
       </xpath>
       <xpath name="map-build() - frequency analysis" href="frequency-1.xp">
          <problem>
-            <table>
-               <tr>
-                  <td>Build a 'bar-chart' of the 20 most frequent  words
-                     appearing in <code>para</code> elements (in descending order). Display it in a format
-                     like:<pre> the:****** 19
-JSON:**** 13
-</pre> where each star represents three occurrences of the word.</td>
-                  <td>You may find <spec-link ref="func-map-build">map:build()</spec-link>,
-                        <spec-link ref="func-sort-with">sort-with()</spec-link> and <spec-link
-                        ref="func-replicate">replicate()</spec-link> useful. </td>
-               </tr>
-            </table>
+            <div>Build a 'bar-chart' of the 20 most frequent words appearing in non-empty
+               <code>para</code> elements (in descending order). Display it in a format
+               like:<pre>  to ***************************** 89
+ and **************** 48
+ for ************* 41
+JSON ************* 40
+</pre> where each star represents three occurrences of the word.</div>
+            <div>You may find <spec-link ref="func-map-build">map:build()</spec-link>, <spec-link
+                  ref="func-sort-with">sort-with()</spec-link> and <spec-link ref="func-replicate"
+                  >replicate()</spec-link> useful. <p>We would probably produce SVG, but this
+                  example focusses on the XPath processing</p></div>
          </problem>
          <input name="Prague local" type="xml" href="mhk.xml"/>
          <!--<input name="Prague" type="xml" href="$XSLT4/tests/misc/docbook/prague2016mhk.xml"/>-->

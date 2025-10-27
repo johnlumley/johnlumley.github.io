@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tests QT4="https://raw.githubusercontent.com/qt4cg/qt4tests/refs/heads/master"
-   XSLT4="https://raw.githubusercontent.com/qt4cg/xslt40-test/refs/heads/master" title="XSLT">
+   XSLT4="https://raw.githubusercontent.com/qt4cg/xslt40-test/refs/heads/master"
+   SPEC-XSLT4="https://qt4cg.org/specifications/xslt-40/Overview.html"
+   SPEC-FO4="https://qt4cg.org/specifications/xpath-functions-40/Overview.html" title="XSLT">
+
    <group name="Structure" href="structure/">
       <xslt name="default-namespaces" href="default-namespaces.4.xsl"/>
       <!-- <xslt name="initial template" href="test2.4.xsl"/>
       <xslt name="error" href="test3.4.xsl"/>-->
    </group>
+
    <group title="Template Rules">
       <group name="Mode" href="modes/">
          <xslt name="enclosed mode" href="enclosed-mode.4.xsl">
@@ -16,6 +20,7 @@
          </xslt>
       </group>
    </group>
+
    <group title="Types">
       <group name="Item/Record type" href="record-type/">
          <xslt name="complex numbers" href="complex.4.xsl">
@@ -24,21 +29,71 @@
          </xslt>
       </group>
    </group>
+
    <group name="Callable" href="callable/">
       <xslt name="extension call" href="extensionCT.4.xsl">
          <input name="addition" href="complex1.xml"/>
          <input name="prague" href="$XSLT4/tests/misc/docbook/prague2016mhk.xml"/>
       </xslt>
    </group>
+
    <group name="Conditional" href="conditional/">
       <xslt name="switch" href="switch.4.xsl">
          <input name="months" href="../test3.xml"/>
+      </xslt>
+   </group>
+
+   <group name="Grouping" href="grouping/">
+      <xslt name="split-when" href="split-when.4.xsl"/>
+      <xslt name="split-when: line-wrap" href="line-wrap-1.4.xsl">
+         <problem>
+            <div>Use <spec-xslt ref="xsl-for-each-group">xsl:for-each-group[@split-when]</spec-xslt>
+               to line-wrap each <code>para</code> in the input, producing output like:
+               <pre>The exercise demonstrates that the
+absence of parent or ancestor axes in
+the native representation of JSON means
+...
+
+JSON has become a significant
+alternative to XML as a syntax for data
+...
+</pre></div>
+         </problem>
+         <input name="prague" href="$XSLT4/tests/misc/docbook/prague2016mhk.xml"/>
+      </xslt>
+      <xslt solution="" name="split-when: line-wrap" href="line-wrap-2.4.xsl">
          <input name="prague" href="$XSLT4/tests/misc/docbook/prague2016mhk.xml"/>
       </xslt>
    </group>
-   <group name="Grouping" href="grouping/">
-      <xslt name="split-when" href="split-when.4.xsl"/>
-      <xslt name="line-wrap" href="line-wrap.4.xsl">
+
+   <group name="Arrays" href="array/">
+      <xslt name="array with for-each" href="array-1.4.xsl"/>
+      <xslt name="array with for-each 2" href="array-2.4.xsl">
+         <problem>
+            <div>Use <spec-xslt ref="array-construction">xsl:array</spec-xslt> with
+               <code>@for-each</code> to generate lists of duplicate words for each
+               <code>para</code>, e.g. <pre><![CDATA[<output>
+   <duplicates para="1">and by it The to of for</duplicates>
+   <duplicates para="2">are and the by transforming JSON</duplicates>
+</output>]]></pre></div>
+            <div>You may find the 'parallel' functions to new ones in F&amp;O: <spec-link
+                  ref="func-duplicate-values">f:duplicate-values()</spec-link> and <spec-link
+                  ref="func-array-members">ar:members()</spec-link> helpful.</div>
+         </problem>
+         <input name="prague" href="$XSLT4/tests/misc/docbook/prague2016mhk.xml"/>
+      </xslt>
+      <xslt solution="" name="array with for-each 2" href="array-3.4.xsl">
+         <problem>
+            <div>Use <spec-xslt ref="array-construction">xsl:array</spec-xslt> with
+               <code>@for-each</code> to generate lists of duplicate words for each
+               <code>para</code>, e.g. <pre><![CDATA[<output>
+   <duplicates para="1">and by it The to of for</duplicates>
+   <duplicates para="2">are and the by transforming JSON</duplicates>
+</output>]]></pre></div>
+            <div>You may find the 'parallel' functions to new ones in F&amp;O: <spec-link
+                  ref="func-duplicate-values">f:duplicate-values()</spec-link> and <spec-link
+                     ref="func-array-members">ar:members()</spec-link> helpful.</div>
+         </problem>
          <input name="prague" href="$XSLT4/tests/misc/docbook/prague2016mhk.xml"/>
       </xslt>
    </group>
