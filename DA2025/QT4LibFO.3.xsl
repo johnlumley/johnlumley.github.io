@@ -19,7 +19,7 @@
                 version="4.0"
                 expand-text="yes">            
          <!--DO NOT EDIT - 
-            generated from file:/D:/Saxonica/InvisibleXML/Mine/DA2025/QT4LibFO.4.xsl at 2025-10-26T13:42:48.1231886Z by EE 12.5--><!--exNT: -->
+            generated from file:/D:/Saxonica/InvisibleXML/Mine/DA2025/QT4LibFO.4.xsl at 2025-10-27T17:04:15.0903669Z by EE 12.4--><!--exNT: f:system-details f:set-value f:set-style f:enable f:disable f:code-and-input-->
 
    <!-- A library of XPath 4.0 mimicking functions for use in XPath 3.1 situations -->
    <xsl:function name="f:identity" as="item()?">
@@ -97,14 +97,14 @@
       <xsl:sequence select="$map?*"/>
    </xsl:function>
    <!--Defaulting function: ar:build-->
-   <xsl:function name="ar:build" as="map(*)*">
+   <xsl:function name="ar:build" as="array(*)">
       <xsl:param name="input" as="item()*"/>
       <xsl:sequence select="ar:build($input,f:identity#1)"/>
    </xsl:function>
-   <xsl:function name="ar:build" as="map(*)*">
+   <xsl:function name="ar:build" as="array(*)">
       <xsl:param name="input" as="item()*"/>
       <xsl:param name="action" as="function(item(), xs:integer) as item()*"/>
-      <xsl:sequence select="             ar:of-members(             f:for-each($input,             function ($item, $pos) {                map {'value': $action($item, $pos)}             }             )             )"/>
+      <xsl:sequence select="             f:for-each($input,             function ($item, $pos) {                map {'value': $action($item, $pos)}             }             ) =&gt; ar:of-members()"/>
    </xsl:function>
    <xsl:function name="ar:empty" as="xs:boolean">
       <xsl:param name="array" as="array(*)"/>

@@ -35,6 +35,46 @@
          <input name="addition" href="complex1.xml"/>
          <input name="prague" href="$XSLT4/tests/misc/docbook/prague2016mhk.xml"/>
       </xslt>
+      <xslt name="Extension Instructions" href="extensionCT-1.4.xsl">
+         <problem>
+            <div>Use <spec-xslt ref="invoking-templates-with-extension-instructions">extension
+                  instructions</spec-xslt> to construct a series of directories using the named
+               template <code>f:directory</code>. Output should be similar to: <pre><![CDATA[<directories>
+ <directory country="UK" fields="ContactName Phone">
+  <entry>Ann Devon -- (171) 555-0297</entry>
+  <entry>Elizabeth Brown -- (171) 555-2282</entry>
+  ...
+ </directory>
+ <directory country="France" fields="ContactName Phone">
+  <entry>Daniel Tonini -- 30.59.84.10</entry>
+  <entry>Janine Labrune -- 40.67.88.88</entry>
+  ...
+ </directory>
+ <directory country="Germany" fields="City">
+  <entry>Berlin</entry>
+  <entry>Mannheim</entry>
+  <entry>Aachen</entry>
+  ...
+ </directory>
+</directories>]]></pre>
+            </div>
+            <div>
+               <p>For UK and France we want a sorted list of contact name and phone but <i>don't
+                     want any managers!</i> and for Germany we just want the cities we have contacts
+                  in </p>
+               <p>You'll have to set the types of the parameters and calling attribute arguments to
+                  get the correct effect.</p>
+               <p>This isn't perhaps the most efficient method and we have used
+                  <code>xsl:evaluate</code>, but this is showing how extension instructions can be
+                  very compact named template calls</p>
+            </div>
+         </problem>
+         <input name="customers" href="../customers.xml"/>
+         <!--<input name="prague" href="$XSLT4/tests/misc/docbook/prague2016mhk.xml"/>-->
+      </xslt>
+      <xslt solution="" name="Extension Instructions" href="extensionCT-2.4.xsl">
+         <input name="customers" href="../customers.xml"/>
+      </xslt>
    </group>
 
    <group name="Conditional" href="conditional/">
