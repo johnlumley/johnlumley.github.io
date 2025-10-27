@@ -1,1 +1,1 @@
-/room/person[. << "Karen"]
+/room/person[. << /room/persong[@id eq "Karen"]]

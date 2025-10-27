@@ -1,5 +1,5 @@
-declare declare variable $local:thing := "This is";
-declare declare variable $thing := "another value";
+declare variable $local:thing := "This is";
+declare variable $thing := "another value";
 
 declare function render ($things as xs:string*) as xs:string {
   string-join($things, "")
