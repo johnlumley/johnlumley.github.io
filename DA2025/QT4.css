@@ -61,5 +61,10 @@ div.intro {
 }
 .problem {
    color: red;
-  
+
+}
+details.problem > table,
+details.problem > summary {
+   color: black;
+   background-color: rgb(241 245 249);
 }
