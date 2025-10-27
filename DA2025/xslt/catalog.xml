@@ -68,7 +68,7 @@ alternative to XML as a syntax for data
 
    <group name="Arrays" href="array/">
       <xslt name="array with for-each" href="array-1.4.xsl"/>
-      <xslt name="array with for-each 2" href="array-2.4.xsl">
+      <xslt name="array/@for-each - duplicate words" href="array-2.4.xsl">
          <problem>
             <div>Use <spec-xslt ref="array-construction">xsl:array</spec-xslt> with
                <code>@for-each</code> to generate lists of duplicate words for each
@@ -82,18 +82,7 @@ alternative to XML as a syntax for data
          </problem>
          <input name="prague" href="$XSLT4/tests/misc/docbook/prague2016mhk.xml"/>
       </xslt>
-      <xslt solution="" name="array with for-each 2" href="array-3.4.xsl">
-         <problem>
-            <div>Use <spec-xslt ref="array-construction">xsl:array</spec-xslt> with
-               <code>@for-each</code> to generate lists of duplicate words for each
-               <code>para</code>, e.g. <pre><![CDATA[<output>
-   <duplicates para="1">and by it The to of for</duplicates>
-   <duplicates para="2">are and the by transforming JSON</duplicates>
-</output>]]></pre></div>
-            <div>You may find the 'parallel' functions to new ones in F&amp;O: <spec-link
-                  ref="func-duplicate-values">f:duplicate-values()</spec-link> and <spec-link
-                     ref="func-array-members">ar:members()</spec-link> helpful.</div>
-         </problem>
+      <xslt solution="" name="array/@for-each - duplicate words" href="array-3.4.xsl">
          <input name="prague" href="$XSLT4/tests/misc/docbook/prague2016mhk.xml"/>
       </xslt>
    </group>
