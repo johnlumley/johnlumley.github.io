@@ -1,1 +1,1 @@
-/room/person[. follows /room/persong[@id eq "Karen"]]
+/room/person[. follows /room/person[@id eq "Karen"]]

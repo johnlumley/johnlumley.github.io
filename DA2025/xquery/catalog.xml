@@ -11,10 +11,16 @@
    </group>
    <group name="Enums" href="enums/">
       <xquery name="Declare an enum type" href="enumeration-types.xq"/>
-      <xquery name="Enums in arguments 1" href="my-unit-convert-1.xq"/>
-      <xquery name="Enums in arguments 2" href="my-unit-convert-2.xq"/>
-      <xquery name="Enum in my:rect 1" href="record-with-enum-1.xq"/>
-      <xquery name="Enum in my:rect 2" href="record-with-enum-2.xq"/>
+      <xquery name="Enums in arguments 1" href="my-unit-convert-1.xq">
+         <problem>Add code to <code>my:convert()</code> to convert a quantity between
+            units</problem>
+      </xquery>
+      <xquery solution="" name="Enums in arguments 2" href="my-unit-convert-2.xq"/>
+      <xquery name="Enum in my:rect 1" href="record-with-enum-1.xq">
+         <problem>Add a unit conversion function to a rectangle record defined in dimensions with
+            units</problem>
+      </xquery>
+      <xquery solution="" name="Enum in my:rect 2" href="record-with-enum-2.xq"/>
       <xquery name="Enum in my:rect 3" href="record-with-enum-3.xq"/>
    </group>
    <group name="Declare Record" href="record/">
@@ -37,15 +43,15 @@
       <xquery name="follows person (keyword)" href="follows2.xq">
          <input type="xml" name="People in the Room" href="room.xml"/>
       </xquery>
-      <xquery name="preceding person" href="preceding.xq">
+      <xquery name="precedes person" href="preceding.xq">
          <input type="xml" name="People in the Room" href="room.xml"/>
       </xquery>
-      <xquery name="preceding person (keyword)" href="preceding2.xq">
+      <xquery name="precedes person (keyword)" href="preceding2.xq">
          <input type="xml" name="People in the Room" href="room.xml"/>
       </xquery>
       <xquery name="is-not person" href="is-not.xq">
          <input type="xml" name="People in the Room" href="room.xml"/>
       </xquery>
    </group>
-   
+
 </tests>

@@ -1,1 +1,1 @@
-/room/person[. is-not /room/persong[@id eq "Karen"]]
+/room/person[. precedes /room/person[@id eq "Karen"]]
