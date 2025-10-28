@@ -63,8 +63,13 @@ div.intro {
    color: red;
 
 }
+details.problem,
 details.problem > table,
 details.problem > summary {
    color: black;
    background-color: rgb(241 245 249);
+}
+details.problem > summary {
+   box-shadow: 1px black;
+   margin-bottom: 4px;
 }
