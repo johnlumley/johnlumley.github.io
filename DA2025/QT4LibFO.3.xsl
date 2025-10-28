@@ -19,7 +19,7 @@
                 version="4.0"
                 expand-text="yes">            
          <!--DO NOT EDIT - 
-            generated from file:/D:/Saxonica/InvisibleXML/Mine/DA2025/QT4LibFO.4.xsl at 2025-10-27T17:04:15.0903669Z by EE 12.4--><!--exNT: f:system-details f:set-value f:set-style f:enable f:disable f:code-and-input-->
+            generated from file:/D:/Saxonica/InvisibleXML/Mine/DA2025/QT4LibFO.4.xsl at 2025-10-28T13:32:03.4908454Z by EE 12.4--><!--exNT: f:system-details f:set-value f:set-style f:enable f:disable f:code-and-input-->
 
    <!-- A library of XPath 4.0 mimicking functions for use in XPath 3.1 situations -->
    <xsl:function name="f:identity" as="item()?">
