@@ -1,7 +1,0 @@
-(: Try swapping the order of the arguments, or misspelling the keywords :)
-
-do-until(
-  (),
-  action := fn($value, $pos) { $value, $pos * $pos },
-  predicate := fn($value) { foot($value) > 50  }
-)
