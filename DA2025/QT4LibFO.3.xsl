@@ -19,7 +19,7 @@
                 version="4.0"
                 expand-text="yes">            
          <!--DO NOT EDIT - 
-            generated from file:/D:/Saxonica/InvisibleXML/Mine/DA2025/QT4LibFO.4.xsl at 2025-10-28T13:32:03.4908454Z by EE 12.4--><!--exNT: f:system-details f:set-value f:set-style f:enable f:disable f:code-and-input-->
+            generated from file:/D:/Saxonica/InvisibleXML/Mine/DA2025/QT4LibFO.4.xsl at 2025-10-28T17:05:17.4879726Z by EE 12.4--><!--exNT: f:system-details f:set-value f:set-style f:enable f:disable f:code-and-input-->
 
    <!-- A library of XPath 4.0 mimicking functions for use in XPath 3.1 situations -->
    <xsl:function name="f:identity" as="item()?">
@@ -38,6 +38,21 @@
       <xsl:param name="input" as="item()*"/>
       <xsl:sequence select="$input[position() ne last()]"/>
    </xsl:function>
+   <xsl:function name="f:items-at" as="item()*">
+      <xsl:param name="input" as="item()*"/>
+      <xsl:param name="at" as="xs:integer*"/>
+      <xsl:sequence select="             for-each($at, function ($index) {                subsequence($input, $index, 1)             })"/>
+   </xsl:function>
+   <!--<xsl:function name="f:slice" as="item()*">
+      <xsl:param name="input" as="item()*"/>
+      <xsl:param name="start" as="xs:integer*"/>
+      <xsl:param name="end" as="xs:integer*"/>
+      <xsl:param name="step" as="xs:integer*"/>
+      <xsl:sequence select="
+         for-each($at, function ($index) {
+         subsequence($input, $index, 1)
+         })"/>
+   </xsl:function>-->
    <xsl:function name="f:replicate" as="item()*">
       <xsl:param name="input" as="item()*"/>
       <xsl:param name="count" as="xs:integer"/>
@@ -81,6 +96,16 @@
             </xsl:otherwise>
          </xsl:choose>
       </xsl:iterate>
+   </xsl:function>
+   <xsl:function name="f:filter">
+      <xsl:param name="input" as="item()*"/>
+      <xsl:param name="predicate" as="function(item(), xs:integer) as xs:boolean?"/>
+      <xsl:sequence select="             for-each-pair($input, 1 to count($input),             function ($item, $pos) {                if ($predicate($item, $pos)) then                   $item                else                   ()             })"/>
+   </xsl:function>
+   <xsl:function name="f:some">
+      <xsl:param name="input" as="item()*"/>
+      <xsl:param name="predicate" as="function(item(), xs:integer) as xs:boolean?"/>
+      <xsl:sequence select="f:filter($input, $predicate) =&gt; exists()"/>
    </xsl:function>
    <xsl:function name="ma:entries" as="map(*)*">
       <xsl:param name="map" as="map(*)"/>
