@@ -1,43 +1,10 @@
 <tests QT4="https://raw.githubusercontent.com/qt4cg/qt4tests/refs/heads/master"
    XSLT4="https://raw.githubusercontent.com/qt4cg/xslt40-test/refs/heads/master"
    SPEC="https://qt4cg.org/specifications/xpath-functions-40/Overview.html" title="XQuery">
-
-   <xpath name="Example 1" href="example.xp">
-      <problem>A statement of the problem that has non-whitespace text nodes as direct children will
-         be rendered as a single block, even with <pre>Preformatted sections</pre> within
-         it</problem>
-   </xpath>
-   <xpath name="Example 2" href="example2.xp">
-      <problem>
-         <div>A statement of the problem that has <b>no</b> non-whitespace text nodes as direct
-            children will be rendered as a </div>
-         <div>set of separate (horizontally arranged) blocks, one for each of the children, even
-            with <pre>Preformatted sections</pre> within them</div>
-      </problem>
-   </xpath>
-
-   <group name="Arrow Operators" href="arrow/">
-      <xpath name="=!>" href="arrow-1.xp"/>
-      <xpath name="Document statistics" href="arrow-2.xp">
-         <problem>Use a combination of path selectors, suitable function calls and <b>only</b>
-            arrow, simple map (!) and concatenation operators, generate the following type of
-            report:<pre><![CDATA[Title: Transforming JSON using XSLT 3.0
-Body word count: 3115
-Average para length: 44.4 words]]></pre>
-You should not need to use any local variables.
-         </problem>
-         <input type="xml" name="Paper" href="../../inputs/mhk.xml"/>
-      </xpath>
-      <xpath solution="" name="Document statistics" href="arrow-2-solution.xp">
-         <input type="xml" name="Paper" href="../../inputs/mhk.xml"/>
-      </xpath>
+   <group name="General" href="general/">
+      <xpath name="argument keywords" href="keywords.xp"/>
    </group>
-   <group name="String Templates" href="string-templates/">
-      <xpath name="String Interpolation - 1" href="backtick-1.xp">
-         <input type="xml" name="Rooms" href="room.xml"/>
-      </xpath>
-   </group>
-   <!--<group name="CSV Processing" href="CSV/">
+   <group name="CSV Processing" href="CSV/">
       <xpath name="csv1" href="csv1.xquery"/>
       <xpath name="csv2" href="csv2.xquery"/>
       <xpath name="csv3" href="csv3.xquery">
@@ -57,9 +24,9 @@ You should not need to use any local variables.
          <input type="text" name="John 1" href="john1.txt"/>
       </xpath>
       <xpath name="partition() - line-wrapping" href="line-wrap-2.xp">
-         <!-\-<problem>Line wrap a string using the <spec-link ref="func-partition"
+         <!--<problem>Line wrap a string using the <spec-link ref="func-partition"
                >partition()</spec-link> function. The input to <code>$line-wrap()</code> is supplied
-            as a non-empty normalized string.</problem>-\->
+            as a non-empty normalized string.</problem>-->
          <solution>This is a potential solution. See if you can make the processing of the sentences
             as a whole more terse.</solution>
          <input type="text" name="John 1" href="john1.txt"/>
@@ -107,7 +74,7 @@ JSON ************* 40
                   example focusses on the XPath processing</p></div>
          </problem>
          <input name="Prague local" type="xml" href="mhk.xml"/>
-         <!-\-<input name="Prague" type="xml" href="$XSLT4/tests/misc/docbook/prague2016mhk.xml"/>-\->
+         <!--<input name="Prague" type="xml" href="$XSLT4/tests/misc/docbook/prague2016mhk.xml"/>-->
       </xpath>
       <xpath name="map-merge()" href="map-merge-1.xp">
          <problem>Explore how <spec-link ref="func-map-build">map:build()</spec-link>, <spec-link
@@ -115,5 +82,5 @@ JSON ************* 40
                >map:merge()</spec-link> are related</problem>
       </xpath>
    </group>
--->
+
 </tests>

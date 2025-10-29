@@ -1,0 +1,8 @@
+let $direct-reports := fn($p as element(person)) as element(person)* {
+  $p/../person[@manager = $p/@id]
+}
+return 
+transitive-closure(
+  //person[@id = "2"],
+  $direct-reports
+)/string(@id)

@@ -1,0 +1,19 @@
+let $MMerge := fn($m) {  
+ ($m =!> map:entries())=> map:build(map:keys#1,map:items#1)
+}
+let $maps := (
+ map:build(
+  ("January", "February", "March", "April", "May", "June",
+   "July", "August", "September", "October", "November", "December"),
+  substring(?, 1, 1)
+ ),
+ map:build(1 to 5,value := fn($i) {$i * $i})
+)
+return
+( 
+ "maps:", $maps,
+ "map:merge:",
+ map:merge($maps),
+ "map:entries + map:build:",
+ $MMerge($maps)
+)
