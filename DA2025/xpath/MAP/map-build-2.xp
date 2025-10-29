@@ -1,4 +1,0 @@
-map:build(.//citation,
-   fn ($cit) { $cit/ancestor::sect1[1]/title },
-   data#1
-)

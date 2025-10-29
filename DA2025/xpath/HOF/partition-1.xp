@@ -1,6 +1,0 @@
-partition(
-  ("Anita", "Anne", "Barbara", "Catherine", "Christine"), 
-  fn($partition, $next) {
-    substring(head($partition), 1, 1) ne substring($next, 1, 1)
-  }
-)
