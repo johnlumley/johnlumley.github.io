@@ -1,13 +1,15 @@
-("Title: "|| (//title)[1],
- "Body word count: "|| //sect1 
+(
+    "Title: " || (//title)[1],
+    "Body word count: "|| //sect1 
     =!> normalize-space() 
     =!> tokenize() 
     => count(),
- "Average para length: " || //para ! 
-    (normalize-space() 
-     => tokenize() 
-     => count()) 
-    => avg() 
-    => format-number("0.0")|| " words"
+    "Average para length: " || //para ! (
+        normalize-space() 
+        => tokenize() 
+        => count()) 
+        => avg() 
+        => format-number("0.0"
+    ) || " words"
 )
 => string-join('&#xA;')
