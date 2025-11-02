@@ -1,0 +1,4 @@
+let $letter := "K"
+return
+   `The document has {count(.//*[empty(*)])} leaves.
+{count(.//person[starts-with(@id, $letter)])} persons' id's start with letter "{$letter}"`
