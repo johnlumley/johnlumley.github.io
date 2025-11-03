@@ -1,1 +1,4 @@
-.
+"Title: " || (: select the title element :),
+"Body word count: " || (: count words in all sect1 elements :),
+"Average para length: " || (: average word count in para elements :) || " words"
+(: join sequence with newlines &#xA;)

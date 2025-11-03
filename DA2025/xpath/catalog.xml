@@ -7,6 +7,7 @@
          be rendered as a single block, even with <pre>Preformatted sections</pre> within
          it</problem>
    </xpath>
+
    <xpath name="Example 2" href="example2.xp">
       <problem>
          <div>A statement of the problem that has <b>no</b> non-whitespace text nodes as direct
@@ -16,8 +17,37 @@
       </problem>
    </xpath>
 
+   <group name="Pipeline Operator" href="pipeline/">
+      <xpath name="->" href="pipeline-exercise.xp">
+         <problem>Modify the query to output <pre><![CDATA[_test_]]></pre> using the pipeline operator.</problem>
+      </xpath>
+      <xpath solution="" name="->" href="pipeline-solution.xp" />
+   </group>
+   
+   <group name="String Templates" href="string-templates/">
+      <xpath name="String Interpolation" href="backtick-exercise.xp">
+         <problem>
+            <div>1. Modify the query to output the same text as before but use the string template instead.</div>
+            <div>2. (bonus) add a Sentence to the output how many persons' id's start with a character.</div>
+         </problem>
+         <input type="xml" name="Rooms" href="room.xml"/>
+      </xpath>
+      <xpath solution="" name="String Interpolation" href="backtick-solution.xp">
+         <input type="xml" name="Rooms" href="room.xml"/>
+      </xpath>
+   </group>
+   
    <group name="Arrow Operators" href="arrow/">
-      <xpath name="=!>" href="arrow-1.xp"/>
+      <xpath name="Arrow Bang!" href="arrowbang-exercise.xp">
+         <problem>
+            <div>Look at the two solutions that both compute the cubes of each entry in the input sequence.
+               The first one is using the arrow operator (<pre> => </pre>)
+               the second one uses the bang operator (<pre> ! </pre>).
+            </div>
+            <div>Can you rewrite the first solution to use the arrow bang operator (<pre> =!&gt; </pre>)?</div>
+         </problem>
+      </xpath>
+      <xpath solution="" name="Arrow Bang!" href="arrowbang-solution.xp" />
       <xpath name="Document statistics" href="arrow-2.xp">
          <problem>Use a combination of path selectors, suitable function calls and <b>only</b>
             arrow, simple map (!) and concatenation operators, generate the following type of
@@ -32,11 +62,5 @@ You should not need to use any local variables.
          <input type="xml" name="Paper" href="../../inputs/mhk.xml"/>
       </xpath>
    </group>
-
-   <group name="String Templates" href="string-templates/">
-      <xpath name="String Interpolation - 1" href="backtick-1.xp">
-         <input type="xml" name="Rooms" href="room.xml"/>
-      </xpath>
-   </group>
-
+   
 </tests>
