@@ -2,7 +2,7 @@
    XSLT4="https://raw.githubusercontent.com/qt4cg/xslt40-test/refs/heads/master"
    SPEC="https://qt4cg.org/specifications/xpath-functions-40/Overview.html" title="XQuery">
 
-   <xpath name="Example 1" href="example.xp">
+   <!--<xpath name="Example 1" href="example.xp">
       <problem>A statement of the problem that has non-whitespace text nodes as direct children will
          be rendered as a single block, even with <pre>Preformatted sections</pre> within
          it</problem>
@@ -15,7 +15,7 @@
          <div>set of separate (horizontally arranged) blocks, one for each of the children, even
             with <pre>Preformatted sections</pre> within them</div>
       </problem>
-   </xpath>
+   </xpath>-->
 
    <group name="Pipeline Operator" href="pipeline/">
       <xpath name="->" href="pipeline-exercise.xp">

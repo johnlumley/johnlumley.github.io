@@ -2,8 +2,10 @@
 <tests QT4="https://raw.githubusercontent.com/qt4cg/qt4tests/refs/heads/master"
    XSLT4="https://raw.githubusercontent.com/qt4cg/xslt40-test/refs/heads/master"
    SPEC-XSLT4="https://qt4cg.org/specifications/xslt-40/Overview.html"
-   SPEC-FO4="https://qt4cg.org/specifications/xpath-functions-40/Overview.html" title="XSLT">
+   SPEC-FO4="https://qt4cg.org/specifications/xpath-functions-40/Overview.html"
+   INPUTS="../../inputs" title="XSLT">
 
+   <xslt name="equivalent-functions" href="equivalent-functions.4.xsl"/>
    <group name="Structure" href="structure/">
       <xslt name="default-namespaces" href="default-namespaces.4.xsl"/>
       <!-- <xslt name="initial template" href="test2.4.xsl"/>
@@ -17,6 +19,22 @@
             <input name="works" href="$QT4/op/is-same-node/works.xml"/>
             <input name="staff" href="$QT4/op/is-same-node/staff.xml"/>
             <input name="nw_Customers" href="$QT4/prod/AxisStep/nw_Customers.xml"/>
+         </xslt>
+         <xslt name="Using enclosing modes" href="enclosed-mode-3.3.xsl">
+            <problem>
+               <div>This is a stylesheet which uses a number of different template modes to produce
+                  a 'reduction' of the Docbook input. It works as intended (try running the transform before editing it) but the rules are scattered about and could
+                  possibly intefere with each other in unpredictable ways.<br/>Use <spec-xslt ref="enclosing-modes">enclosing modes</spec-xslt>
+                  to make the stylesheet tidier, more coherent and flexible.<p>You might like to
+                     check <i>Wrap long lines</i> on <b>Result</b> to make the output clearer.</p></div>
+               <div>See if you can also make the code clearer using <code>xsl:switch</code> and
+                  <code>@separator</code> constructs<p>(I know there are almost certainly smoother
+                     codings to acheive the same output, but this is just an exercise.)</p></div>
+            </problem>
+            <input type="xml" name="ixml" href="$INPUTS/mhk.xml"/>
+         </xslt>
+         <xslt solution="" name="Using enclosing modes" href="enclosed-mode-3.4.xsl">
+            <input type="xml" name="ixml" href="$INPUTS/mhk.xml"/>
          </xslt>
       </group>
    </group>
@@ -64,9 +82,9 @@
                   in </p>
                <p>You'll have to set the types of the parameters and calling attribute arguments to
                   get the correct effect.</p>
-               <p>This isn't perhaps the most efficient method and we have used
-                  <code>xsl:evaluate</code>, but this is showing how extension instructions can be
-                  very compact named template calls</p>
+               <p>This isn't perhaps the most efficient method and we could have used
+                  <code>xsl:evaluate</code>, but this shows how extension instructions can be very
+                  compact named template calls</p>
             </div>
          </problem>
          <input name="customers" href="../customers.xml"/>
@@ -110,15 +128,18 @@ alternative to XML as a syntax for data
       <xslt name="array with for-each" href="array-1.4.xsl"/>
       <xslt name="array/@for-each - duplicate words" href="array-2.4.xsl">
          <problem>
-            <div>Use <spec-xslt ref="array-construction">xsl:array</spec-xslt> with
-               <code>@for-each</code> to generate lists of duplicate words for each
-               <code>para</code>, e.g. <pre><![CDATA[<output>
+            <div>Use <a href="https://qt4cg.org/pr/2120/xslt-40/Overview.html#array-construction"
+                  >xsl:array</a> with <code>@for-each</code> to generate lists of duplicate words
+               for each <code>para</code>, e.g. <pre><![CDATA[<output>
    <duplicates para="1">and by it The to of for</duplicates>
    <duplicates para="2">are and the by transforming JSON</duplicates>
 </output>]]></pre></div>
-            <div>You may find the 'parallel' functions to new ones in F&amp;O: <spec-link
-                  ref="func-duplicate-values">f:duplicate-values()</spec-link> and <spec-link
-                  ref="func-array-members">ar:members()</spec-link> helpful.</div>
+            <div>This is using the proposed <code>@for-each</code> attribute <a
+                  href="https://qt4cg.org/pr/2120/xslt-40/Overview.html#array-construction"
+                  >xsl:array</a>, which has been discussed but not yet finalised and accepted. The
+               link shows this syntax. <p>You may find the ~equivalent functions <spec-link
+                     ref="func-duplicate-values">f:duplicate-values()</spec-link> and <spec-link
+                     ref="func-array-members">ar:members()</spec-link> helpful.</p></div>
          </problem>
          <input name="prague" href="$XSLT4/tests/misc/docbook/prague2016mhk.xml"/>
       </xslt>

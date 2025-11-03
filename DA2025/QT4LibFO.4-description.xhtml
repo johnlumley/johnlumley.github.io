@@ -7,39 +7,63 @@
    <body>
       <div id="title" class="horizontal"><span><img src="QT4_shaded-120.png" height="20pt" alt="QT4 Logo" /></span><h3>QT4 XPath 4 equivalent functions</h3>
       </div>
-      <p>These are available XSLT 3 functions that emulate new or modified XPath 4 functions.
-         The links point to the specification definition. </p>
-      <p>The namespace prefix mappings <code style="font-weight:bold">xmlns:f="MyFunctions"
-            xmlns:ar="MyArray" xmlns:ma="MyMap"</code> should already be defined in the example
-         stylesheets</p>
-      <p>Calls can only be made my positional arguments - keyword binding is not
-         supported.</p>
-      <div class="horizontal"><span><label class="grammarTest">array</label><ul>
-               <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-array-build">ar:build()</a></li>
-               <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-array-empty">ar:empty()</a></li>
-               <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-array-foot">ar:foot()</a></li>
-               <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-array-index-of">ar:index-of()</a></li>
-               <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-array-index-where">ar:index-where()</a></li>
-               <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-array-members">ar:members()</a></li>
-               <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-array-of-members">ar:of-members()</a></li>
-               <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-array-trunk">ar:trunk()</a></li>
-            </ul></span><span><label class="grammarTest">fn</label><ul>
-               <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-duplicate-values">f:duplicate-values()</a></li>
-               <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-filter">f:filter()</a></li>
-               <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-foot">f:foot()</a></li>
-               <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-for-each">f:for-each()</a></li>
-               <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-identity">f:identity()</a></li>
-               <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-items-at">f:items-at()</a></li>
-               <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-partition">f:partition()</a></li>
-               <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-replicate">f:replicate()</a></li>
-               <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-sequence-join">f:sequence-join()</a></li>
-               <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-some">f:some()</a></li>
-               <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-trunk">f:trunk()</a></li>
-               <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-void">f:void()</a></li>
-            </ul></span><span><label class="grammarTest">map</label><ul>
-               <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-map-entries">ma:entries()</a></li>
-               <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-map-filter">ma:filter()</a></li>
-               <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-map-items">ma:items()</a></li>
-            </ul></span></div>
+      <div class="report">
+         <p>These are the available XSLT 3 functions that <i>approximately</i> emulate new or
+            modified XPath 4 functions. The links point to the specification definition: </p>
+         <ul>
+            <li>Functions marked  ✚ are new in XPath 4.0; those marked  ✭ are modified.</li>
+            <li>The namespace prefix mappings
+               <code style="font-weight:bold">xmlns:f="MyFunctions"
+                  xmlns:ar="MyArray" xmlns:ma="MyMap"</code> should already be defined in the
+               example stylesheets</li>
+            <li>Calls can only be made by positional arguments - keyword binding is not
+               supported.</li>
+            <li>In general the function-valued arguments must have the maximum arity given in
+               the specification, i.e. optional arguments of the inline function <b>must</b> be
+               present. (SaxonJS will complain of arity mismatch)</li>
+            <li>These functions are generally type-permissive on function-valued arguments,
+               <br />e.g. where the specification would restrict an argument to
+               <code style="font-weight:bold">function(item()*,xs:integer)</code>,<br />the
+               emulation only restricts to
+               <code style="font-weight:bold">function(*)</code>.<br /> Thus run-time failures
+               may occur which in a true implementation could be caught at compile-time.</li>
+            <li>Maps are <b>unordered</b></li>
+         </ul>
+         <div class="horizontal"><span><label class="grammarTest">array</label><ul>
+                  <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-array-build">ar:build()</a> ✚ </li>
+                  <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-array-empty">ar:empty()</a> ✚ </li>
+                  <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-array-foot">ar:foot()</a> ✚ </li>
+                  <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-array-index-of">ar:index-of()</a> ✚ </li>
+                  <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-array-index-where">ar:index-where()</a> ✚ </li>
+                  <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-array-members">ar:members()</a> ✚ </li>
+                  <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-array-of-members">ar:of-members()</a> ✚ </li>
+                  <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-array-trunk">ar:trunk()</a> ✚ </li>
+               </ul></span><span><label class="grammarTest">fn</label><ul>
+                  <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-all-different">f:all-different()</a> ✚ </li>
+                  <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-all-equal">f:all-equal()</a> ✚ </li>
+                  <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-do-until">f:do-until()</a> ✚ </li>
+                  <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-duplicate-values">f:duplicate-values()</a> ✚ </li>
+                  <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-every">f:every()</a> ✚ </li>
+                  <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-filter">f:filter()</a> ✭ $pos argument</li>
+                  <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-foot">f:foot()</a> ✚ </li>
+                  <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-for-each">f:for-each()</a> ✭ $pos argument</li>
+                  <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-for-each-pair">f:for-each-pair()</a> ✭ $pos argument</li>
+                  <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-identity">f:identity()</a> ✚ </li>
+                  <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-index-where">f:index-where()</a> ✚ </li>
+                  <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-items-at">f:items-at()</a> ✚ </li>
+                  <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-partition">f:partition()</a> ✚ </li>
+                  <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-replicate">f:replicate()</a> ✚ </li>
+                  <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-sequence-join">f:sequence-join()</a> ✚ </li>
+                  <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-some">f:some()</a> ✚ </li>
+                  <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-trunk">f:trunk()</a> ✚ </li>
+                  <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-void">f:void()</a> ✚ </li>
+                  <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-while-do">f:while-do()</a> ✚ </li>
+               </ul></span><span><label class="grammarTest">map</label><ul>
+                  <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-map-entries">ma:entries()</a> ✚ </li>
+                  <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-map-filter">ma:filter()</a> ✚ </li>
+                  <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-map-get">ma:get()</a> ✭3rd argument - $default</li>
+                  <li><a href="https://qt4cg.org/specifications/xslt-40/Overview.html#func-map-items">ma:items()</a> ✚ </li>
+               </ul></span></div>
+      </div>
    </body>
 </html>
