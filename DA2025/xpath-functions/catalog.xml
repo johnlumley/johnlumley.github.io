@@ -1,9 +1,12 @@
 <tests QT4="https://raw.githubusercontent.com/qt4cg/qt4tests/refs/heads/master"
    XSLT4="https://raw.githubusercontent.com/qt4cg/xslt40-test/refs/heads/master"
-   SPEC="https://qt4cg.org/specifications/xpath-functions-40/Overview.html" title="XQuery">
+   SPEC="https://qt4cg.org/specifications/xpath-functions-40/Overview.html" INPUTS="../../inputs"
+   title="XQuery">
+
    <group name="General" href="general/">
       <xpath name="argument keywords" href="keywords.xp"/>
    </group>
+
    <group name="CSV Processing" href="CSV/">
       <xpath name="csv1" href="csv1.xquery"/>
       <xpath name="csv2" href="csv2.xquery"/>
@@ -12,6 +15,7 @@
          <input type="text" name="larger" href="csv4.csv"/>
       </xpath>
    </group>
+
    <group name="Higher-Order" href="HOF/">
       <xpath name="filter() - positional" href="filter-1.xp"/>
       <xpath name="do-until() - Squares" href="do-until-1.xp"/>
@@ -19,14 +23,11 @@
       <xpath name="partition() - group-together" href="partition-1.xp"/>
       <xpath name="partition() - line-wrapping" href="line-wrap-1.xp">
          <problem>Line wrap each of the sentences using the <spec-link ref="func-partition"
-               >partition()</spec-link> function. The input to <code>$line-wrap()</code> for each sentence is supplied
-            as a non-empty normalized string.</problem>
+               >partition()</spec-link> function. The input to <code>$line-wrap()</code> for each
+            sentence is supplied as a non-empty normalized string.</problem>
          <input type="text" name="John 1" href="john1.txt"/>
       </xpath>
       <xpath name="partition() - line-wrapping" href="line-wrap-2.xp">
-         <!--<problem>Line wrap a string using the <spec-link ref="func-partition"
-               >partition()</spec-link> function. The input to <code>$line-wrap()</code> is supplied
-            as a non-empty normalized string.</problem>-->
          <solution>This is a potential solution. See if you can make the processing of the sentences
             as a whole more terse.</solution>
          <input type="text" name="John 1" href="john1.txt"/>
@@ -35,10 +36,32 @@
          <input type="text" name="John 1" href="john1.txt"/>
       </xpath>
       <xpath name="transitive-closure() - Reporting" href="transitive-closure-1.xp">
-         <input type="xml" name="management" href="management.xml"/>
-         <input type="xml" name="management1" href="management1.xml"/>
+         <!--<input type="xml" name="management" href="management.xml"/>-->
+          <input type="xml" name="management1" href="management1.xml"/>
+      </xpath>
+      <xpath name="transitive-closure() - Checking ixml" href="transitive-closure-2.xp">
+         <problem>
+            <div>The input is the <a href="https://invisiblexml.org/1.0/#ixml">XML format</a> of the
+               iXML grammar of the textual representation of iXML grammars. <b>But it has some
+                  errors in it</b>.<p>The grammar is a set of ~40 named <code>rule</code>s referred
+                  to by <code>nonterminal</code> elements, both using <code>@name</code> for the
+                  link.</p></div>
+            <div> Use <spec-link ref="func-transitive-closure">transitive-closure()</spec-link> to
+               find <ul>
+                  <li>All rules which cannot be reached from the first rule</li>
+                  <li>Any rules referred to by the reachable set which are missing.</li>
+               </ul>For example: <pre>Unreachable: ixml,RS,namefollowing,membership
+Missing: RS1,Name,namefollower</pre>
+               <i>Hint:</i> The first rule might not refer to itself, but does refer to other rules.
+            </div>
+         </problem>
+         <input type="xml" name="ixml" href="$INPUTS/ixml-error.xml"/>
+      </xpath>
+      <xpath solution="" name="transitive-closure() - Checking ixml" href="transitive-closure-3.xp">
+         <input type="xml" name="ixml" href="$INPUTS/ixml-error.xml"/>
       </xpath>
    </group>
+
    <group name="JSON" href="JSON/">
       <xpath name="lookup" href="lookup1.xp">
          <input type="json" name="people" href="people.json"/>
@@ -54,6 +77,7 @@
          <input type="xml" name="Repeated Children" href="in3.xml"/>
       </xpath>
    </group>
+
    <group name="Maps" href="MAP/">
       <xpath name="map-build()" href="map-build-1.xp"> </xpath>
       <xpath name="map-build() - index" href="map-build-2.xp">
@@ -61,20 +85,25 @@
       </xpath>
       <xpath name="map-build() - frequency analysis" href="frequency-1.xp">
          <problem>
-            <div>Build a 'bar-chart' of the 20 most frequent words appearing in non-empty
-               <code>para</code> elements (in descending order). Display it in a format
-               like:<pre>  to ***************************** 89
+            <div>Using <spec-link ref="func-map-build">map:build()</spec-link>, construct a
+               'bar-chart' of the 20 most frequent words appearing in non-empty <code>para</code>
+               elements. Display it in a format like:<pre>  to ***************************** 89
  and **************** 48
  for ************* 41
-JSON ************* 40
-</pre> where each star represents three occurrences of the word.</div>
-            <div>You may find <spec-link ref="func-map-build">map:build()</spec-link>, <spec-link
-                  ref="func-sort-with">sort-with()</spec-link> and <spec-link ref="func-replicate"
-                  >replicate()</spec-link> useful. <p>We would probably produce SVG, but this
+json ************* 40
+</pre> where each star represents three occurrences of the word. Case is not
+               significant and punctuation should be ignored.</div>
+            <div>You may find <spec-link ref="func-map-entries">map:entries()</spec-link>,
+                  <spec-link ref="func-sort-with">sort-with()</spec-link> and <spec-link
+                  ref="func-replicate">replicate()</spec-link> useful. As this is running in the
+               BaseX Fiddle, map order will be preserved.<p>We would probably produce SVG, but this
                   example focusses on the XPath processing</p></div>
          </problem>
-         <input name="Prague local" type="xml" href="mhk.xml"/>
+         <input name="Prague local" type="xml" href="../../inputs/mhk.xml"/>
          <!--<input name="Prague" type="xml" href="$XSLT4/tests/misc/docbook/prague2016mhk.xml"/>-->
+      </xpath>
+      <xpath solution="" name="map-build() - frequency analysis" href="frequency-2.xp">
+         <input name="Prague local" type="xml" href="../../inputs/mhk.xml"/>
       </xpath>
       <xpath name="map-merge()" href="map-merge-1.xp">
          <problem>Explore how <spec-link ref="func-map-build">map:build()</spec-link>, <spec-link

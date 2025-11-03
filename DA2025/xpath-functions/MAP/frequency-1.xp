@@ -2,28 +2,27 @@ let $words := .//para
     =!> normalize-space() 
     =!> tokenize() 
     =!> replace('\(|\)|\.|,|"','')
+    =!> lower-case()
     => filter(matches(?,'\S'))
-let $lcase := $words =!> lower-case() 
 let $distinct := distinct-values($words)
+(: $words and $distinct are sequences of words in lower-case :)
+
 let $top20 := 
   map:build($distinct,
-     identity#1,
-     fn ($w) {let $lc := lower-case($w) 
-            return count($lcase[. eq $lc])}
-  ) 
-  => map:entries()
-  => sort-with(fn($x,$y) {if($x?* gt $y?*) then -1 else 0})
-  => subsequence(1,20)
-let $longest := max($top20 =!> map:keys() =!> string-length())
+     (: the key generator function :),
+     (: the value generator function,
+        counting the number of occurrences in $words :)
+  )
+  (: an 'arrow' pipeline to sort in descending frequency,
+     and selecting the highest 20, leaving a single map :) 
+
+let $longest := (: the length of the longest word, to help right-align the keys :)
+
 return 
-   for-each($top20, fn($x) {
-     let $k := map:keys($x)
-     let $v := map:items($x)
-     return 
-        (replicate(' ', ($longest - string-length($k))), $k, " ",
-         replicate('*', $v idiv 3), " ",
-         string($v)) 
-        => string-join()
+   map:for-each($top20, fn($k,$v) {
+        (: right aligned keys each followed by
+           a **** bar with one * for each 3 occurrences,
+           followed by the frequency as an integer :)
      }
     )
     => string-join('&#xA;')

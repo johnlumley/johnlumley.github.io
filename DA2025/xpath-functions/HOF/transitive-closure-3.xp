@@ -1,0 +1,12 @@
+let $rules := //rule 
+let $reachable := transitive-closure(
+  $rules[1],
+  fn($r as element(rule)) as element(rule)* {
+       $rules[@name = $r//nonterminal/@name]
+  }
+)
+let $unreachable := ($rules except $reachable)/string(@name)
+let $missing := ($rules[1],$reachable)//nonterminal/@name[not(. = $rules/@name)]
+return (
+   'Unreachable: '|| $unreachable => string-join(','),
+   'Missing: '|| $missing => distinct-values() => string-join(','))
