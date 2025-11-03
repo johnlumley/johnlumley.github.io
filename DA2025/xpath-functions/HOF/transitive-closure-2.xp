@@ -1,0 +1,10 @@
+let $rules := //rule 
+let $reachable := transitive-closure(
+  (: start :),
+  (: step function :)
+)
+let $unreachable := (: expression as xs:string* :)
+let $missing := (: expression as xs:string* :)
+return (
+   'Unreachable: '|| $unreachable => string-join(','),
+   'Missing: '|| $missing => distinct-values() => string-join(','))
