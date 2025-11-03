@@ -19,7 +19,7 @@
                 version="4.0"
                 expand-text="yes">            
          <!--DO NOT EDIT - 
-            generated from file:/D:/Saxonica/InvisibleXML/Mine/DA2025/QT4LibFO.4.xsl at 2025-10-28T17:05:17.4879726Z by EE 12.4--><!--exNT: f:system-details f:set-value f:set-style f:enable f:disable f:code-and-input-->
+            generated from file:/D:/Saxonica/InvisibleXML/Mine/DA2025/QT4LibFO.4.xsl at 2025-10-31T14:14:15.5224473Z by EE 12.4--><!--exNT: f:system-details f:set-value f:set-style f:enable f:disable f:code-and-input-->
 
    <!-- A library of XPath 4.0 mimicking functions for use in XPath 3.1 situations -->
    <xsl:function name="f:identity" as="item()?">
@@ -43,6 +43,11 @@
       <xsl:param name="at" as="xs:integer*"/>
       <xsl:sequence select="             for-each($at, function ($index) {                subsequence($input, $index, 1)             })"/>
    </xsl:function>
+   <xsl:function name="f:index-where" as="xs:integer*">
+      <xsl:param name="input" as="item()*"/>
+      <xsl:param name="predicate" as="function(item(), xs:integer) as xs:boolean?"/>
+      <xsl:sequence select="             for-each(             $input,             function ($item, $pos) {                if ($predicate($item, $pos)) then                   $pos                else                   ()             }             )"/>
+   </xsl:function>
    <!--<xsl:function name="f:slice" as="item()*">
       <xsl:param name="input" as="item()*"/>
       <xsl:param name="start" as="xs:integer*"/>
@@ -63,16 +68,13 @@
       <xsl:param name="separator" as="item()*"/>
       <xsl:sequence select="             for-each-pair($input, 1 to count($input), function ($x, $pos) {                if ($pos gt 1) then                   $separator                else                   (), $x             })"/>
    </xsl:function>
-   <xsl:function name="f:for-each" as="item()*">
+   <!--<xsl:function name="f:for-each" as="item()*">
+      <xsl:note modified="position"/>
       <xsl:param name="input" as="item()*"/>
       <xsl:param name="fn" as="function(*)"/>
       <xsl:sequence select="for-each-pair($input, 1 to count($input), $fn)"/>
-   </xsl:function>
-   <xsl:function name="f:partition" as="array(item()*)*" expand-text="no">
-      <xsl:param name="input" as="item()*"/>
-      <xsl:param name="split-when" as="function(*)"/>
-      <xsl:sequence select="             f:for-each(             $input,             function ($item, $pos) {                map {                   'item': $item,                   'pos': $pos                }             }             )             =&gt; fold-left((), function ($partitions, $pair) {                if (empty($partitions) or $split-when(f:foot($partitions)?*, $pair?item, $pair?pos))                then                   ($partitions, [$pair?item])                else                   (f:trunk($partitions), array {f:foot($partitions)?*, $pair?item})             })"/>
-   </xsl:function>
+   </xsl:function>-->
+   <!--========= COMPARISON ======== -->
    <xsl:function name="f:duplicate-values" as="xs:anyAtomicType*">
       <xsl:param name="input" as="xs:anyAtomicType*"/>
       <xsl:iterate select="$input">
@@ -97,30 +99,106 @@
          </xsl:choose>
       </xsl:iterate>
    </xsl:function>
-   <xsl:function name="f:filter">
+   <!--========= AGGREGATE ======== -->
+   <!--Defaulting function: f:all-equal-->
+   <xsl:function name="f:all-equal" as="xs:boolean">
+      <xsl:param name="values" as="xs:anyAtomicType*"/>
+      <xsl:sequence select="f:all-equal($values,default-collation())"/>
+   </xsl:function>
+   <xsl:function name="f:all-equal" as="xs:boolean">
+      <xsl:param name="values" as="xs:anyAtomicType*"/>
+      <xsl:param name="collation" as="xs:string"/>
+      <xsl:sequence select="count(distinct-values($values, $collation)) le 1"/>
+   </xsl:function>
+   <!--Defaulting function: f:all-different-->
+   <xsl:function name="f:all-different" as="xs:boolean">
+      <xsl:param name="values" as="xs:anyAtomicType*"/>
+      <xsl:sequence select="f:all-different($values,default-collation())"/>
+   </xsl:function>
+   <xsl:function name="f:all-different" as="xs:boolean">
+      <xsl:param name="values" as="xs:anyAtomicType*"/>
+      <xsl:param name="collation" as="xs:string"/>
+      <xsl:sequence select="count(distinct-values($values, $collation)) eq count($values)"/>
+   </xsl:function>
+   <!--========= HIGHER ORDER ======== -->
+   <xsl:function name="f:filter" as="item()*">
       <xsl:param name="input" as="item()*"/>
       <xsl:param name="predicate" as="function(item(), xs:integer) as xs:boolean?"/>
       <xsl:sequence select="             for-each-pair($input, 1 to count($input),             function ($item, $pos) {                if ($predicate($item, $pos)) then                   $item                else                   ()             })"/>
    </xsl:function>
-   <xsl:function name="f:some">
+   <xsl:function name="f:for-each" as="item()*">
       <xsl:param name="input" as="item()*"/>
-      <xsl:param name="predicate" as="function(item(), xs:integer) as xs:boolean?"/>
+      <xsl:param name="action" as="function(*)"/>
+      <xsl:sequence select="             for $pos in 1 to count($input)             return                $action($input[$pos], $pos)"/>
+   </xsl:function>
+   <xsl:function name="f:for-each-pair" as="item()*">
+      <xsl:param name="input1" as="item()*"/>
+      <xsl:param name="input2" as="item()*"/>
+      <xsl:param name="action" as="function(*)"/>
+      <xsl:sequence select="             for $pos in 1 to min((count($input1), count($input2)))             return                $action($input1[$pos], $input2[$pos], $pos)"/>
+   </xsl:function>
+   <xsl:function name="f:every" as="xs:boolean">
+      <xsl:param name="input" as="item()*"/>
+      <xsl:param name="predicate" as="function(*)"/>
+      <xsl:sequence select="count(f:filter($input, $predicate)) = count($input)"/>
+   </xsl:function>
+   <xsl:function name="f:some" as="xs:boolean">
+      <xsl:param name="input" as="item()*"/>
+      <xsl:param name="predicate" as="function(*)"/>
       <xsl:sequence select="f:filter($input, $predicate) =&gt; exists()"/>
    </xsl:function>
+   <xsl:function name="f:do-until" as="item()*">
+      <xsl:param name="input" as="item()*"/>
+      <xsl:param name="action" as="function(item()*,item()*) as item()*"/>
+      <xsl:param name="predicate" as="function(*)"/>
+      <xsl:sequence select="f:do-until-helper($input, $action, $predicate, 1)"/>
+   </xsl:function>
+   <xsl:function name="f:do-until-helper" as="item()*">
+      <xsl:param name="input" as="item()*"/>
+      <xsl:param name="action" as="function(*)"/>
+      <xsl:param name="predicate" as="function(*)"/>
+      <xsl:param name="pos" as="xs:integer"/>
+      <xsl:sequence select="             let $result := $action($input, $pos)             return                if ($predicate($result, $pos)) then                   $result                else                   f:do-until-helper($result, $action, $predicate, $pos + 1)             "/>
+   </xsl:function>
+   <xsl:function name="f:while-do" as="item()*">
+      <xsl:param name="input" as="item()*"/>
+      <xsl:param name="predicate" as="function(*)"/>
+      <xsl:param name="action" as="function(item()*,item()*) as item()*"/>
+      <xsl:sequence select="f:while-do-helper($input, $predicate, $action, 1)"/>
+   </xsl:function>
+   <xsl:function name="f:while-do-helper" as="item()*">
+      <xsl:param name="input" as="item()*"/>
+      <xsl:param name="predicate" as="function(*)"/>
+      <xsl:param name="action" as="function(*)"/>
+      <xsl:param name="pos" as="xs:integer"/>
+      <xsl:sequence select="             if ($predicate($input, $pos))             then                f:while-do-helper($action($input, $pos), $predicate, $action, $pos + 1)             else                $input"/>
+   </xsl:function>
+   <xsl:function name="f:partition" as="array(item()*)*" expand-text="no">
+      <xsl:param name="input" as="item()*"/>
+      <xsl:param name="split-when" as="function(*)"/>
+      <xsl:sequence select="             f:for-each(             $input,             function ($item, $pos) {                map {                   'item': $item,                   'pos': $pos                }             }             )             =&gt; fold-left((), function ($partitions, $pair) {                if (empty($partitions) or $split-when(f:foot($partitions)?*, $pair?item, $pair?pos))                then                   ($partitions, [$pair?item])                else                   (f:trunk($partitions), array {f:foot($partitions)?*, $pair?item})             })"/>
+   </xsl:function>
+   <!--========= MAPS ======== -->
    <xsl:function name="ma:entries" as="map(*)*">
       <xsl:param name="map" as="map(*)"/>
       <xsl:sequence select="map:for-each($map, map:entry#2)"/>
    </xsl:function>
    <xsl:function name="ma:filter" as="map(*)">
       <xsl:param name="map" as="map(*)"/>
-      <xsl:param name="predicate"
-                 as="function(xs:anyAtomicType, item()*) as xs:boolean?"/>
+      <xsl:param name="predicate" as="function(*)"/>
       <xsl:sequence select="             map:for-each($map, function ($key, $value) {                if ($predicate($key, $value)) then                   map:entry($key, $value)                else                   ()             })             =&gt; map:merge()"/>
+   </xsl:function>
+   <xsl:function name="ma:get" as="item()*">
+      <xsl:param name="map" as="map(*)"/>
+      <xsl:param name="key" as="xs:anyAtomicType"/>
+      <xsl:param name="default" as="item()*"/>
+      <xsl:sequence select="             if (map:contains($map, $key)) then                $map($key)             else                $default"/>
    </xsl:function>
    <xsl:function name="ma:items" as="item()*">
       <xsl:param name="map" as="map(*)"/>
       <xsl:sequence select="$map?*"/>
    </xsl:function>
+   <!--========= ARRAYS ======== -->
    <!--Defaulting function: ar:build-->
    <xsl:function name="ar:build" as="array(*)">
       <xsl:param name="input" as="item()*"/>
@@ -128,7 +206,7 @@
    </xsl:function>
    <xsl:function name="ar:build" as="array(*)">
       <xsl:param name="input" as="item()*"/>
-      <xsl:param name="action" as="function(item(), xs:integer) as item()*"/>
+      <xsl:param name="action" as="function(*)"/>
       <xsl:sequence select="             f:for-each($input,             function ($item, $pos) {                map {'value': $action($item, $pos)}             }             ) =&gt; ar:of-members()"/>
    </xsl:function>
    <xsl:function name="ar:empty" as="xs:boolean">
