@@ -2,20 +2,15 @@
    XSLT4="https://raw.githubusercontent.com/qt4cg/xslt40-test/refs/heads/master"
    SPEC="https://qt4cg.org/specifications/xpath-functions-40/Overview.html" title="XQuery">
 
-   <!--<xpath name="Example 1" href="example.xp">
-      <problem>A statement of the problem that has non-whitespace text nodes as direct children will
-         be rendered as a single block, even with <pre>Preformatted sections</pre> within
-         it</problem>
-   </xpath>
-
-   <xpath name="Example 2" href="example2.xp">
+   <xpath name="Type Coercion" href="coercion.xp">
       <problem>
-         <div>A statement of the problem that has <b>no</b> non-whitespace text nodes as direct
-            children will be rendered as a </div>
-         <div>set of separate (horizontally arranged) blocks, one for each of the children, even
-            with <pre>Preformatted sections</pre> within them</div>
+         The function <code>$nth</code> attempts to return the nth item of a sequence or an array.
+         While it works fine for sequences even with negative indices, if an array is passed to it, a dynamic error will be raised.
+         Can you modify the function so that it performs an explicit type coercion on its 2nd argument to prevent any dynamic errors?
+         Think of a type that will work always for both sequences and arrays.
       </problem>
-   </xpath>-->
+   </xpath>
+   <xpath solution="" name="Type Coercion" href="coercion-solution.xp" />
 
    <group name="Pipeline Operator" href="pipeline/">
       <xpath name="->" href="pipeline-exercise.xp">
