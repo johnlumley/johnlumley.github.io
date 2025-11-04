@@ -27,6 +27,7 @@
       <xpath name="Declare rectangle record 1" href="my-rect-1.xq"/>
       <xpath name="Declare rectangle record 2" href="my-rect-2.xq"/>
       <xpath name="Declare rectangle record 3" href="my-rect-3.xq"/>
+      <xpath name="My Random" href="my-rng.xq"/>
    </group>
    <group name="Functions in no Namespace" href="no-ns-fn/">
       <xpath name="Function and variable namespaces" href="declare-fn-no-ns-1.xq"/>
