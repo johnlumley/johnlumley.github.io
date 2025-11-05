@@ -1,0 +1,11 @@
+let $nth := fn ($item, $pos as xs:positiveInteger) {
+    typeswitch ($item)
+        case array(*) return $item?$pos
+        case item()+ return $item[$pos]
+        default return error()
+}
+
+return (
+    (1 to 3) => $nth(-2),
+    array {1 to 3} => $nth(-2)
+)

@@ -20,7 +20,7 @@ declare record my:rect(
   area as fn(my:rect) as xs:decimal := fn {
     ?length × ?width
   },
-  convert as fn(my:rect, my:unit) as xs:decimal := fn($rect, $to) {
+  convert as fn(my:rect, my:unit) as my:rect := fn($rect, $to) {
     (: use my:factor to convert the length and width of my:rect to a different unit :)
     (: return a modified version of my:rect by using a series of map:put :)
   }

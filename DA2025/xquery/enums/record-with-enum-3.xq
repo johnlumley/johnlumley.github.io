@@ -22,11 +22,11 @@ declare record my:rect(
   },
   convert as fn(my:rect, my:unit) as my:rect := fn ($rect, $to) {
     let $factor := my:factor($rect?unit, $to)
-    (: return my:rect($rect?length * $factor,  $rect?width * $factor, $to) :)
-    return $rect
+    return my:rect($rect?length × $factor, $rect?width × $factor, $to)
+    (: return $rect
       => map:put('length', $rect?length × $factor)
       => map:put('width', $rect?width × $factor)
-      => map:put('unit', $to)
+      => map:put('unit', $to) :)
   },
   describe as fn(my:rect) as xs:string := fn {
     `A rectangle with length {?length} {?unit}, width {?width} {?unit} and an area of {. =?> area()} square {?unit}`
