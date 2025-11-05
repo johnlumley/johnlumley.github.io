@@ -1,0 +1,2 @@
+let $[$first, $_, $third,$_, $_, $sixth] := array{ ?* }
+return `#DA{$third}{$first}{$third}{$sixth}`
