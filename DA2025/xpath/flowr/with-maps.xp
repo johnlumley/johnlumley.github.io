@@ -1,0 +1,4 @@
+map:merge(
+  for key $k value $v in { "a": "b", "c": "d" }
+  return {$v:$k}
+)
