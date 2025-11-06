@@ -1,0 +1,2 @@
+let $[$first, $_, $third,$_, $_, $sixth] := array{ map:keys(.) }
+return `Dee Aa {$third}tuhatta{$third}kymmentä{$sixth}`

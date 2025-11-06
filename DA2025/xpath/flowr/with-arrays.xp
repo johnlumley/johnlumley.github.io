@@ -1,0 +1,2 @@
+for member $m in [ 12, 24, 32, 48 ]
+return $m idiv 12
