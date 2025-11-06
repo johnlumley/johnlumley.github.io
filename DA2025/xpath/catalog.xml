@@ -1,6 +1,6 @@
 <tests QT4="https://raw.githubusercontent.com/qt4cg/qt4tests/refs/heads/master"
    XSLT4="https://raw.githubusercontent.com/qt4cg/xslt40-test/refs/heads/master"
-   SPEC="https://qt4cg.org/specifications/xpath-functions-40/Overview.html" title="XQuery">
+   SPEC="https://qt4cg.org/specifications/xpath-functions-40/Overview.html" title="XPath">
 
    <xpath name="Type Coercion" href="coercion.xp">
       <problem>
@@ -58,4 +58,32 @@ You should not need to use any local variables.
       </xpath>
    </group>
    
+   <group name="Destructuring Operations" href="destructuring/">
+      <xpath name="Array Destructuring" href="array-destruct.xp">
+         <problem>
+            The array is destructured into some of its members.
+            They are used to return the finnish pronounciation of the hashtag for DA2025.
+            Can you make this return the actual hashtag <pre><![CDATA[#DA2025]]></pre> instead?
+         </problem>
+         <input type="json" name="Finnish Numbers" href="num-fi.json"/>
+      </xpath>
+      <xpath solution="" name="Array Destructuring" href="array-destruct-2.xp">
+         <input type="json" name="Finnish Numbers" href="num-fi.json"/>
+      </xpath>
+      <xpath name="Map Destructuring" href="map-destruct.xp">
+         <problem>
+            The map is destructured into some of its values by variables named after corresponding key.
+            It returns 42 but can you change it so that it returns 23?
+         </problem>
+         <input type="json" name="Finnish Numbers" href="num-fi.json"/>
+      </xpath>
+      <xpath solution="" name="Map Destructuring" href="map-destruct-2.xp">
+         <input type="json" name="Finnish Numbers" href="num-fi.json"/>
+      </xpath>
+   </group>
+   
+   <group name="FLWOR" href="flowr/">
+      <xpath name="With Maps" href="with-maps.xp"/>
+      <xpath name="With Arrays" href="with-arrays.xp"/>
+   </group>
 </tests>
