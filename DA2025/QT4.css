@@ -1,8 +1,5 @@
 @import "../jwiXML.css";
 
-* {
-   color-scheme:light;
-}
 span.selectAll {
    font-size: 8px;
    font-weight: bold;
