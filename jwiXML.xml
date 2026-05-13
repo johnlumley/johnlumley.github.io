@@ -5,7 +5,7 @@
     <samples href="xpath/sample-catalog.xml" title="XPath/XQuery 4" role="samples"/>
     <samples href="sample-catalog.xml" title="Samples" role="samples"/>
     <!--<samples href="pragmas/sample-catalog.xml" title="Pragma Samples" pragma="yes"/>-->
-    <samples href="https://raw.githubusercontent.com/invisibleXML/ixml/master/tests/test-catalog.xml"
+    <samples href="https://codeberg.org/InvisibleXML/ixml/raw/branch/main/tests/test-catalog.xml"
         title="Test Suite" role="tests"/>
     <!-- Example tests and samples for the jωiXML processor
      These take two forms - simple sample grammars for the interactive processor
