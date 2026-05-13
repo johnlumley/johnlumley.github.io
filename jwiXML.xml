@@ -5,7 +5,7 @@
    <samples href="xpath/sample-catalog.xml" title="XPath/XQuery 4.0 Grammars" role="samples"/>
    <!-- <samples href="xpath/sample-catalog.1.0.xml" title="XPath/XQuery 4 (iXML v1.0)" role="samples"/>
     <samples href="xpath/sample-catalog.1.0+.xml" title="XPath/XQuery 4 (iXML v1.1+)" role="samples"/>-->
-   <samples href="tsc/sample-catalog.xml" title="Typescript" role="samples"/>
+   <Zsamples href="tsc/sample-catalog.xml" title="Typescript" role="samples"/>
    <samples href="myTests/mk2/sample-catalog.xml" title="Mk2" role="samples"/>
    <samples href="myTests/subtraction/sample-catalog.xml" title="Subtraction Samples" role="samples"/>
    <samples href="myTests/naming/sample-catalog.xml" title="Naming Samples" role="samples"/>
