@@ -1,32 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tests>
 
-    <!--<samples href="pragmas/marks/sample-catalog.mark.xml" title="Marks" role="marks"/>-->
-    <samples href="xpath/sample-catalog.xml" title="XPath/XQuery 4" role="samples"/>
-    <samples href="sample-catalog.xml" title="Samples" role="samples"/>
-    <!--<samples href="pragmas/sample-catalog.xml" title="Pragma Samples" pragma="yes"/>-->
-    <samples href="https://raw.githubusercontent.com/invisibleXML/ixml/master/tests/test-catalog.xml"
-        title="Test Suite" role="tests"/>
-    <!-- Example tests and samples for the jωiXML processor
+   <!--<samples href="pragmas/marks/sample-catalog.mark.xml" title="Marks" role="marks"/>-->
+   <samples href="xpath/sample-catalog.xml" title="XPath/XQuery 4.0 Grammars" role="samples"/>
+   <!-- <samples href="xpath/sample-catalog.1.0.xml" title="XPath/XQuery 4 (iXML v1.0)" role="samples"/>
+    <samples href="xpath/sample-catalog.1.0+.xml" title="XPath/XQuery 4 (iXML v1.1+)" role="samples"/>-->
+   <samples href="tsc/sample-catalog.xml" title="Typescript" role="samples"/>
+   <samples href="myTests/mk2/sample-catalog.xml" title="Mk2" role="samples"/>
+   <samples href="myTests/subtraction/sample-catalog.xml" title="Subtraction Samples" role="samples"/>
+   <samples href="myTests/naming/sample-catalog.xml" title="Naming Samples" role="samples"/>
+   <samples href="sample-catalog.xml" title="Samples" role="samples"/>
+   <samples href="pragmas/sample-catalog.xml" title="Pragma Samples" pragma="yes"/>
+   <Zsamples href="https://codeberg.org/InvisibleXML/ixml/raw/branch/main/tests/test-catalog.xml"
+      title="Test Suite" role="tests"/>
+   <!--<samples href="https://raw.githubusercontent.com/invisibleXML/ixml/master/tests/test-catalog.xml"
+      title="Test Suite" role="tests"/>-->
+   <!-- Example tests and samples for the jωiXML processor
      These take two forms - simple sample grammars for the interactive processor
      and test grammar/input sets for automatic execution (used during development)    
     -->
 
-    <!-- Sample grammars for use in the interactive processor 
+   <!-- Sample grammars for use in the interactive processor 
     They will appear on the left hand side and can be loaded by clicking their box.
     
     Note that sample[@href] will load a sample from a file if available - 
     see the (commented-out) samples at the end which load from the ixml test suite, 
     assuming /ixmlTests has aliased in your web server to your local repository ixml/tests-->
 
-    <sample>S:S;'a'. </sample>
-    <sample>S: [L]++(+':';+'=';+'-').</sample>
-    <sample>a: "a"*; ()?. </sample>
-    <sample>input: line++lf.
+   <sample>S:S;'a'. </sample>
+   <sample>S: [L]++(+':';+'=';+'-').</sample>
+   <sample>a: "a"*; ()?. </sample>
+   <sample>input: line++lf.
 line: ~[#a | #d]*.
 lf: -#a | -#d, -#a.
     </sample>
-    <sample>diary: entry+.
+   <sample>diary: entry+.
 entry: date, para.
 date: day, s, month, s,  year, nl.
 day: digit, digit?.
@@ -43,7 +51,7 @@ para: word++s, s?, blank.
 -s: " "+.
 -nl: -#a | -#d, -#a .
     </sample>
-    <sample>url: scheme, ":", authority, path.
+   <sample>url: scheme, ":", authority, path.
 @scheme: name.
 -name: letter+.
 -authority: "//", host.
@@ -56,7 +64,7 @@ path: ("/", seg)+.
 -fletter: letter; ".".
     </sample>
 
-    <sample>address: person, lf, street, lf, postcode, city, lf, country, lf; 
+   <sample>address: person, lf, street, lf, postcode, city, lf, country, lf; 
          person, lf, street, lf, city, postcode, lf, country, lf.
 person: (title, S?)?, (initials; given, S), surname, S?.
 title: "Mr."; "Mrs."; "Dr."; "Ms.".
@@ -80,7 +88,7 @@ no: digits.
 -lf: -#a | -#d, -#a .
 </sample>
 
-    <!-- Samples that fetch the grammar from a file, 
+   <!-- Samples that fetch the grammar from a file, 
         typically a grammar from the test-suite, which can be found at
         https://github.com/invisibleXML/ixml/tree/master/tests
         
@@ -93,31 +101,31 @@ no: digits.
         that /ixmlTests/ is aliased to the location of ixml/tests
     -->
 
-    <!--<sample href="/ixmlTests/correct/expr3.ixml"/>
+   <!--<sample href="/ixmlTests/correct/expr3.ixml"/>
     <sample href="/ixmlTests/correct/address.ixml"/>
 -->
-    <sample source="tests" href="correct/email.ixml"/>
-    <sample source="samples" href="ABNF/ABNF.ixml"/>
-    <sample source="samples" href="ISO-8601-2004/iso8601.ixml"/>
+   <sample source="tests" href="correct/email.ixml"/>
+   <sample source="samples" href="ABNF/ABNF.ixml"/>
+   <sample source="samples" href="ISO-8601-2004/iso8601.ixml"/>
 
 
 
-    <!-- Non-interactive test groups of grammars and inputs 
+   <!-- Non-interactive test groups of grammars and inputs 
         
         <include href/> will include tests declared in another file
     -->
 
 
 
-    <test>
-        <grammar>S: [L]++(+':';+'=').</grammar>
-        <input>abcd</input>
-    </test>
-    <include href="myTests/welcome.xml"/>
-    <test>
-        <grammar>S: [L]+ .</grammar>
-        <input showStates="">a5</input>
-    </test>
+   <test>
+      <grammar>S: [L]++(+':';+'=').</grammar>
+      <input>abcd</input>
+   </test>
+   <include href="myTests/welcome.xml"/>
+   <test>
+      <grammar>S: [L]+ .</grammar>
+      <input showStates="">a5</input>
+   </test>
 
 
 </tests>
