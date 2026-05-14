@@ -144,6 +144,12 @@ a.testName {
    font-style: italic;
    font-size: x-small;
 }
+.notabene {
+   font-style: italic;
+   font-size: smaller;
+   color: red;
+width:50%;
+}
 .instruction {
    font-size: x-small;
 }
