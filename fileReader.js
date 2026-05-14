@@ -53,3 +53,9 @@ function addDrag(input, output) {
       event.preventDefault();
    });
 }
+
+
+function toBase64(input) {
+    const u = new Uint8Array(input);
+    return u.toBase64();
+}
