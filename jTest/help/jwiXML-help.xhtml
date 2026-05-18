@@ -25,78 +25,81 @@
             <a href="#d1e88">Editing grammars and inputs</a>
          </li>
          <li>
-            <a href="#d1e130">Parsing an input against a grammar</a>
+            <a href="#d1e132">Parsing an input against a grammar</a>
             <ul>
                <li>
-                  <a href="#d1e136">Parsing and compiling the grammar</a>
+                  <a href="#d1e138">Parsing and compiling the grammar</a>
                </li>
                <li>
-                  <a href="#d1e182">Parsing the input string against the grammar</a>
+                  <a href="#d1e184">Parsing the input string against the grammar</a>
                </li>
             </ul>
          </li>
          <li>
-            <a href="#d1e196">Errors</a>
+            <a href="#d1e198">Errors</a>
             <ul>
                <li>
-                  <a href="#d1e202">Grammar errors</a>
+                  <a href="#d1e204">Grammar errors</a>
                </li>
                <li>
-                  <a href="#d1e274">Input parsing errors</a>
+                  <a href="#d1e276">Input parsing errors</a>
                </li>
                <li>
-                  <a href="#d1e304">Serialisation errors</a>
+                  <a href="#d1e306">Serialisation errors</a>
                </li>
             </ul>
          </li>
          <li>
-            <a href="#d1e326">Actions</a>
+            <a href="#d1e328">Actions</a>
          </li>
          <li>
-            <a href="#d1e358">Options</a>
+            <a href="#d1e360">Options</a>
          </li>
          <li>
-            <a href="#d1e513">Loading grammars and inputs from external sources</a>
+            <a href="#d1e515">Loading grammars and inputs from external sources</a>
             <ul>
                <li>
-                  <a href="#d1e540">Grammars in XML</a>
+                  <a href="#d1e542">Grammars in XML</a>
                </li>
             </ul>
          </li>
          <li>
-            <a href="#d1e559">Notes on the XPath/XQuery 4 grammars</a>
+            <a href="#d1e561">Notes on the XPath/XQuery 4 grammars</a>
             <ul>
                <li>
-                  <a href="#d1e618">Failures</a>
+                  <a href="#d1e620">Failures</a>
                </li>
                <li>
-                  <a href="#d1e637">Ambiguities</a>
+                  <a href="#d1e639">Ambiguities</a>
                </li>
                <li>
-                  <a href="#d1e662">The Set-subtraction operator</a>
+                  <a href="#d1e664">The Set-subtraction operator</a>
                </li>
             </ul>
          </li>
          <li>
-            <a href="#d1e699">Change history</a>
+            <a href="#d1e701">Change history</a>
             <ul>
                <li>
-                  <a href="#d1e703">Version 1.1 - 2022nov01</a>
+                  <a href="#d1e705">Version 1.1 - 2022nov01</a>
                </li>
                <li>
-                  <a href="#d1e721">Version 1.3 - 2023may27</a>
+                  <a href="#d1e723">Version 1.3 - 2023may27</a>
                </li>
                <li>
-                  <a href="#d1e739">Version 1.4 - 2024feb13</a>
+                  <a href="#d1e741">Version 1.4 - 2024feb13</a>
                </li>
                <li>
-                  <a href="#d1e806">Version 1.5 - 2024sep23</a>
+                  <a href="#d1e808">Version 1.5 - 2024sep23</a>
                </li>
                <li>
-                  <a href="#d1e848">Version 1.6 - (Processor version 1.2) 2024oct23</a>
+                  <a href="#d1e850">Version 1.6 - (Processor version 1.2) 2024oct23</a>
                </li>
                <li>
-                  <a href="#d1e886">Version 1.7 - (Processor version 1.2.1) 2026may14</a>
+                  <a href="#d1e888">Version 1.7 - (Processor version 1.2.1) 2026may14</a>
+               </li>
+               <li>
+                  <a href="#d1e906">Version 1.7.1 - (Processor version 1.2.1) 2026may18</a>
                </li>
             </ul>
          </li>
@@ -165,17 +168,21 @@ bcdef: [N]|("1"; "2" | "3").</pre>
             <img width="300" src="img2.png"/>
             <p>The size of both of the textareas can be adjusted (at least on Chrome and Firefox) by
                the resizer 'chevron' at the lower right hand corner.</p>
+            <p>Above each of the textareas is a 'download' button which will download the current
+               text of the area into a file in your browser's 'Download' folder. The names of these
+               files can be altered in Options/Result/Downloads/(Grammar|Input). Note that browsers
+               will not overwrite existing files, but add usually a numeric suffix.</p>
          </div>
       </section>
       <section>
          <h3>
-            <a id="d1e130">Parsing an input against a grammar</a>
+            <a id="d1e132">Parsing an input against a grammar</a>
          </h3>
          <p>With the grammar and potential input string edited, clicking on the GO! button causes
             the following actions:</p>
          <section>
             <h4>
-               <a id="d1e136">Parsing and compiling the grammar</a>
+               <a id="d1e138">Parsing and compiling the grammar</a>
             </h4>
             <p>The grammar defined by the text in the Grammar window is parsed and compiled as an
                iXML grammar to produce an internal object representing the compiled grammar.
@@ -214,7 +221,7 @@ bcdef: [N]|("1"; "2" | "3").</pre>
          </section>
          <section>
             <h4>
-               <a id="d1e182">Parsing the input string against the grammar</a>
+               <a id="d1e184">Parsing the input string against the grammar</a>
             </h4>
             <p>Assuming the grammar has compiled and the input text string is not empty (or the
                'Allow an empty string as input' option is checked), the text string is then parsed
@@ -226,17 +233,18 @@ bcdef: [N]|("1"; "2" | "3").</pre>
                get it into the clipboard as text.</p>
             <p>There is also a 'download' button just above a result tree which will download the
                result into a file in your browser's 'Download' folder. The name of this file can be
-               altered in Options/Result/Download Filename</p>
+               altered in Options/Result/Downloads/Result. Note that browsers will not overwrite
+               existing files, but add usually a numeric suffix.</p>
          </section>
       </section>
       <section>
          <h3>
-            <a id="d1e196">Errors</a>
+            <a id="d1e198">Errors</a>
          </h3>
          <p>There are three main categories of errors detected:</p>
          <section>
             <h4>
-               <a id="d1e202">Grammar errors</a>
+               <a id="d1e204">Grammar errors</a>
             </h4>
             <p>Errors in the iXML grammar presented will be displayed under the 'Grammar Details'
                section. Such errors can be one of: </p>
@@ -297,7 +305,7 @@ Unreachable production rules for non-terminals: b</pre>
          </section>
          <section>
             <h4>
-               <a id="d1e274">Input parsing errors</a>
+               <a id="d1e276">Input parsing errors</a>
             </h4>
             <p>The parsing of an input string against a valid iXML grammar can fail for a number of
                reasons. Such errors are displayed in the 'Result' portion of the workbench,
@@ -335,7 +343,7 @@ Probable looping processing character '{' @ line 1, column 1&lt;/ixml&gt;</pre>
          </section>
          <section>
             <h4>
-               <a id="d1e304">Serialisation errors</a>
+               <a id="d1e306">Serialisation errors</a>
             </h4>
             <p>The input string may have parsed correctly, but it is still possible that the
                conversion (serialisation) to XML fails as the resulting tree would not be a valid
@@ -351,7 +359,7 @@ Multiple nodes may not be the final parse result:&lt;expression/&gt;,@compare,&l
       </section>
       <section>
          <h3>
-            <a id="d1e326">Actions</a>
+            <a id="d1e328">Actions</a>
          </h3>
          <p>The following actions on grammars displayed in the grammar textbox are supported via
             simple buttons:</p>
@@ -380,7 +388,7 @@ Multiple nodes may not be the final parse result:&lt;expression/&gt;,@compare,&l
       </section>
       <section>
          <h3>
-            <a id="d1e358">Options</a>
+            <a id="d1e360">Options</a>
          </h3>
          <p>The following options controlling grammar parsing, input string treatment and result
             display are supported via checkboxes. Where appropriate the corresponding option or
@@ -577,7 +585,7 @@ Multiple nodes may not be the final parse result:&lt;expression/&gt;,@compare,&l
       </section>
       <section>
          <h3>
-            <a id="d1e513">Loading grammars and inputs from external sources</a>
+            <a id="d1e515">Loading grammars and inputs from external sources</a>
          </h3>
          <p>Both grammar and input texts can be read from local filestore by using the appropriate
             'Choose file' (or 'Browse') button, which permits a file to be read and its text loaded
@@ -595,7 +603,7 @@ Multiple nodes may not be the final parse result:&lt;expression/&gt;,@compare,&l
          <img width="300" src="img10.png"/>
          <section>
             <h4>
-               <a id="d1e540">Grammars in XML</a>
+               <a id="d1e542">Grammars in XML</a>
             </h4>
             <p>Note that some of these test cases provide the iXML grammar in its XML serialisation
                form. The workbench recognises such a situation and will show and use that form, but
@@ -609,7 +617,7 @@ Multiple nodes may not be the final parse result:&lt;expression/&gt;,@compare,&l
       </section>
       <section>
          <h3>
-            <a id="d1e559">Notes on the XPath/XQuery 4 grammars</a>
+            <a id="d1e561">Notes on the XPath/XQuery 4 grammars</a>
          </h3>
          <p>I've been involved in the <a href="https://qt4cg.org/">QT4 Community Group</a> since its
             start, and have been using the grammars for XPath and XQuery as large test examples for
@@ -617,9 +625,10 @@ Multiple nodes may not be the final parse result:&lt;expression/&gt;,@compare,&l
             those involved in that community to perhaps handle 'what-if' experiments on the
             grammar.</p>
          <p>The 'Test/Sample' dropdown contains (at the top) iXML grammars for the September 2024
-            draft 4.0 versions of the XPath and XQuery grammars. (They should really be 'near-current' but I got out of the habit of updating...) These are derived programmatically
-            (with a modicum of automated patching) directly from the grammar definitions used to
-            generate the specification grammars <a href="https://qt4cg.org/specifications/xquery-40/xpath-40.html#id-grammar">XPath
+            draft 4.0 versions of the XPath and XQuery grammars. (They should really be
+            'near-current' but I got out of the habit of updating...) These are derived
+            programmatically (with a modicum of automated patching) directly from the grammar
+            definitions used to generate the specification grammars <a href="https://qt4cg.org/specifications/xquery-40/xpath-40.html#id-grammar">XPath
                EBNF</a> and <a href="https://qt4cg.org/specifications/xquery-40/xquery-40.html#id-grammar">XQuery
                EBNF</a>. (See my <a href="https://www.balisage.net/Proceedings/vol29/html/Lumley01/BalisageVol29-Lumley01.html">Balisage paper</a> for details of how these are constructed.)</p>
          <p>The grammars are presented in three different versions of iXML:</p>
@@ -650,7 +659,7 @@ Multiple nodes may not be the final parse result:&lt;expression/&gt;,@compare,&l
             ambiguity. These notes are intended to explain.</p>
          <section>
             <h4>
-               <a id="d1e618">Failures</a>
+               <a id="d1e620">Failures</a>
             </h4>
             <ul>
                <li>The iXML grammars (which have to effectively act as their own tokenizers) are
@@ -669,7 +678,7 @@ Multiple nodes may not be the final parse result:&lt;expression/&gt;,@compare,&l
          </section>
          <section>
             <h4>
-               <a id="d1e637">Ambiguities</a>
+               <a id="d1e639">Ambiguities</a>
             </h4>
             <p>The grammars, lacking a tokenizer and the ability to look-ahead without consumption,
                retain a few ambiguities that are inhernet in the basic EBNF grammars (i.e. without
@@ -686,7 +695,7 @@ Multiple nodes may not be the final parse result:&lt;expression/&gt;,@compare,&l
          </section>
          <section>
             <h4>
-               <a id="d1e662">The Set-subtraction operator</a>
+               <a id="d1e664">The Set-subtraction operator</a>
             </h4>
             <p>The grammars use an experimental 'set-subtraction' operator <code>¬</code> to
                indicate certain reserved keywords such as limitations on function names: </p>
@@ -707,11 +716,11 @@ reservedFunctionNames: types |
       </section>
       <section>
          <h3>
-            <a id="d1e699">Change history</a>
+            <a id="d1e701">Change history</a>
          </h3>
          <section>
             <h4>
-               <a id="d1e703">Version 1.1 - 2022nov01</a>
+               <a id="d1e705">Version 1.1 - 2022nov01</a>
             </h4>
             <ul>
                <li>Improvements to error reporting.</li>
@@ -724,7 +733,7 @@ reservedFunctionNames: types |
          </section>
          <section>
             <h4>
-               <a id="d1e721">Version 1.3 - 2023may27</a>
+               <a id="d1e723">Version 1.3 - 2023may27</a>
             </h4>
             <ul>
                <li>Tooltip help boxes added.</li>
@@ -739,7 +748,7 @@ reservedFunctionNames: types |
          </section>
          <section>
             <h4>
-               <a id="d1e739">Version 1.4 - 2024feb13</a>
+               <a id="d1e741">Version 1.4 - 2024feb13</a>
             </h4>
             <ul>
                <li>Added syntax highlighting option to formatted iXML display</li>
@@ -770,7 +779,7 @@ reservedFunctionNames: types |
          </section>
          <section>
             <h4>
-               <a id="d1e806">Version 1.5 - 2024sep23</a>
+               <a id="d1e808">Version 1.5 - 2024sep23</a>
             </h4>
             <ul>
                <li>Corrected <a href="https://github.com/johnlumley/jwiXML/issues/10">issue#10</a>
@@ -787,7 +796,7 @@ reservedFunctionNames: types |
          </section>
          <section>
             <h4>
-               <a id="d1e848">Version 1.6 - (Processor version 1.2) 2024oct23</a>
+               <a id="d1e850">Version 1.6 - (Processor version 1.2) 2024oct23</a>
             </h4>
             <ul>
                <li>Corrected a bug where an insertion in an attribute serialisation was not being
@@ -808,7 +817,7 @@ reservedFunctionNames: types |
          </section>
          <section>
             <h4>
-               <a id="d1e886">Version 1.7 - (Processor version 1.2.1) 2026may14</a>
+               <a id="d1e888">Version 1.7 - (Processor version 1.2.1) 2026may14</a>
             </h4>
             <ul>
                <li>Fixed an issue <a href="https://github.com/johnlumley/johnlumley.github.io/issues/8">#8</a> where
@@ -817,6 +826,16 @@ reservedFunctionNames: types |
                   arising from the migration of Invisible XML from Github to Codeberg</li>
                <li>Added a 'download' button to download a result tree directly. The name of the
                   download file can be altered in Options/Result </li>
+            </ul>
+         </section>
+         <section>
+            <h4>
+               <a id="d1e906">Version 1.7.1 - (Processor version 1.2.1) 2026may18</a>
+            </h4>
+            <ul>
+               <li>Added extra 'download' buttons to download both the grammar being edited and any
+                  input being edited. The names of the download files can be altered in
+                  Options/Result/Downloads </li>
             </ul>
          </section>
       </section>
