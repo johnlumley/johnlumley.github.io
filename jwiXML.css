@@ -148,7 +148,7 @@ a.testName {
    font-style: italic;
    font-size: smaller;
    color: red;
-width:50%;
+   width: 50%;
 }
 .instruction {
    font-size: x-small;
@@ -299,6 +299,17 @@ fieldset.options {
    display: inline;
    vertical-align: top;
 }
+fieldset.options legend {
+   font-size: 8pt;
+   font-weight: bold;
+}
+fieldset.options div.subgroup>div {
+   padding-left: 5mm;
+}
+div.subgroup legend {
+   font-size: 6pt;
+   font-weight: bold;
+}
 
 details > summary {
    padding: 2px 6px;
@@ -385,8 +396,14 @@ label.text {
    font: normal 8px arial;
    display: inline-block;
    line-height: 10px;
-   vertical-align: top;
+   vertical-align: central;
    margin: 2px 0px;
+}
+div.subgroup label.text {
+width: 5em;
+}
+div.subgroup input {
+  font-size:7pt;
 }
 input.number {
    width: 5em;
