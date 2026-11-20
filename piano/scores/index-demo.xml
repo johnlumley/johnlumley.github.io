@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <scores start-slide="1">
 
-   <score href="mockHoffman.pkg.xml" start="16" end="32">The Mocking Bird (Hoffman)</score>
+   <score href="mockHoffman.pkg.xml" Xstart="16" Xend="32">The Mocking Bird (Hoffman)</score>
    <score href="blackwhite.norepeat.pkg.xml" no-repeats="true" Xend="37">Black and White Rag</score>
    <score href="forelle.pkg.xml">Die Forelle</score>
    <Xscore href="Tell-lg-51166226.split.pkg.xml" tempo="110" Xend="43">Guillaume Tell </Xscore>
