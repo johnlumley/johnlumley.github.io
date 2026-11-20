@@ -1,0 +1,277 @@
+@import "../styles/checkbox.css";
+@import "../styles/tooltip.css";
+
+#reset,
+#slideSelect {
+   font-size: x-small;
+}
+label[for = 'slideSelect'] {
+   font-size: x-small;
+}
+#slideSelect {
+   width: 2em;
+}
+#leftSlide,
+#rightSlide {
+   cursor: pointer;
+}
+.main > tr > td {
+   vertical-align: middle;
+}
+#topBar {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+}
+#messages {
+   width: 60em;
+   text-align: center;
+   min-height: 70pt;
+   color: red;
+   font-size: 20pt;
+   font-family: arial, helvetica, sans-serif;
+   font-weight: bold;
+   background-color: #f8f8f8;
+   cursor: pointer;
+}
+#messages .lyrics {
+   color: blue;
+   font-family: "IM Fell English";
+   font-size: 22pt;
+   margin-block-start: 4pt;
+   margin-block-end: 0;
+}
+
+
+#keys {
+   /*background-color: blue;*/
+}
+#topSVG {
+   width: 850px;
+   height: auto;
+   display: block;
+   /* margin-bottom: -6cm;*/
+}
+#controls .toggler,
+#controls input,
+#controls select {
+   font-size: 8pt;
+}
+/*#controls, #keys {
+   display:table-cell;
+}*/
+input[type = "range"] {
+   width: 100px;
+   height: 3px;
+   margin: 0;
+   transform: scale(0.5);
+}
+/*#score {
+   font-size: 8pt;
+}*/
+.octave,
+.voicing > .toggler,
+.voicing > select,
+select.instrumentSelect {
+   display: table-cell;
+}
+.voicing * {
+   font-size: 6pt;
+}
+.measures {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+}
+.measures .toggler {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   font-size: 6pt;
+}
+.measures > legend {
+   font-size: 8pt;
+   font-weight: normal;
+}
+/*.measures,
+.scoreOptions .toggler,
+#tempo {
+   font-size: 6pt;
+}
+.measures .toggler,
+#currentMeasure {
+   display: table-cell;
+}
+.measures .toggler > * {
+   display: block;
+   align-content: center;
+}*/
+#controls .measures input,
+#controls #tempo {
+   width: 4em;
+   font-size: 6pt;
+   text-align: right;
+}
+
+#currentMeasure {
+   width: 3em;
+   font-size: 9pt;
+   font-weight: bold;
+   text-align: center;
+}
+.case {
+   fill: black;
+   stroke: grey;
+   stroke-width: 3;
+}
+.case.lid {
+   fill: black;
+   stroke: grey;
+   stroke-width: 8;
+}
+.upright .case {
+   fill: url(#WalnutPattern);
+}
+#lid30 {
+   display: none;
+}
+.case.edge {
+   stroke: black;
+   /*fill: red;*/
+}
+.case.side,
+.case.back {
+   /*   fill: pink;
+   opacity: 50%;*/
+}
+
+.rod {
+   fill: goldenrod;
+   stroke: black;
+}
+.metronome .case {
+   fill: url(#LightOakPattern);
+   stroke: sienna;
+}
+.organ .case {
+   fill: url(#BirchPattern);
+   stroke: sienna;
+}
+.organ .stop {
+   fill: white;
+   stroke: black;
+   stroke-width: 1;
+}
+.organ .stop .stem {
+   fill: brown;
+}
+.organStop {
+   cursor: pointer;
+}
+.organStop.odd {
+   fill: blue;
+}
+.organStopLabel {
+   display: none;
+}
+.stopBank {
+   fill: none;
+   stroke: black;
+   stroke-width: 2;
+}
+.key.pedal.white {
+   fill: url(#BirchPattern);
+   stroke: black;
+}
+.key.pedal.black {
+   fill: black;
+   stroke: grey;
+}
+.key {
+   background-color: white;
+   border-width: 0.5pt;
+   font-size: xx-small;
+   width: 12px;
+   padding: 0;
+   height: 40px;
+   vertical-align: top;
+   fill: white;
+   stroke: black;
+}
+button.key {
+   font-size: 20pt;
+   width: 32px;
+   height: 100px;
+}
+button.key.black {
+   height: 72px;
+}
+.key .dummy {
+   fill: white;
+   opacity: 0.005;
+}
+.key.black {
+   background-color: black;
+   color: white;
+   height: 24px;
+   fill: none;
+   stroke: none;
+}
+.key.black polygon {
+   fill: black;
+   stroke: grey;
+}
+.key.black text {
+   fill: white;
+   stroke: none;
+}
+.grand .key text,
+.organ .key text {
+   fill: none;
+   stroke: none;
+}
+.grandPedal .down {
+   display: none;
+}
+
+tooltip {
+   display: none;
+}
+#pianoRoll,
+.roll {
+   fill: linen;
+}
+#pianoRoll,
+.caption {
+   stroke: none;
+   fill: red;
+}
+#pianoRoll,
+.hole {
+   fill: black;
+}
+#pianoRoll,
+.hole.P2 {
+   fill: yellow;
+}
+#pianoRoll,
+.hole.P1a,
+.hole.P3 {
+   fill: blue;
+}
+
+#options {
+   font-size: small;
+}
+#options legend {
+   font-weight: bold;
+}
+/*#options fieldset > div {
+   display: table-cell;
+}*/
+.scores pre {
+   font-size: xx-small;
+}
+.scores summary {
+   font-size: small;
+}

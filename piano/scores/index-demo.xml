@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scores start-slide="1">
+
+   <score href="mockHoffman.pkg.xml" start="16" end="32">The Mocking Bird (Hoffman)</score>
+   <score href="blackwhite.norepeat.pkg.xml" no-repeats="true" Xend="37">Black and White Rag</score>
+   <score href="forelle.pkg.xml">Die Forelle</score>
+   <Xscore href="Tell-lg-51166226.split.pkg.xml" tempo="110" Xend="43">Guillaume Tell </Xscore>
+   <score href="ALSHoffman.pkg.xml" tempo="80">ALS (Hoffman)</score>
+   <Xscore href="homeSweetHome.xml" Xstart="4">Home Sweet Home</Xscore>
+
+   <properties>
+      <geometry x="-720" y="650" width="600" height="1450"/>
+      <keyboard x="-720" y="650" width="600" height="1450"/>
+      <upright x="-720" y="650" width="600" height="1450"/>
+      <grand x="-680" y="930" width="1800" height="1300"/>
+      <organ x="-730" y="760" width="1000" height="1600"/>
+   </properties>
+
+   <slides>
+      <!--<slide instrument="geometry"/>-->
+      <slide instrument="grand" scores="yes"/>
+      <!--<slide instrument="buttons" tone="yes"/>
+      <slide instrument="keyboard" tone="yes"/>
+      <slide instrument="upright" tone="yes">-->
+         <!--<message>A simple upright piano</message>
+         <message>We can press the keys...</message>
+         <message>...and even play a little tune</message>
+         <message>(Some of you may recognise this is the tune on the 'sheet music')</message>
+         <message>But it's VERY slow, no chords and clumsy (sticky keys!)</message>
+         <message>We need some automation ►</message>-->
+      <!--</slide>-->
+     <!-- <slide instrument="grand" scores="yes"/>
+      <slide instrument="organ" scores="yes"/>-->
+   </slides>
+</scores>

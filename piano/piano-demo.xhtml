@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <title>Piano</title>
+      <link rel="stylesheet" href="piano.css" type="text/css" />
+      <script type="text/javascript" src="../saxonJS/SaxonJS2.rt.js" language="javascript"></script>
+      <!--<script type="text/javascript" src="../dist/jwiXML.adv.cls.js" language="javascript"></script>-->
+      <!-- <script type="text/javascript" src="musical.js" language="javascript"></script>-->
+      <script type="text/javascript" src="notes.js" language="javascript"></script>
+      <script type="text/javascript" src="instrument.js" language="javascript"></script>
+      <script type="text/javascript">
+         /* These functions are called from XSLT using the namespace http://saxonica.com/ns/globalJS,
+          e.g. xmlns:js="http://saxonica.com/ns/globalJS"  .... js:animProgress($anim)
+          */        
+        
+         /* Begin an animation */
+         function animate(a) {
+            a.beginElement();
+         }
+         
+         /* delete an animation */
+         function unAnimate(a) {
+            if (a != null) {
+               a.endElement();
+            }
+         }
+         </script>
+   </head>
+   <body onload="SaxonJS.transform({
+      'stylesheetLocation' : 'piano.3.sef.json',
+      'initialTemplate' : 'Q{}start',
+      'sourceLocation' : 'scores/index-demo.xml',
+      'stylesheetParams': {'fix': 1.0 }
+      })">
+      <!--<h2>Piano</h2>-->
+      <div id="topBar">
+         <div id="topControls"></div>
+         <div id="messages"></div>
+      </div>
+      <p id="errors"></p>
+      <table class="main">
+         <tr>
+            <td>
+               <div id="controls"></div>
+            </td>
+            <td>
+               <div id="keys"></div>
+            </td>
+         </tr>
+      </table>
+      <!--<div id="controls"></div>
+      <div id="keys"></div>-->
+      <p id="message"></p>
+      <pre id="code"></pre>
+      <div id="scoresDisplay"></div>
+   </body>
+</html>
