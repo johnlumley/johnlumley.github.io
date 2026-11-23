@@ -107,11 +107,16 @@ var currentScoreJSON = null;
 function setCurrentScoreJSON(score) {
    currentScoreJSON = JSON.parse(score);
 }
-function playMeasureJSON(no, beat, volume) {
-   const measure = currentScoreJSON[no]
+function playMeasureJSON(no, beat, volume, voicingJSON = "") {
+   const measure = currentScoreJSON[no];
+   const voicing = JSON.parse(voicingJSON);
    for (const n of measure.notes) {
-      piano(n.freq, n.voice, n.duration * beat, n.volume * volume, n.start * beat);
-   }
+      if (voicing[n.part] && voicing[n.part].checked) {
+         piano(n.freq, voicing[n.part].voice, n.duration * beat, n.volume * volume, n.start * beat);
+      } else {
+         piano(n.freq, n.voice, n.duration * beat, n.volume * volume, n.start * beat);
+      }
+   }   
    for (const kd of measure.keyDown) {
       keysDown(980 * beat * kd.beat, kd.keys)
    }

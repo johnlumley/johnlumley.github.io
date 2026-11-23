@@ -275,3 +275,11 @@ tooltip {
 .scores summary {
    font-size: small;
 }
+
+details.help {
+   font-family: arial, helvetica, sans-serif;
+font-size:10pt;
+}
+.footnote {
+   font-size:smaller;
+}

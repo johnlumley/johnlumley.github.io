@@ -5,7 +5,7 @@
    <score href="blackwhite.norepeat.pkg.xml" no-repeats="true" Xend="37">Black and White Rag</score>
    <score href="forelle.pkg.xml">Die Forelle</score>
    <Xscore href="Tell-lg-51166226.split.pkg.xml" tempo="110" Xend="43">Guillaume Tell </Xscore>
-   <score href="ALSHoffman.pkg.xml" tempo="80">ALS (Hoffman)</score>
+   <score href="ALSHoffman.pkg.xml" lyrics="true" tempo="80">ALS (Hoffman)</score>
    <Xscore href="homeSweetHome.xml" Xstart="4">Home Sweet Home</Xscore>
 
    <properties>

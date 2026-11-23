@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
    <head>
-      <title>Piano</title>
+      <title>Player Piano</title>
       <link rel="stylesheet" href="piano.css" type="text/css" />
       <script type="text/javascript" src="../saxonJS/SaxonJS2.rt.js" language="javascript"></script>
       <!--<script type="text/javascript" src="../dist/jwiXML.adv.cls.js" language="javascript"></script>-->
@@ -11,8 +11,8 @@
       <script type="text/javascript">
          /* These functions are called from XSLT using the namespace http://saxonica.com/ns/globalJS,
           e.g. xmlns:js="http://saxonica.com/ns/globalJS"  .... js:animProgress($anim)
-          */        
-        
+          */
+         
          /* Begin an animation */
          function animate(a) {
             a.beginElement();
@@ -23,8 +23,7 @@
             if (a != null) {
                a.endElement();
             }
-         }
-         </script>
+         }</script>
    </head>
    <body onload="SaxonJS.transform({
       'stylesheetLocation' : 'piano.3.sef.json',
@@ -35,9 +34,41 @@
       <!--<h2>Piano</h2>-->
       <div id="topBar">
          <div id="topControls"></div>
-         <div id="messages"></div>
+         <div style="display:none" id="messages"></div>
       </div>
       <p id="errors"></p>
+      <details class="help">
+         <summary>Help!</summary>
+         <h3>Background</h3>
+         <p>This is the interactive player-piano demonstrated at <a href="https://www.balisage.net/index.html">Balisage 2026</a> and <a
+               href="https://declarative.amsterdam/program">Declarative Amsterdam 2026</a>. It uses <a
+               href="https://www.saxonica.com/saxonjs/documentation2/index.html">SaxonJS2</a>, <a
+               href="https://qt4cg.org/specifications/xslt-40/Overview.html">XSLT4(ish)*</a>, <a href="https://www.w3.org/TR/SVG11/">SVG</a>, <a
+               href="https://www.w3.org/2021/06/musicxml40/">MusicXML</a>, some small amount of JavaScript code and the <a
+               href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API">WebAudio API</a>.</p>
+         <p>It is really meant to be a bit of fun, not the start of a musical career!</p>
+         <p>With the mouse you can press a key to play a note. There are controls for both the volume and the 'instrument' (tone) being played.</p>
+         <h3>Musical Scores</h3>
+         <p>You can also play one of a number of musical scores available from the drop-down list. For each at the bottom of the page you can see the
+            original MusicXML, various 'compilations' of the score for purposes of playing and a graphical piano-roll.</p>
+         <p>The standard controls for play/pause/stop are provided and back/forward a bar is enabled when paused. The start &amp; end measures can be
+            changed. The tempo can be altered and the overall volume changed, using the obvious controls.</p>
+         <p>The scores have been written in multi-part form, such as left and right hand and voice. (Technically the <code>score-partwise</code>
+            structure in MusicXML.) Each part can be suppressed if desired or the 'instrument' used to play that part altered. These changes only
+            happen at the start of a bar, not within, and don't effect the keystrokes - only the audio.</p>
+         <p>If a score has lyrics, a 'laser display board' will appear at the top of the screen so you can sing along!</p>
+         <p>I currently don't have support for externally-loaded MusicXML scores - I'll experiment with this but make no guarantees.</p>
+         <h3>Miscellaneous</h3>
+         <p>The metronome swings only at the tempo when 'play' has been hit and the positioning of the balance weight isn't perhaps as accurate as it
+            should be, though it is altered as the requested tempo changes. If you prefer your grand piano with an open lid, then please just click on
+            it!</p>
+         <p>Very occasionally audio may stop - the Reset Audio button should do what it says on the tin.</p>
+         <p>My slides of my presentation at Declarative Amsterdam <a
+               href="https://declarative.amsterdam/resources/da/slides/da.2026.lumley.saxonjs.pdf">describing some of the architecture</a> are
+            available.</p>
+         <p class="footnote">* The XSLT source is written in XSLT4 structures, with mostly XPath3 expressions. The source is translated into
+            equivalent XSLT3 and then compile/exported into the SEF for SaxonJS2 using Saxon12 EE</p>
+      </details>
       <table class="main">
          <tr>
             <td>
